@@ -31,6 +31,7 @@ public class Chessboard : MonoBehaviour
                 var squarePrefab = (x + y) % 2 == 0 ? whiteSquarePrefab : blackSquarePrefab;
                 var square = Instantiate(squarePrefab, position, Quaternion.identity);
 
+                square.Chessboard = this;
                 square.transform.SetParent(transform);
                 square.SetBoardPosition(new Vector2Int(x, y));
                 ChessboardGrid[x, y] = square;
@@ -42,5 +43,19 @@ public class Chessboard : MonoBehaviour
     {
         Vector3 gridCenter = new Vector3((gridXSize-1 * cellSize) / 2, (gridYSize-1 * cellSize) / 2, 0);
         transform.position = -gridCenter;
+    }
+
+    public bool IsWithinBounds(Vector2Int position)
+    {
+        return position.x >= 0 && position.x < gridXSize && position.y >= 0 && position.y < gridYSize;
+    }
+
+    public ChessboardSquare GetSquareAtPosition(Vector2Int position)
+    {
+        if (IsWithinBounds(position))
+        {
+            return ChessboardGrid[position.x, position.y];
+        }
+        return null;
     }
 }

@@ -1,0 +1,427 @@
+fileFormatVersion: 2
+guid: e284d3245944b734d92a847d494800a0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4013186220243471578
+    second: Chess symbols set _0
+  - first:
+      213: 51136688311939180
+    second: Chess symbols set _1
+  - first:
+      213: -2266899279234416705
+    second: Chess symbols set _2
+  - first:
+      213: -5569370977359690345
+    second: Chess symbols set _3
+  - first:
+      213: 3112088756408728947
+    second: Chess symbols set _4
+  - first:
+      213: 3416211635286275050
+    second: Chess symbols set _5
+  - first:
+      213: 5993669431675925432
+    second: Chess symbols set _6
+  - first:
+      213: -3342646076639376984
+    second: Chess symbols set _7
+  - first:
+      213: 3389495088406015574
+    second: Chess symbols set _8
+  - first:
+      213: -350057461341257843
+    second: Chess symbols set _9
+  - first:
+      213: -6510462133851720724
+    second: Chess symbols set _10
+  - first:
+      213: -5731967100139117255
+    second: Chess symbols set _11
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Chess symbols set _0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 209
+        height: 227
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd913ca629ceb042857ab794d2d22f1
+      internalID: 1405158927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _1
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 384
+        width: 240
+        height: 224
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ca755d7a889f8bc43ad2ad6b89ad6810
+      internalID: -206205629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _2
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 384
+        width: 174
+        height: 203
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57f01a5dc433d9b478d9fd228ab2c0ba
+      internalID: 1118319918
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _3
+      rect:
+        serializedVersion: 2
+        x: 1322
+        y: 373
+        width: 224
+        height: 240
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e47f1da0f44d1064da98a0c39d9ca509
+      internalID: 982460017
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _4
+      rect:
+        serializedVersion: 2
+        x: 1775
+        y: 384
+        width: 208
+        height: 204
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5d026e54bdfa7c49826addccef20d6c
+      internalID: 1446739089
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _5
+      rect:
+        serializedVersion: 2
+        x: 2248
+        y: 384
+        width: 152
+        height: 204
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cf6715dc3065704cbaeeab1c5284351
+      internalID: 1634351084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 6
+        width: 213
+        height: 228
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 79b530e6a0c141146864326b68b4fec2
+      internalID: -1366300503
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _7
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 6
+        width: 240
+        height: 224
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a9626ddaee4acd4c90185167029874c
+      internalID: 422222401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _8
+      rect:
+        serializedVersion: 2
+        x: 906
+        y: 6
+        width: 175
+        height: 204
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7a5bbbe608d57b4cafa21b7632a299a
+      internalID: 713784810
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _9
+      rect:
+        serializedVersion: 2
+        x: 1327
+        y: 0
+        width: 223
+        height: 238
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56bef248d8de86c4483fa4ec8097dd92
+      internalID: 1524486992
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _10
+      rect:
+        serializedVersion: 2
+        x: 1776
+        y: 6
+        width: 207
+        height: 206
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 97ac61c4dda7b844eac3abc7a09dea6e
+      internalID: -1759873484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Chess symbols set _11
+      rect:
+        serializedVersion: 2
+        x: 2252
+        y: 6
+        width: 148
+        height: 204
+      alignment: 9
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8aebab95c73a10449aade69680141d82
+      internalID: 201306081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: d1cc9fea64ac0634f8ad8c440d9d3db6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Chess symbols set _0: 1405158927
+      Chess symbols set _1: -206205629
+      Chess symbols set _10: -1759873484
+      Chess symbols set _11: 201306081
+      Chess symbols set _2: 1118319918
+      Chess symbols set _3: 982460017
+      Chess symbols set _4: 1446739089
+      Chess symbols set _5: 1634351084
+      Chess symbols set _6: -1366300503
+      Chess symbols set _7: 422222401
+      Chess symbols set _8: 713784810
+      Chess symbols set _9: 1524486992
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
