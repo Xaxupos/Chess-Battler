@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103121646a768df48af7c14f31a3676f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  figureToSpawn: 0
+  figureToSpawn: 4
   sideToSpawn: 0
   figureMap:
     serializedKvps:
@@ -514,6 +514,18 @@ MonoBehaviour:
     - Key: 3
       Value: {fileID: 7031703946153561189, guid: c3d6515666dc45844bec3f6a12d54296, type: 3}
       index: 1
+      isKeyRepeated: 0
+    - Key: 1
+      Value: {fileID: 7395387658423616482, guid: b66f669ea6b4fe94f832865df5a1377e, type: 3}
+      index: 2
+      isKeyRepeated: 0
+    - Key: 2
+      Value: {fileID: 4122912184727754638, guid: 3abbc0819bb1a7048afe76462bf4834d, type: 3}
+      index: 3
+      isKeyRepeated: 0
+    - Key: 4
+      Value: {fileID: 2702606188484265855, guid: 94f66a81933f03a43b36e0fd208e3f49, type: 3}
+      index: 4
       isKeyRepeated: 0
     dividerPos: 0.33
 --- !u!4 &1763293670
