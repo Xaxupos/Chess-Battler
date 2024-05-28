@@ -11,7 +11,9 @@ public class ChessFigure : MonoBehaviour
 
     [Header("Parameters")]
     public bool attacksSameAsMoves = true;
-    public List<Vector2Int> possibleMoves = new List<Vector2Int>();
+    public bool wholeLineMovement = false;
+    [HideIf("wholeLineMovement")] public List<Vector2Int> possibleMoves = new List<Vector2Int>();
+    [ShowIf("wholeLineMovement")] public List<Vector2Int> possibleMovesDirections = new List<Vector2Int>();
     [HideIf("attacksSameAsMoves")] public List<Vector2Int> possibleAttacks = new List<Vector2Int>();
 
     [Space(10)]
@@ -46,14 +48,59 @@ public class ChessFigure : MonoBehaviour
         side = initSide;
 
         spriteRenderer.sprite = side == ChessSide.WHITE ? whiteSprite : blackSprite;
+        if(attacksSameAsMoves) possibleAttacks = new List<Vector2Int>(possibleMoves);
 
-        if (attacksSameAsMoves) possibleAttacks = new List<Vector2Int>(possibleMoves);
-        if (side == ChessSide.BLACK) InvertMoves();
+        if (side == ChessSide.BLACK && !wholeLineMovement) InvertMoves();
+
+        if(wholeLineMovement)
+            InitValidLineMovesAndAttacks();
+    }
+
+    private void InitValidLineMovesAndAttacks()
+    {
+        if (attacksSameAsMoves)
+            possibleAttacks.Clear();
+
+        possibleMoves.Clear();
+
+        foreach (var moveDirection in possibleMovesDirections)
+        {
+            for (int i = 1; i < Mathf.Max(chessboard.GetGridSize().x, chessboard.GetGridSize().y); i++)
+            {
+                Vector2Int newPosition = moveDirection * i;
+
+                if (chessboard.IsWithinBounds(currentSquare.GetBoardPosition() + newPosition))
+                {
+                    ChessboardSquare targetSquare = chessboard.GetSquareAtPosition(currentSquare.GetBoardPosition() + newPosition);
+
+                    if (targetSquare.IsEmpty())
+                    {
+                        possibleMoves.Add(newPosition);
+                    }
+                    else
+                    {
+                        if (targetSquare.currentFigure.side != side)
+                        {
+                            if (attacksSameAsMoves)
+                                possibleAttacks.Add(newPosition);
+                        }
+                        break;
+                    }
+                }
+                else
+                {
+                    break;
+                }
+            }
+        }
     }
 
     private void MoveToSquare(ChessboardSquare square)
     {
-        AssignFigureToSquare((ChessboardSquare) square);
+        AssignFigureToSquare(square);
+
+        if(wholeLineMovement)
+            InitValidLineMovesAndAttacks();
     }
 
     private void AttackSquare(ChessboardSquare square)
@@ -63,8 +110,10 @@ public class ChessFigure : MonoBehaviour
 
     private ChessboardSquare GetRandomSquareToMove()
     {
-        List<ChessboardSquare> validMoves = new List<ChessboardSquare>();
+        if(wholeLineMovement)
+            InitValidLineMovesAndAttacks();
 
+        List<ChessboardSquare> validMoves = new List<ChessboardSquare>();
         foreach (var move in possibleMoves)
         {
             Vector2Int targetPosition = currentSquare.GetBoardPosition() + move;
@@ -106,6 +155,9 @@ public class ChessFigure : MonoBehaviour
 
     private void AssignFigureToSquare(ChessboardSquare square)
     {
+        if(currentSquare)
+            currentSquare.ClearSquare();
+
         currentSquare = square;
         currentSquare.AssignFigure(this);
 

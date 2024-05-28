@@ -58,4 +58,9 @@ public class Chessboard : MonoBehaviour
         }
         return null;
     }
+
+    public Vector2Int GetGridSize()
+    {
+        return new Vector2Int(gridXSize, gridYSize);
+    }
 }
