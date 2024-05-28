@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103121646a768df48af7c14f31a3676f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  figureToSpawn: 4
+  figureToSpawn: 2
   sideToSpawn: 0
   figureMap:
     serializedKvps:

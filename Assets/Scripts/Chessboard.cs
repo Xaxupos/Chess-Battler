@@ -21,6 +21,25 @@ public class Chessboard : MonoBehaviour
         CenterGrid();
     }
 
+    public bool IsWithinBounds(Vector2Int position)
+    {
+        return position.x >= 0 && position.x < gridXSize && position.y >= 0 && position.y < gridYSize;
+    }
+
+    public ChessboardSquare GetSquareAtPosition(Vector2Int position)
+    {
+        if (IsWithinBounds(position))
+        {
+            return ChessboardGrid[position.x, position.y];
+        }
+        return null;
+    }
+
+    public Vector2Int GetGridSize()
+    {
+        return new Vector2Int(gridXSize, gridYSize);
+    }
+
     private void GenerateGrid()
     {
         for (int x = 0; x < gridXSize; x++)
@@ -43,24 +62,5 @@ public class Chessboard : MonoBehaviour
     {
         Vector3 gridCenter = new Vector3((gridXSize-1 * cellSize) / 2, (gridYSize-1 * cellSize) / 2, 0);
         transform.position = -gridCenter;
-    }
-
-    public bool IsWithinBounds(Vector2Int position)
-    {
-        return position.x >= 0 && position.x < gridXSize && position.y >= 0 && position.y < gridYSize;
-    }
-
-    public ChessboardSquare GetSquareAtPosition(Vector2Int position)
-    {
-        if (IsWithinBounds(position))
-        {
-            return ChessboardGrid[position.x, position.y];
-        }
-        return null;
-    }
-
-    public Vector2Int GetGridSize()
-    {
-        return new Vector2Int(gridXSize, gridYSize);
     }
 }

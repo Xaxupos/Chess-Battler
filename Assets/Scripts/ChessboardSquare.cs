@@ -2,19 +2,19 @@ using UnityEngine;
 
 public class ChessboardSquare : MonoBehaviour
 {
-    public ChessFigure currentFigure;
-    private Vector2Int boardPosition;
-
+    public ChessFigure CurrentFigure { get; private set; }
     public Chessboard Chessboard { get; set; }
+
+    private Vector2Int boardPosition;
 
     public void AssignFigure(ChessFigure figure)
     {
-        currentFigure = figure;
+        CurrentFigure = figure;
     }
 
     public void ClearSquare()
     {
-        currentFigure = null;
+        CurrentFigure = null;
     }
 
     public void SetBoardPosition(Vector2Int positionToSet)
@@ -24,7 +24,7 @@ public class ChessboardSquare : MonoBehaviour
 
     public bool IsEmpty()
     {
-        return currentFigure == null;
+        return CurrentFigure == null;
     }
 
     public Vector2Int GetBoardPosition()

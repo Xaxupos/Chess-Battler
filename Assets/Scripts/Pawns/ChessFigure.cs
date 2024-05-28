@@ -5,26 +5,31 @@ using VInspector;
 public class ChessFigure : MonoBehaviour
 {
     [Header("References")]
-    public SpriteRenderer spriteRenderer;
-    public Sprite whiteSprite;
-    public Sprite blackSprite;
+    [SerializeField] private ChessFigureStatistics figureStatistics;
+    [SerializeField] private ChessFigureHealthSystem figureHealthSystem;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+    [SerializeField] private Sprite whiteSprite;
+    [SerializeField] private Sprite blackSprite;
 
     [Header("Parameters")]
-    public bool attacksSameAsMoves = true;
-    public bool wholeLineMovement = false;
-    [HideIf("wholeLineMovement")] public List<Vector2Int> possibleMoves = new List<Vector2Int>();
-    [ShowIf("wholeLineMovement")] public List<Vector2Int> possibleMovesDirections = new List<Vector2Int>();
-    [HideIf("attacksSameAsMoves")] public List<Vector2Int> possibleAttacks = new List<Vector2Int>();
+    [SerializeField] private bool attacksSameAsMoves = true;
+    [SerializeField] private bool wholeLineMovement = false;
+    [HideIf("wholeLineMovement")][SerializeField] private List<Vector2Int> possibleMoves = new List<Vector2Int>();
+    [ShowIf("wholeLineMovement")][SerializeField] private List<Vector2Int> possibleMovesDirections = new List<Vector2Int>();
+    [HideIf("attacksSameAsMoves")][SerializeField] private List<Vector2Int> possibleAttacks = new List<Vector2Int>();
 
     [Space(10)]
-    public ChessSide side;
+    [SerializeField] private ChessSide figureSide;
 
-    private ChessboardSquare currentSquare;
+    public ChessboardSquare CurrentSquare { get; private set; }
     private Chessboard chessboard;
 
     [Button]
     public void PerformTurn()
     {
+        if (wholeLineMovement)
+            InitValidLineMovesAndAttacks();
+
         ChessboardSquare squareToAttack = GetBestSquareToAttack();
 
         if (squareToAttack)
@@ -45,12 +50,12 @@ public class ChessFigure : MonoBehaviour
     {
         AssignFigureToSquare(initSquare);
         chessboard = initSquare.Chessboard;
-        side = initSide;
+        figureSide = initSide;
 
-        spriteRenderer.sprite = side == ChessSide.WHITE ? whiteSprite : blackSprite;
+        spriteRenderer.sprite = figureSide == ChessSide.WHITE ? whiteSprite : blackSprite;
         if(attacksSameAsMoves) possibleAttacks = new List<Vector2Int>(possibleMoves);
 
-        if (side == ChessSide.BLACK && !wholeLineMovement) InvertMoves();
+        if (figureSide == ChessSide.BLACK && !wholeLineMovement) InvertMoves();
 
         if(wholeLineMovement)
             InitValidLineMovesAndAttacks();
@@ -69,9 +74,9 @@ public class ChessFigure : MonoBehaviour
             {
                 Vector2Int newPosition = moveDirection * i;
 
-                if (chessboard.IsWithinBounds(currentSquare.GetBoardPosition() + newPosition))
+                if (chessboard.IsWithinBounds(CurrentSquare.GetBoardPosition() + newPosition))
                 {
-                    ChessboardSquare targetSquare = chessboard.GetSquareAtPosition(currentSquare.GetBoardPosition() + newPosition);
+                    ChessboardSquare targetSquare = chessboard.GetSquareAtPosition(CurrentSquare.GetBoardPosition() + newPosition);
 
                     if (targetSquare.IsEmpty())
                     {
@@ -79,7 +84,7 @@ public class ChessFigure : MonoBehaviour
                     }
                     else
                     {
-                        if (targetSquare.currentFigure.side != side)
+                        if (targetSquare.CurrentFigure.figureSide != figureSide)
                         {
                             if (attacksSameAsMoves)
                                 possibleAttacks.Add(newPosition);
@@ -105,18 +110,25 @@ public class ChessFigure : MonoBehaviour
 
     private void AttackSquare(ChessboardSquare square)
     {
+        ChessFigure attacker = this;
+        ChessFigure defender = square.CurrentFigure;
 
+        var calculatedDamage = attacker.figureStatistics.GetStatisticValue(FigureStatistic.BASE_DAMAGE);
+
+        defender.figureStatistics.ChangeStatistic(FigureStatistic.CURRENT_HEALTH, -calculatedDamage);
+
+        if(defender.figureHealthSystem.IsDead)
+        {
+            MoveToSquare(square);
+        }
     }
 
     private ChessboardSquare GetRandomSquareToMove()
     {
-        if(wholeLineMovement)
-            InitValidLineMovesAndAttacks();
-
         List<ChessboardSquare> validMoves = new List<ChessboardSquare>();
         foreach (var move in possibleMoves)
         {
-            Vector2Int targetPosition = currentSquare.GetBoardPosition() + move;
+            Vector2Int targetPosition = CurrentSquare.GetBoardPosition() + move;
             if (chessboard.IsWithinBounds(targetPosition))
             {
                 ChessboardSquare targetSquare = chessboard.GetSquareAtPosition(targetPosition);
@@ -137,7 +149,23 @@ public class ChessFigure : MonoBehaviour
 
     private ChessboardSquare GetBestSquareToAttack()
     {
-        return null;
+        ChessboardSquare bestSquareToAttack = null;
+        float currentHighestPriority = -1;
+
+        foreach(var squarePos in possibleAttacks)
+        {
+            var targetPosition = CurrentSquare.GetBoardPosition() + squarePos;
+            ChessboardSquare square = chessboard.GetSquareAtPosition(targetPosition);
+            if (square.IsEmpty() || square.CurrentFigure.figureSide == figureSide) continue;
+
+            if(square.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY) > currentHighestPriority)
+            {
+                bestSquareToAttack = square;
+                continue;
+            }
+        }
+
+        return bestSquareToAttack;
     }
 
     private void InvertMoves()
@@ -155,13 +183,13 @@ public class ChessFigure : MonoBehaviour
 
     private void AssignFigureToSquare(ChessboardSquare square)
     {
-        if(currentSquare)
-            currentSquare.ClearSquare();
+        if(CurrentSquare)
+            CurrentSquare.ClearSquare();
 
-        currentSquare = square;
-        currentSquare.AssignFigure(this);
+        CurrentSquare = square;
+        CurrentSquare.AssignFigure(this);
 
-        transform.SetParent(currentSquare.transform);
+        transform.SetParent(CurrentSquare.transform);
         transform.localPosition = Vector2.zero;
     }
 }
