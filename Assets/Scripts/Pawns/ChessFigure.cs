@@ -21,7 +21,7 @@ public class ChessFigure : MonoBehaviour
     private Chessboard chessboard;
 
     [Button]
-    public virtual void PerformTurn()
+    public void PerformTurn()
     {
         ChessboardSquare squareToAttack = GetBestSquareToAttack();
 
@@ -39,7 +39,7 @@ public class ChessFigure : MonoBehaviour
         }
     }
 
-    public virtual void InitChessFigure(ChessboardSquare initSquare, ChessSide initSide)
+    public void InitChessFigure(ChessboardSquare initSquare, ChessSide initSide)
     {
         AssignFigureToSquare(initSquare);
         chessboard = initSquare.Chessboard;

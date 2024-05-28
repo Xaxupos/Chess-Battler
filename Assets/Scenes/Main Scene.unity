@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 1763293670}
   - component: {fileID: 1763293669}
   m_Layer: 0
-  m_Name: Mouse Figure Placer
+  m_Name: Chess Figure Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -503,8 +503,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103121646a768df48af7c14f31a3676f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  side: 0
-  pawnPrefab: {fileID: 1843273241118668719, guid: ae7beb449ec4a444c97519e06eea7968, type: 3}
+  figureToSpawn: 0
+  sideToSpawn: 0
+  figureMap:
+    serializedKvps:
+    - Key: 0
+      Value: {fileID: 1843273241118668719, guid: ae7beb449ec4a444c97519e06eea7968, type: 3}
+      index: 0
+      isKeyRepeated: 0
+    dividerPos: 0.33
 --- !u!4 &1763293670
 Transform:
   m_ObjectHideFlags: 0

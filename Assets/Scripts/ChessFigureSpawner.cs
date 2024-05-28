@@ -1,9 +1,14 @@
 using UnityEngine;
+using VInspector;
 
-public class MouseFigurePlacer : MonoBehaviour
+public class ChessFigureSpawner : MonoBehaviour
 {
-    public ChessSide side;
-    [SerializeField] private ChessFigure pawnPrefab;
+    [Header("Spawn Settings")]
+    [SerializeField] private ChessFigureType figureToSpawn;
+    [SerializeField] private ChessSide sideToSpawn;
+
+    [Space(10)]
+    [SerializeField] private SerializedDictionary<ChessFigureType, ChessFigure> figureMap;
 
     private void Update()
     {
@@ -14,11 +19,9 @@ public class MouseFigurePlacer : MonoBehaviour
 
             if (Physics.Raycast(ray, out hit))
             {
-                Debug.Log("hit");
                 ChessboardSquare chessSquare = hit.collider.GetComponent<ChessboardSquare>();
                 if (chessSquare != null && chessSquare.IsEmpty())
                 {
-                    Debug.Log("ciach");
                     SpawnPawn(chessSquare);
                 }
             }
@@ -27,8 +30,7 @@ public class MouseFigurePlacer : MonoBehaviour
 
     private void SpawnPawn(ChessboardSquare square)
     {
-        ChessFigure pawn = Instantiate(pawnPrefab, square.transform.position, Quaternion.identity);
-
-        pawn.InitChessFigure(square, side);
+        ChessFigure pawn = Instantiate(figureMap[figureToSpawn], square.transform.position, Quaternion.identity);
+        pawn.InitChessFigure(square, sideToSpawn);
     }
 }
