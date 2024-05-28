@@ -21,12 +21,16 @@ public class ChessFigure : MonoBehaviour
     [Space(10)]
     [SerializeField] private ChessSide figureSide;
 
+    public ChessSide GetFigureSide => figureSide;
     public ChessboardSquare CurrentSquare { get; private set; }
+    public bool DidActionThisTurn { get; private set; }
     private Chessboard chessboard;
 
     [Button]
     public void PerformTurn()
     {
+        DidActionThisTurn = false;
+
         if (wholeLineMovement)
             InitValidLineMovesAndAttacks();
 
@@ -34,6 +38,7 @@ public class ChessFigure : MonoBehaviour
 
         if (squareToAttack)
         {
+            DidActionThisTurn = true;
             AttackSquare(squareToAttack);
         }
         else
@@ -41,6 +46,7 @@ public class ChessFigure : MonoBehaviour
             ChessboardSquare squareToMove = GetRandomSquareToMove();
             if (squareToMove)
             {
+                DidActionThisTurn = true;
                 MoveToSquare(squareToMove);
             }
         }
@@ -156,6 +162,7 @@ public class ChessFigure : MonoBehaviour
         {
             var targetPosition = CurrentSquare.GetBoardPosition() + squarePos;
             ChessboardSquare square = chessboard.GetSquareAtPosition(targetPosition);
+            if (!square) continue;
             if (square.IsEmpty() || square.CurrentFigure.figureSide == figureSide) continue;
 
             if(square.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY) > currentHighestPriority)

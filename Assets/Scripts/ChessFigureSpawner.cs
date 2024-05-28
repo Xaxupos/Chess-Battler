@@ -3,6 +3,9 @@ using VInspector;
 
 public class ChessFigureSpawner : MonoBehaviour
 {
+    [Header("References")]
+    public CombatManager combatManager;
+
     [Header("Spawn Settings")]
     [SerializeField] private ChessFigureType figureToSpawn;
     [SerializeField] private ChessSide sideToSpawn;
@@ -28,9 +31,20 @@ public class ChessFigureSpawner : MonoBehaviour
         }
     }
 
+    public void SetFigureToSpawn(int enumIndex)
+    {
+        figureToSpawn = (ChessFigureType)enumIndex;
+    }
+
+    public void SetSideToSpawn(int enumIndex)
+    {
+        sideToSpawn = (ChessSide)enumIndex;
+    }
+
     private void SpawnPawn(ChessboardSquare square)
     {
         ChessFigure pawn = Instantiate(figureMap[figureToSpawn], square.transform.position, Quaternion.identity);
         pawn.InitChessFigure(square, sideToSpawn);
+        combatManager.AssignFigure(pawn);
     }
 }

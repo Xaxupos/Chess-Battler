@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -11,6 +12,7 @@ public class ChessFigureHealthSystem : MonoBehaviour
     public UnityEvent OnTakeDamage;
     public UnityEvent OnHeal;
     public UnityEvent OnDie;
+    public static Action<ChessFigure> OnAnyFigureDie;
 
     public bool IsDead { get; set; }
 
@@ -49,6 +51,7 @@ public class ChessFigureHealthSystem : MonoBehaviour
 
     private void Die()
     {
+        OnAnyFigureDie?.Invoke(figure);
         OnDie?.Invoke();
         IsDead = true;
         figure.CurrentSquare.ClearSquare();
