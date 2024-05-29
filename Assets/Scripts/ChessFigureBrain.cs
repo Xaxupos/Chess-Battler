@@ -1,6 +1,7 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using VInspector;
 
 public class ChessFigureBrain : MonoBehaviour
@@ -98,6 +99,7 @@ public class ChessFigureBrain : MonoBehaviour
 
         owner.transform.DOLocalMove(Vector2.zero, moveTweenDuration)
             .SetEase(Ease.Linear)
+            .OnStart(() => owner.figureSFX.PlayMoveClip())
             .OnComplete(() =>
             {
                 if (wholeLineMovement)
@@ -123,11 +125,13 @@ public class ChessFigureBrain : MonoBehaviour
         else
         {
             Vector3 attackerInitPosition = attacker.transform.position;
+            attacker.figureSFX.PlayAttackClip();
 
             attacker.transform.DOMove(defender.transform.position, moveTweenDuration/2.0f).SetEase(Ease.Linear).OnComplete(() =>
             {
                 Vector3 attackDirection = (defender.transform.position - attackerInitPosition).normalized;
                 Vector3 knockbackPosition = defender.transform.position + attackDirection * knockbackForce;
+                defender.figureSFX.PlayTakeDamageClip();
 
                 defender.transform.DOMove(knockbackPosition, moveTweenDuration / 4f).SetEase(Ease.OutQuad)
                 .OnComplete(() =>

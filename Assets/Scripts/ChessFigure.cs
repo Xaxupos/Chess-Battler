@@ -7,6 +7,7 @@ public class ChessFigure : MonoBehaviour
     public ChessFigureStatistics figureStatistics;
     public ChessFigureHealthEvents figureHealthSystem;
     public ChessFigureBrain figureBrain;
+    public ChessFigureSFX figureSFX;
     public SpriteRenderer spriteRenderer;
     public Sprite whiteSprite;
     public Sprite blackSprite;
