@@ -193,11 +193,11 @@ public class ChessFigureBrain : MonoBehaviour
 
             if (square.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY) > currentHighestPriority)
             {
+                currentHighestPriority = square.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY);
                 bestSquareToAttack = square;
                 continue;
             }
         }
-
         return bestSquareToAttack;
     }
 
