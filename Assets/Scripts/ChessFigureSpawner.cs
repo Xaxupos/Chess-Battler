@@ -5,13 +5,10 @@ public class ChessFigureSpawner : MonoBehaviour
 {
     [Header("References")]
     public CombatManager combatManager;
+    public SerializedDictionary<ChessFigureType, ChessFigure> figureMap;
 
-    [Header("Spawn Settings")]
-    [SerializeField] private ChessFigureType figureToSpawn;
-    [SerializeField] private ChessSide sideToSpawn;
-
-    [Space(10)]
-    [SerializeField] private SerializedDictionary<ChessFigureType, ChessFigure> figureMap;
+    private ChessFigureType figureToSpawn;
+    private ChessSide sideToSpawn;
 
     private void Update()
     {

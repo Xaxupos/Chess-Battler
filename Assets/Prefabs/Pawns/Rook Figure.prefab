@@ -16,6 +16,34 @@ PrefabInstance:
       propertyPath: figureStatistics.serializedKvps.Array.data[3].Value
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 1204670700078259319, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: wholeLineMovement
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204670700078259319, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: possibleMovesDirections.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204670700078259319, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: possibleMovesDirections.Array.data[0].x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204670700078259319, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: possibleMovesDirections.Array.data[1].x
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204670700078259319, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: possibleMovesDirections.Array.data[2].y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1204670700078259319, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: possibleMovesDirections.Array.data[3].y
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6464350465057112535, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: figureType
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 6464350465057112535, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: blackSprite
       value: 

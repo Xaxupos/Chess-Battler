@@ -1,0 +1,51 @@
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ChessFigure : MonoBehaviour
+{
+    [Header("References")]
+    public ChessFigureStatistics figureStatistics;
+    public ChessFigureHealthEvents figureHealthSystem;
+    public ChessFigureBrain figureBrain;
+    public SpriteRenderer spriteRenderer;
+    public Sprite whiteSprite;
+    public Sprite blackSprite;
+
+    [Header("Parameters")]
+    public ChessFigureType figureType;
+
+    public ChessSide FigureSide { get; private set; }
+    public ChessboardSquare CurrentSquare { get; private set; }
+    public Chessboard ChessboardReference { get; private set; }
+
+    public void PerformTurn()
+    {
+        figureBrain.PerformBestAction();
+    }
+
+    public void InitChessFigure(ChessboardSquare initSquare, ChessSide initSide)
+    {
+        AssignFigureToSquare(initSquare);
+        ChessboardReference = initSquare.Chessboard;
+        FigureSide = initSide;
+
+        spriteRenderer.sprite = FigureSide == ChessSide.WHITE ? whiteSprite : blackSprite;
+        if(figureBrain.attacksSameAsMoves) figureBrain.possibleAttacks = new List<Vector2Int>(figureBrain.possibleMoves);
+
+        if (FigureSide == ChessSide.BLACK && !figureBrain.wholeLineMovement) figureBrain.InvertMoves();
+
+        if(figureBrain.wholeLineMovement)
+            figureBrain.InitValidLineMovesAndAttacks();
+    }
+
+    public void AssignFigureToSquare(ChessboardSquare square)
+    {
+        if(CurrentSquare)
+            CurrentSquare.ClearSquare();
+
+        CurrentSquare = square;
+        CurrentSquare.AssignFigure(this);
+
+        transform.SetParent(CurrentSquare.transform);
+    }
+}

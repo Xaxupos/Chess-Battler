@@ -8,12 +8,13 @@ using VInspector;
 public class CombatManager : MonoBehaviour
 {
     [Header("References")]
+    public LoseGameManager loseGameManager;
     public SerializedDictionary<ChessSide, List<ChessFigure>> chessFigures = new SerializedDictionary<ChessSide, List<ChessFigure>>();
 
     [Header("Settings")]
     public float delayBeetwenMoves = 1.25f;
 
-    private Queue<ChessFigure> figuresQueue;
+    public Queue<ChessFigure> figuresQueue;
     public event Action<Queue<ChessFigure>> OnTurnQueueUpdated;
 
     private void Awake()
@@ -35,9 +36,9 @@ public class CombatManager : MonoBehaviour
 
     public void AssignFigure(ChessFigure chessFigure)
     {
-        if (chessFigures[chessFigure.GetFigureSide].Contains(chessFigure)) return;
+        if (chessFigures[chessFigure.FigureSide].Contains(chessFigure)) return;
 
-        chessFigures[chessFigure.GetFigureSide].Add(chessFigure);
+        chessFigures[chessFigure.FigureSide].Add(chessFigure);
     }
 
     private IEnumerator HandleTurns()
@@ -45,14 +46,23 @@ public class CombatManager : MonoBehaviour
         WaitForSeconds turnDelayFull = new WaitForSeconds(delayBeetwenMoves);
         WaitForSeconds turnDelayZero = new WaitForSeconds(0);
 
-        while (chessFigures[ChessSide.WHITE].Count > 0 && chessFigures[ChessSide.BLACK].Count > 0)
+        while (chessFigures[ChessSide.BLACK].Count > 0)
         {
-            var currentFigure = figuresQueue.Peek();
+            var currentFigure = figuresQueue.Dequeue();
+
+            //Died during his turn
+            if (!currentFigure)
+            {
+                continue;
+            }
+
             currentFigure.PerformTurn();
 
-            ResetFigureTurn();
+            yield return new WaitUntil(() => currentFigure.figureBrain.EndedPerform);
 
-            if(currentFigure.DidActionThisTurn)
+            ResetFigureTurn(currentFigure);
+
+            if (currentFigure.figureBrain.DidActionThisTurn)
                 yield return turnDelayFull;
             else
                 yield return turnDelayZero;
@@ -61,31 +71,46 @@ public class CombatManager : MonoBehaviour
 
     private void HandleFigureDie(ChessFigure figure)
     {
+        if (figure.figureType == ChessFigureType.KING)
+        {
+            loseGameManager.LoseGame();
+            StopAllCoroutines();
+            return;
+        }
+
         List<ChessFigure> figuresList = figuresQueue.ToList();
         figuresList.Remove(figure);
-        chessFigures[figure.GetFigureSide].Remove(figure);
+        chessFigures[figure.FigureSide].Remove(figure);
 
         figuresQueue = new Queue<ChessFigure>(figuresList);
         OnTurnQueueUpdated?.Invoke(figuresQueue);
     }
 
-    private void ResetFigureTurn()
+    private void ResetFigureTurn(ChessFigure currentFigure)
     {
-        var thisTurnFigure = figuresQueue.Peek();
-        figuresQueue.Dequeue();
-        figuresQueue.Enqueue(thisTurnFigure);
-
+        figuresQueue.Enqueue(currentFigure);
         OnTurnQueueUpdated?.Invoke(figuresQueue);
     }
 
     private void InitQueue()
     {
-        List<ChessFigure> allFigures = new List<ChessFigure>(chessFigures[ChessSide.WHITE]);
-        allFigures.AddRange(new List<ChessFigure>(chessFigures[ChessSide.BLACK]));
+        List<ChessFigure> allFigures = new List<ChessFigure>();
+        foreach(var figure in chessFigures[ChessSide.BLACK])
+        {
+            if (figure.figureType == ChessFigureType.KING) continue;
+            allFigures.Add(figure);
+        }
+        foreach(var figure in chessFigures[ChessSide.WHITE])
+        {
+            if (figure.figureType == ChessFigureType.KING) continue;
+            allFigures.Add(figure);
+        }
+
+        allFigures.Shuffle();
 
         allFigures.Sort((a, b) =>
-            b.GetComponentInChildren<ChessFigureStatistics>().GetStatisticValue(FigureStatistic.INITIATIVE)
-            .CompareTo(a.GetComponentInChildren<ChessFigureStatistics>().GetStatisticValue(FigureStatistic.INITIATIVE)));
+            b.figureStatistics.GetStatisticValue(FigureStatistic.INITIATIVE)
+            .CompareTo(a.figureStatistics.GetStatisticValue(FigureStatistic.INITIATIVE)));
 
         figuresQueue = new Queue<ChessFigure>(allFigures);
         OnTurnQueueUpdated?.Invoke(figuresQueue);

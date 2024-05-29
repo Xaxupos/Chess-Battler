@@ -5,8 +5,8 @@ using UnityEngine.Events;
 public class ChessFigureHealthEvents : MonoBehaviour
 {
     [Header("References")]
-    [SerializeField] private ChessFigure figure;
-    [SerializeField] private ChessFigureStatistics figureStatistics;
+    public ChessFigure figure;
+    public ChessFigureStatistics figureStatistics;
 
     [Header("Events")]
     public UnityEvent OnTakeDamage;
@@ -26,6 +26,11 @@ public class ChessFigureHealthEvents : MonoBehaviour
     {
         figureStatistics.OnStatisticIncrease.RemoveListener(HandleHealthIncrease);
         figureStatistics.OnStatisticDecrease.RemoveListener(HandleHealthDecrease);
+    }
+
+    public void ForceDie()
+    {
+        Die();
     }
 
     private void HandleHealthIncrease(FigureStatistic stat)
