@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class ChessFigureHealthSystem : MonoBehaviour
+public class ChessFigureHealthEvents : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private ChessFigure figure;

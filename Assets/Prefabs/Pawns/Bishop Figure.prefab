@@ -13,8 +13,16 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: figureStatistics.serializedKvps.Array.data[2].Value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: figureStatistics.serializedKvps.Array.data[3].Value
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: figureStatistics.serializedKvps.Array.data[4].Value
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6464350465057112535, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: blackSprite

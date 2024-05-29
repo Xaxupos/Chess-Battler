@@ -6,7 +6,7 @@ public class ChessFigure : MonoBehaviour
 {
     [Header("References")]
     [SerializeField] private ChessFigureStatistics figureStatistics;
-    [SerializeField] private ChessFigureHealthSystem figureHealthSystem;
+    [SerializeField] private ChessFigureHealthEvents figureHealthSystem;
     [SerializeField] private SpriteRenderer spriteRenderer;
     [SerializeField] private Sprite whiteSprite;
     [SerializeField] private Sprite blackSprite;
@@ -26,7 +26,6 @@ public class ChessFigure : MonoBehaviour
     public bool DidActionThisTurn { get; private set; }
     private Chessboard chessboard;
 
-    [Button]
     public void PerformTurn()
     {
         DidActionThisTurn = false;

@@ -18,12 +18,12 @@ public class CombatManager : MonoBehaviour
 
     private void Awake()
     {
-        ChessFigureHealthSystem.OnAnyFigureDie += HandleFigureDie;
+        ChessFigureHealthEvents.OnAnyFigureDie += HandleFigureDie;
     }
 
     private void OnDestroy()
     {
-        ChessFigureHealthSystem.OnAnyFigureDie -= HandleFigureDie;
+        ChessFigureHealthEvents.OnAnyFigureDie -= HandleFigureDie;
     }
 
     [Button]

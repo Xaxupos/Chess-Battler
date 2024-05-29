@@ -17,8 +17,14 @@ public class ChessFigureStatistics : MonoBehaviour
             figureStatistics.Add(FigureStatistic.INITIATIVE, 0);
             figureStatistics.Add(FigureStatistic.BASE_DAMAGE, 0);
             figureStatistics.Add(FigureStatistic.MAX_HEALTH, 0);
+            figureStatistics.Add(FigureStatistic.CURRENT_HEALTH, 0);
             figureStatistics.Add(FigureStatistic.TARGETED_PRIORITY, 0);
         }
+    }
+
+    private void Awake()
+    {
+        figureStatistics[FigureStatistic.CURRENT_HEALTH] = figureStatistics[FigureStatistic.MAX_HEALTH];
     }
 
     public void ChangeStatistic(FigureStatistic statistic, float amount)

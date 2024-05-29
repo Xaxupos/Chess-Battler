@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 6395857810117400303}
   - component: {fileID: 4121878187499646012}
   m_Layer: 0
-  m_Name: Figure Health System
+  m_Name: Figure Health Events
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
