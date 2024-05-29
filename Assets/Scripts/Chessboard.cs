@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Chessboard : MonoBehaviour
@@ -24,6 +25,36 @@ public class Chessboard : MonoBehaviour
     public bool IsWithinBounds(Vector2Int position)
     {
         return position.x >= 0 && position.x < gridXSize && position.y >= 0 && position.y < gridYSize;
+    }
+
+    public List<ChessboardSquare> GetUpperHalf()
+    {
+        List<ChessboardSquare> upperHalf = new List<ChessboardSquare>();
+
+        for (int x = 0; x < gridXSize; x++)
+        {
+            for (int y = gridYSize / 2; y < gridYSize; y++)
+            {
+                upperHalf.Add(ChessboardGrid[x, y]);
+            }
+        }
+
+        return upperHalf;
+    }
+
+    public List<ChessboardSquare> GetLowerHalf()
+    {
+        List<ChessboardSquare> lowerHalf = new List<ChessboardSquare>();
+
+        for (int x = 0; x < gridXSize; x++)
+        {
+            for (int y = 0; y < gridYSize / 2; y++)
+            {
+                lowerHalf.Add(ChessboardGrid[x, y]);
+            }
+        }
+
+        return lowerHalf;
     }
 
     public ChessboardSquare GetSquareAtPosition(Vector2Int position)

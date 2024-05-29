@@ -8,6 +8,8 @@ using VInspector;
 public class CombatManager : MonoBehaviour
 {
     [Header("References")]
+    public Chessboard chessboard;
+    public WaveManager waveManager;
     public LoseGameManager loseGameManager;
     public SerializedDictionary<ChessSide, List<ChessFigure>> chessFigures = new SerializedDictionary<ChessSide, List<ChessFigure>>();
 
@@ -27,7 +29,6 @@ public class CombatManager : MonoBehaviour
         ChessFigureHealthEvents.OnAnyFigureDie -= HandleFigureDie;
     }
 
-    [Button]
     public void StartCombat()
     {
         InitQueue();
@@ -41,6 +42,29 @@ public class CombatManager : MonoBehaviour
         chessFigures[chessFigure.FigureSide].Add(chessFigure);
     }
 
+    public IEnumerator ResetWhiteFiguresPositions()
+    {
+        foreach(var square in chessboard.ChessboardGrid)
+        {
+            square.ClearSquare();
+        }
+
+        foreach(var figuresList in chessFigures.Values)
+        {
+            foreach(var figure in figuresList)
+            {
+                figure.ClearCurrentSquare();
+            }
+        }
+
+        yield return new WaitForSeconds(0.75f);
+
+        foreach(var whiteFigure in chessFigures[ChessSide.WHITE])
+        {
+            whiteFigure.AssignFigureToSquare(whiteFigure.InitSquare, true);
+        }
+    }
+
     private IEnumerator HandleTurns()
     {
         WaitForSeconds turnDelayFull = new WaitForSeconds(delayBeetwenMoves);
@@ -48,6 +72,12 @@ public class CombatManager : MonoBehaviour
 
         while (chessFigures[ChessSide.BLACK].Count > 0)
         {
+            if (!waveManager.WaveInProgress)
+            {
+                StopAllCoroutines();
+                yield break;
+            }
+
             var currentFigure = figuresQueue.Dequeue();
 
             //Died during his turn
@@ -81,6 +111,13 @@ public class CombatManager : MonoBehaviour
         List<ChessFigure> figuresList = figuresQueue.ToList();
         figuresList.Remove(figure);
         chessFigures[figure.FigureSide].Remove(figure);
+
+        if (chessFigures[ChessSide.BLACK].Count == 0)
+        {
+            waveManager.EndWave();
+            StopAllCoroutines();
+            return;
+        }
 
         figuresQueue = new Queue<ChessFigure>(figuresList);
         OnTurnQueueUpdated?.Invoke(figuresQueue);

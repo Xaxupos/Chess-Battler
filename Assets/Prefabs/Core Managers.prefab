@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c13af019acb33408000566a86d35e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chessboard: {fileID: 8177977914355924870}
+  waveManager: {fileID: 7864095675556596139}
   loseGameManager: {fileID: 5801556465306401353}
   chessFigures:
     serializedKvps:
@@ -57,6 +59,160 @@ MonoBehaviour:
       isKeyRepeated: 0
     dividerPos: 0.33
   delayBeetwenMoves: 0.35
+--- !u!1 &2424250738559146917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7811200569961030242}
+  - component: {fileID: 7864095675556596139}
+  m_Layer: 0
+  m_Name: Wave Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7811200569961030242
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2424250738559146917}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.3309958, y: 3.551879, z: 0.38909703}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 514575671426368801}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7864095675556596139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2424250738559146917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8ab8988e12e8f494c8c3e79226d0d301, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chessboard: {fileID: 8177977914355924870}
+  combatManager: {fileID: 8081897573414294665}
+  figureSpawner: {fileID: 6774849078372463191}
+  waveDatasForIndex:
+    serializedKvps:
+    - Key: 0
+      Value:
+      - {fileID: 11400000, guid: ac95a2312af17a644b060ebdb59a3627, type: 2}
+      index: 0
+      isKeyRepeated: 0
+    - Key: 1
+      Value:
+      - {fileID: 11400000, guid: f136a856649227e48bc908bcac0c1fb3, type: 2}
+      index: 1
+      isKeyRepeated: 0
+    - Key: 2
+      Value:
+      - {fileID: 11400000, guid: cd9874812f3d35b4699de6e90b8b8ad6, type: 2}
+      index: 2
+      isKeyRepeated: 0
+    - Key: 3
+      Value:
+      - {fileID: 11400000, guid: ae97159b77e11cc4c9ec09ba1a48a5bc, type: 2}
+      index: 3
+      isKeyRepeated: 0
+    - Key: 4
+      Value:
+      - {fileID: 11400000, guid: 8e8c2f18246528b4da11495ae60f5c37, type: 2}
+      index: 4
+      isKeyRepeated: 0
+    dividerPos: 0.33
+  currentWaveIndex: 0
+  currentWave:
+    chessFigures: 04000000030000000300000002000000
+  OnStartWave:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7693275000617982066}
+        m_TargetAssemblyTypeName: GameUIManager, Assembly-CSharp
+        m_MethodName: ShowWaveUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  OnEndWave:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7693275000617982066}
+        m_TargetAssemblyTypeName: GameUIManager, Assembly-CSharp
+        m_MethodName: ShowBetweenWaveUI
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+--- !u!1 &3164577137864204802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6377654918133745627}
+  - component: {fileID: 7693275000617982066}
+  m_Layer: 0
+  m_Name: Game UI Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6377654918133745627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3164577137864204802}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.3309958, y: 3.551879, z: 0.38909703}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 514575671426368801}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7693275000617982066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3164577137864204802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf8d8e9fa0b5dce418f18f56ea58c6d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  betweenWaveUI: {fileID: 0}
+  waveUI: {fileID: 0}
 --- !u!1 &3493484734928131389
 GameObject:
   m_ObjectHideFlags: 0
@@ -140,7 +296,7 @@ GameObject:
   - component: {fileID: 6300999273099698823}
   - component: {fileID: 8177977914355924870}
   m_Layer: 0
-  m_Name: Grid Generator
+  m_Name: Chessboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -175,8 +331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteSquarePrefab: {fileID: 1352381504749531621, guid: 93dbee7b60e2890428c9c2936b7c3de6, type: 3}
   blackSquarePrefab: {fileID: 6036363494095674559, guid: 19267a59128c5d6449e0ad2b75bbabe4, type: 3}
-  gridXSize: 8
-  gridYSize: 8
+  gridXSize: 6
+  gridYSize: 6
   cellSize: 1
 --- !u!1 &8193438889653203034
 GameObject:
@@ -211,6 +367,8 @@ Transform:
   - {fileID: 6404658595632917382}
   - {fileID: 6300999273099698823}
   - {fileID: 3950706354403750116}
+  - {fileID: 7811200569961030242}
+  - {fileID: 6377654918133745627}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9172069568798042263

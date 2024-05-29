@@ -38,10 +38,17 @@ public class ChessFigureSpawner : MonoBehaviour
         sideToSpawn = (ChessSide)enumIndex;
     }
 
-    private void SpawnPawn(ChessboardSquare square)
+    public void SpawnPawn(ChessboardSquare square)
     {
         ChessFigure pawn = Instantiate(figureMap[figureToSpawn], square.transform.position, Quaternion.identity);
         pawn.InitChessFigure(square, sideToSpawn);
+        combatManager.AssignFigure(pawn);
+    }
+
+    public void SpawnPawn(ChessboardSquare square, ChessFigureType figureType, ChessSide forcedSide)
+    {
+        ChessFigure pawn = Instantiate(figureMap[figureType], square.transform.position, Quaternion.identity);
+        pawn.InitChessFigure(square, forcedSide);
         combatManager.AssignFigure(pawn);
     }
 }
