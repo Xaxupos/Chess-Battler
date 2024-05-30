@@ -32,7 +32,7 @@ public class BuyFigureShopButton : MonoBehaviour
 
     public void TryBuyFigure()
     {
-        if(shopManager.figureSpawner.combatManager.chessboard.GetLowerHalfEmptySquaresCount() == 0 && GoldManager.Instance.HasEnoughGold(neededGold) && isUnlocked && !shopManager.figureSpawner.FigureJustBought)
+        if(shopManager.figureSpawner.combatManager.chessboard.GetLowerHalfEmptySquaresCount() != 0 && GoldManager.Instance.HasEnoughGold(neededGold) && isUnlocked && !shopManager.figureSpawner.FigureJustBought)
         {
             shopManager.figureSpawner.SetSideToSpawn((int)ChessSide.WHITE);
             shopManager.figureSpawner.SetFigureToSpawn((int)figureToBuy);

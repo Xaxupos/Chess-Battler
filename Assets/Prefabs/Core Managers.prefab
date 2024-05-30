@@ -798,8 +798,8 @@ MonoBehaviour:
       index: 6
       isKeyRepeated: 0
     dividerPos: 0.33
-  gridXSize: 3
-  gridYSize: 3
+  gridXSize: 4
+  gridYSize: 4
   cellSize: 1
 --- !u!1 &6043406839639651761
 GameObject:
