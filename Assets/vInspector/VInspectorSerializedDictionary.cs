@@ -2,9 +2,7 @@ using System.Collections;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
-// using static VInspector.Libs.VUtils;
-// using static VInspector.Libs.VGUI;
-// 
+
 
 
 namespace VInspector
@@ -12,7 +10,7 @@ namespace VInspector
     [System.Serializable]
     public class SerializedDictionary<TKey, TValue> : Dictionary<TKey, TValue>, ISerializationCallbackReceiver
     {
-        public List<SerializedKeyValuePair<TKey, TValue>> serializedKvps = new List<SerializedKeyValuePair<TKey, TValue>>();
+        public List<SerializedKeyValuePair<TKey, TValue>> serializedKvps = new();
 
         public float dividerPos = .33f;
 
@@ -30,12 +28,11 @@ namespace VInspector
                 serializedKvps[i].index = i;
 
         }
-
         public void OnAfterDeserialize()
         {
             this.Clear();
 
-            serializedKvps.RemoveAll(r => r.Key == null);
+            serializedKvps.RemoveAll(r => r.Key is null);
 
             foreach (var serializedKvp in serializedKvps)
                 if (!(serializedKvp.isKeyRepeated = this.ContainsKey(serializedKvp.Key)))
@@ -57,8 +54,9 @@ namespace VInspector
 
             public SerializedKeyValuePair(TKey_ key, TValue_ value) { this.Key = key; this.Value = value; }
 
-            public static implicit operator SerializedKeyValuePair<TKey_, TValue_>(KeyValuePair<TKey_, TValue_> kvp) => new SerializedKeyValuePair<TKey_, TValue_>(kvp.Key, kvp.Value);
-            public static implicit operator KeyValuePair<TKey_, TValue_>(SerializedKeyValuePair<TKey_, TValue_> kvp) => new KeyValuePair<TKey_, TValue_>(kvp.Key, kvp.Value);
+            public static implicit operator SerializedKeyValuePair<TKey_, TValue_>(KeyValuePair<TKey_, TValue_> kvp) => new(kvp.Key, kvp.Value);
+            public static implicit operator KeyValuePair<TKey_, TValue_>(SerializedKeyValuePair<TKey_, TValue_> kvp) => new(kvp.Key, kvp.Value);
+
         }
 
     }

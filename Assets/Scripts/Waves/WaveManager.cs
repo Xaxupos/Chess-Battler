@@ -14,8 +14,8 @@ public class WaveManager : MonoBehaviour
     public SerializedDictionary<int, List<WaveTemplateData>> waveDatasForIndex;
 
     [Tab("Wave Preview")]
-    public int currentWaveIndex = 0;
-    public Wave currentWave;
+    [ReadOnly] public int currentWaveIndex = 0;
+    [ReadOnly] public Wave currentWave;
 
     [Tab("Events")]
     public UnityEvent OnStartWave;
