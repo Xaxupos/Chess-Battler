@@ -20,6 +20,11 @@ public class ChessFigureStatistics : MonoBehaviour
             figureStatistics.Add(FigureStatistic.CURRENT_HEALTH, 0);
             figureStatistics.Add(FigureStatistic.TARGETED_PRIORITY, 0);
         }
+
+        if(figureStatistics.ContainsKey(FigureStatistic.CURRENT_HEALTH) && figureStatistics.ContainsKey(FigureStatistic.MAX_HEALTH))
+        {
+            figureStatistics[FigureStatistic.CURRENT_HEALTH] = figureStatistics[FigureStatistic.MAX_HEALTH];
+        }
     }
 
     private void Awake()

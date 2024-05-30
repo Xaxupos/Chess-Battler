@@ -33,7 +33,7 @@ public class AlwaysVisibleUI : GameUI
         goldAmountText.text = GoldManager.Instance.currentGold.ToString();
     }
 
-    private void UpdateKingHealthText(ChessFigure king)
+    public void UpdateKingHealthText(ChessFigure king)
     {
         var currentHpToSet = Mathf.Max(0, king.figureStatistics.GetStatisticValue(FigureStatistic.CURRENT_HEALTH));
         kingLives.text = $"{(int)currentHpToSet}/{king.figureStatistics.GetStatisticValue(FigureStatistic.MAX_HEALTH)}";

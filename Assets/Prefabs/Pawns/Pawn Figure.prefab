@@ -8,6 +8,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: figureStatistics.serializedKvps.Array.data[0].Value
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: figureStatistics.serializedKvps.Array.data[1].Value
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: figureStatistics.serializedKvps.Array.data[2].Value
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      propertyPath: figureStatistics.serializedKvps.Array.data[4].Value
+      value: 30
+      objectReference: {fileID: 0}
     - target: {fileID: 1204670700078259319, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: attacksSameAsMoves
       value: 0

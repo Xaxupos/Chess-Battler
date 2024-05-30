@@ -19,7 +19,8 @@ public class BuyFigureShopButton : MonoBehaviour
 
     private void OnValidate()
     {
-        buttonText.text = $"{figureToBuy} <br> ({neededGold})";
+        if(buttonText != null)
+            buttonText.text = $"{figureToBuy} <br> ({neededGold})";
     }
 
     public void InitButton(ShopManager shop)

@@ -8,6 +8,18 @@ public class GameUIManager : MonoBehaviour
     public GameUI alwaysVisibleUI;
     public GameUI loseUI;
 
+    public static GameUIManager Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
+
     public void ShowWaveUI()
     {
         betweenWaveUI.ToggleUI(false);

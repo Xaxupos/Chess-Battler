@@ -173,6 +173,29 @@ public class ChessFigureBrain : MonoBehaviour
 
         if (validMoves.Count > 0)
         {
+            ChessboardSquare bestSquareForNextTurn = null;
+            float currentBiggestPriority = -1;
+
+            foreach(var validMove in validMoves)
+            {
+                var listOfTargetsFromValidSquare = GetPossibleAttackSquaresFromSquare(validMove);
+
+                if(listOfTargetsFromValidSquare.Count > 0)
+                {
+                    foreach(var targetSquare in listOfTargetsFromValidSquare)
+                    {
+                        var figureInTargetSquare = targetSquare.CurrentFigure;
+                        float priorityOfTargetFigure = figureInTargetSquare.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY);
+                        if(priorityOfTargetFigure >= currentBiggestPriority)
+                        {
+                            currentBiggestPriority = priorityOfTargetFigure;
+                            bestSquareForNextTurn = validMove;
+                        }
+                    }
+                }
+            }
+
+            if (bestSquareForNextTurn) return bestSquareForNextTurn;
             return validMoves[Random.Range(0, validMoves.Count)];
         }
 
@@ -212,5 +235,30 @@ public class ChessFigureBrain : MonoBehaviour
         {
             possibleAttacks[i] = new Vector2Int(-possibleAttacks[i].x, -possibleAttacks[i].y);
         }
+    }
+
+    public List<ChessboardSquare> GetPossibleAttackSquaresFromSquare(ChessboardSquare fromSquare)
+    {
+        List<ChessboardSquare> possibleAttackSquares = new List<ChessboardSquare>();
+        Vector2Int fromPosition = fromSquare.GetBoardPosition();
+
+        List<Vector2Int> attacks = attacksSameAsMoves ? possibleMoves : possibleAttacks;
+
+        foreach (var attack in attacks)
+        {
+            Vector2Int targetPosition = fromPosition + attack;
+
+            if (owner.ChessboardReference.IsWithinBounds(targetPosition))
+            {
+                ChessboardSquare targetSquare = owner.ChessboardReference.GetSquareAtPosition(targetPosition);
+
+                if (!targetSquare.IsEmpty() && targetSquare.CurrentFigure.FigureSide != owner.FigureSide)
+                {
+                    possibleAttackSquares.Add(targetSquare);
+                }
+            }
+        }
+
+        return possibleAttackSquares;
     }
 }

@@ -151,7 +151,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: neededGold
-      value: 15
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: figureToBuy
@@ -243,7 +243,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9126405631014981415, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_text
-      value: ROOK <br> (15)
+      value: ROOK <br> (25)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -265,7 +265,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: neededGold
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: figureToBuy
@@ -357,7 +357,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9126405631014981415, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_text
-      value: KNIGHT <br> (10)
+      value: KNIGHT <br> (15)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -481,7 +481,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: neededGold
-      value: 25
+      value: 35
       objectReference: {fileID: 0}
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: figureToBuy
@@ -573,7 +573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9126405631014981415, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_text
-      value: QUEEN <br> (25)
+      value: QUEEN <br> (35)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -595,7 +595,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: neededGold
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: figureToBuy
@@ -687,7 +687,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9126405631014981415, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_text
-      value: BISHOP <br> (10)
+      value: BISHOP <br> (15)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

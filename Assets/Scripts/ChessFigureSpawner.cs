@@ -55,11 +55,12 @@ public class ChessFigureSpawner : MonoBehaviour
         combatManager.AssignFigure(pawn);
     }
 
-    public void SpawnPawn(ChessboardSquare square, ChessFigureType figureType, ChessSide forcedSide)
+    public ChessFigure SpawnPawn(ChessboardSquare square, ChessFigureType figureType, ChessSide forcedSide)
     {
         ChessFigure pawn = Instantiate(figureMap[figureType], square.transform.position, Quaternion.identity);
         pawn.InitChessFigure(square, forcedSide);
         combatManager.AssignFigure(pawn);
+        return pawn;
     }
 
     private void SpawnPlayerKing()
@@ -76,6 +77,7 @@ public class ChessFigureSpawner : MonoBehaviour
         }
 
         ChessboardSquare kingSquare = firstRowSquares.GetRandom();
-        SpawnPawn(kingSquare, ChessFigureType.KING, ChessSide.WHITE);
+        var king = SpawnPawn(kingSquare, ChessFigureType.KING, ChessSide.WHITE);
+        GameUIManager.Instance.alwaysVisibleUI.GetComponent<AlwaysVisibleUI>().UpdateKingHealthText(king);
     }
 }
