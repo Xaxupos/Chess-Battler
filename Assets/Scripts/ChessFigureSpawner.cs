@@ -32,6 +32,7 @@ public class ChessFigureSpawner : MonoBehaviour
                 {
                     playerSpawnSfx.Play();
                     SpawnPlayerPawn(chessSquare);
+                    GhostFigureManager.Instance.DropGhostFigure();
                     FigureJustBought = false;
                 }
             }

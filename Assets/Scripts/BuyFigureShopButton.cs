@@ -32,7 +32,7 @@ public class BuyFigureShopButton : MonoBehaviour
 
     public void TryBuyFigure()
     {
-        if(GoldManager.Instance.HasEnoughGold(neededGold) && isUnlocked)
+        if(GoldManager.Instance.HasEnoughGold(neededGold) && isUnlocked && !shopManager.figureSpawner.FigureJustBought)
         {
             shopManager.figureSpawner.SetSideToSpawn((int)ChessSide.WHITE);
             shopManager.figureSpawner.SetFigureToSpawn((int)figureToBuy);
@@ -40,6 +40,7 @@ public class BuyFigureShopButton : MonoBehaviour
 
             buySFX.Play();
             GoldManager.Instance.RemoveGold(neededGold);
+            GhostFigureManager.Instance.ActivateGhostFigure(figureToBuy);
         }
         else
         {

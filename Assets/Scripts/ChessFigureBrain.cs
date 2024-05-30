@@ -212,6 +212,8 @@ public class ChessFigureBrain : MonoBehaviour
         ChessboardSquare bestSquareToAttack = null;
         float currentHighestPriority = -1;
 
+        List<ChessboardSquare> killableSquares = new List<ChessboardSquare>();
+
         foreach (var squarePos in possibleAttacks)
         {
             var targetPosition = owner.CurrentSquare.GetBoardPosition() + squarePos;
@@ -219,11 +221,36 @@ public class ChessFigureBrain : MonoBehaviour
             if (!square) continue;
             if (square.IsEmpty() || square.CurrentFigure.FigureSide == owner.FigureSide) continue;
 
-            if (square.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY) > currentHighestPriority)
+            if(square.CurrentFigure.figureType == ChessFigureType.KING)
             {
-                currentHighestPriority = square.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY);
-                bestSquareToAttack = square;
-                continue;
+                return square;
+            }
+
+            if(owner.figureStatistics.GetStatisticValue(FigureStatistic.BASE_DAMAGE) >= square.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.CURRENT_HEALTH))
+            {
+                killableSquares.Add(square);
+            }
+
+            if(killableSquares.Count == 0)
+            {
+                if (square.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY) > currentHighestPriority)
+                {
+                    currentHighestPriority = square.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY);
+                    bestSquareToAttack = square;
+                    continue;
+                }
+            }
+            else
+            {
+                foreach(var killableSquare in killableSquares)
+                {
+                    if (killableSquare.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY) > currentHighestPriority)
+                    {
+                        currentHighestPriority = killableSquare.CurrentFigure.figureStatistics.GetStatisticValue(FigureStatistic.TARGETED_PRIORITY);
+                        bestSquareToAttack = killableSquare;
+                        continue;
+                    }
+                }
             }
         }
         return bestSquareToAttack;

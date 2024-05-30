@@ -25,6 +25,7 @@ public class WaveManager : MonoBehaviour
 
     public void StartWave()
     {
+        if (GhostFigureManager.Instance.GhostFigureActive) return;
         if (WaveInProgress) return;
 
         WaveInProgress = true;
