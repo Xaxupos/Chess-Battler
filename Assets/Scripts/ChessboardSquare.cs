@@ -1,11 +1,13 @@
 using UnityEngine;
+using VInspector;
 
 public class ChessboardSquare : MonoBehaviour
 {
-    public ChessFigure CurrentFigure { get; private set; }
+    [ShowInInspector] public ChessFigure CurrentFigure { get; private set; }
+    [ShowInInspector] private Vector2Int boardPosition;
+
     public Chessboard Chessboard { get; set; }
 
-    private Vector2Int boardPosition;
 
     public void AssignFigure(ChessFigure figure)
     {

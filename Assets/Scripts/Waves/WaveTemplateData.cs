@@ -8,6 +8,8 @@ public class WaveTemplateData : ScriptableObject
 {
     public int minimumEnemies = 1;
     public int maximumEnemies = 3;
+    public int chessboardXSize = 3;
+    public int chessboardYSize = 3;
     public int goldForCompleted = 10;
     public SerializedDictionary<ChessFigureType, int> minimumFigureDefine;
     public SerializedDictionary<ChessFigureType, int> maximumFigureDefine;

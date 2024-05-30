@@ -13,11 +13,11 @@ public class Chessboard : MonoBehaviour
     [SerializeField] private float cellSize = 1.0f;
 
     public ChessboardSquare[,] ChessboardGrid { get; private set; }
+    public Vector2Int InitGridSize { get; private set; }
 
     private void Awake()
     {
-        ChessboardGrid = new ChessboardSquare[gridXSize, gridYSize];
-
+        InitGridSize = new Vector2Int(gridXSize, gridYSize);
         GenerateGrid();
         CenterGrid();
     }
@@ -73,6 +73,8 @@ public class Chessboard : MonoBehaviour
 
     private void GenerateGrid()
     {
+        ChessboardGrid = new ChessboardSquare[gridXSize, gridYSize];
+
         for (int x = 0; x < gridXSize; x++)
         {
             for (int y = 0; y < gridYSize; y++)
@@ -83,6 +85,7 @@ public class Chessboard : MonoBehaviour
 
                 square.Chessboard = this;
                 square.transform.SetParent(transform);
+                square.transform.localPosition = position;
                 square.SetBoardPosition(new Vector2Int(x, y));
                 ChessboardGrid[x, y] = square;
             }
@@ -91,7 +94,39 @@ public class Chessboard : MonoBehaviour
 
     private void CenterGrid()
     {
-        Vector3 gridCenter = new Vector3((gridXSize-1 * cellSize) / 2, (gridYSize-1 * cellSize) / 2, 0);
-        transform.position = -gridCenter;
+        // Oblicz po³owê rozmiaru planszy w obu wymiarach
+        float halfGridSizeX = ((gridXSize - 1) * cellSize) / 2.0f;
+        float halfGridSizeY = ((gridYSize - 1) * cellSize) / 2.0f;
+
+        // Utwórz wektor reprezentuj¹cy œrodek planszy
+        Vector3 gridCenter = new Vector3(-halfGridSizeX, -halfGridSizeY, 0);
+
+        // Ustaw pozycjê planszy
+        transform.position = gridCenter;
+    }
+
+    public void ResizeGrid(int newX, int newY)
+    {
+        for (int x = 0; x < gridXSize; x++)
+        {
+            for (int y = 0; y < gridYSize; y++)
+            {
+                if (ChessboardGrid[x, y] != null)
+                {
+                    if (ChessboardGrid[x,y].CurrentFigure != null && ChessboardGrid[x,y].CurrentFigure.figureType == ChessFigureType.KING)
+                    {
+                        ChessboardGrid[x, y].CurrentFigure.transform.parent = null;
+                    }
+                    Destroy(ChessboardGrid[x, y].gameObject);
+                    ChessboardGrid[x, y] = null;
+                }
+            }
+        }
+
+        gridXSize = newX;
+        gridYSize = newY;
+
+        GenerateGrid();
+        CenterGrid();
     }
 }

@@ -595,8 +595,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   whiteSquarePrefab: {fileID: 1352381504749531621, guid: 93dbee7b60e2890428c9c2936b7c3de6, type: 3}
   blackSquarePrefab: {fileID: 6036363494095674559, guid: 19267a59128c5d6449e0ad2b75bbabe4, type: 3}
-  gridXSize: 6
-  gridYSize: 6
+  gridXSize: 3
+  gridYSize: 3
   cellSize: 1
 --- !u!1 &6561189577346730963
 GameObject:

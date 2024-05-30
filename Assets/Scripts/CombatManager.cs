@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
 using VInspector;
 
@@ -60,10 +61,17 @@ public class CombatManager : MonoBehaviour
 
         yield return new WaitForSeconds(0.75f);
 
-        foreach(var whiteFigure in chessFigures[ChessSide.WHITE])
+        var newX = waveManager.waveDatasForIndex[waveManager.currentWaveIndex].GetRandom().chessboardXSize;
+        var newY = waveManager.waveDatasForIndex[waveManager.currentWaveIndex].GetRandom().chessboardYSize;
+
+        if(newX != chessboard.GetGridSize().x || newY != chessboard.GetGridSize().y)
+            chessboard.ResizeGrid(newX, newY);
+
+        foreach (var whiteFigure in chessFigures[ChessSide.WHITE])
         {
+            //ReassignFigureSquareReferences();
             whiteFigure.figureInvalidTimer.ResetInvalid();
-            whiteFigure.AssignFigureToSquare(whiteFigure.InitSquare, true);
+            whiteFigure.AssignFigureToSquare(chessboard.GetSquareAtPosition(whiteFigure.InitSquarePos), true);
         }
     }
 
@@ -162,5 +170,24 @@ public class CombatManager : MonoBehaviour
 
         figuresQueue = new Queue<ChessFigure>(allFigures);
         OnTurnQueueUpdated?.Invoke(figuresQueue);
+    }
+
+    private void ReassignFigureSquareReferences()
+    {
+        Vector2Int initGridSize = chessboard.InitGridSize;
+        Vector2Int currentGridSize = chessboard.GetGridSize();
+
+        foreach (var whiteFigure in chessFigures[ChessSide.WHITE])
+        {
+            Vector2Int initSquarePos = whiteFigure.InitSquarePos;
+
+            float scaleX = (float)currentGridSize.x / initGridSize.x;
+            float scaleY = (float)currentGridSize.y / initGridSize.y;
+
+            int newX = Mathf.RoundToInt(initSquarePos.x * scaleX);
+            int newY = Mathf.RoundToInt(initSquarePos.y * scaleY);
+
+            whiteFigure.InitSquarePos = new Vector2Int(newX, newY);
+        }
     }
 }

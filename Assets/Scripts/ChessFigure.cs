@@ -18,7 +18,7 @@ public class ChessFigure : MonoBehaviour
 
     public ChessSide FigureSide { get; private set; }
     public ChessboardSquare CurrentSquare { get; private set; }
-    public ChessboardSquare InitSquare { get; private set; }
+    public Vector2Int InitSquarePos { get; set; }
     public Chessboard ChessboardReference { get; private set; }
 
     public void PerformTurn()
@@ -31,7 +31,7 @@ public class ChessFigure : MonoBehaviour
         AssignFigureToSquare(initSquare);
         ChessboardReference = initSquare.Chessboard;
         FigureSide = initSide;
-        InitSquare = initSquare;
+        InitSquarePos = initSquare.GetBoardPosition();
 
         spriteRenderer.sprite = FigureSide == ChessSide.WHITE ? whiteSprite : blackSprite;
         if(figureBrain.attacksSameAsMoves) figureBrain.possibleAttacks = new List<Vector2Int>(figureBrain.possibleMoves);
