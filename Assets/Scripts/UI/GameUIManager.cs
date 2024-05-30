@@ -6,6 +6,7 @@ public class GameUIManager : MonoBehaviour
     public GameUI betweenWaveUI;
     public GameUI waveUI;
     public GameUI alwaysVisibleUI;
+    public GameUI loseUI;
 
     public void ShowWaveUI()
     {
@@ -17,5 +18,12 @@ public class GameUIManager : MonoBehaviour
     {
         waveUI.ToggleUI(false);
         betweenWaveUI.ToggleUI(true);
+    }
+
+    public void ShowLoseUI()
+    {
+        loseUI.ToggleUI(true);
+        waveUI.ToggleUI(false);
+        betweenWaveUI.ToggleUI(false);
     }
 }

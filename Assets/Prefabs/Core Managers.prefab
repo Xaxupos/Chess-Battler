@@ -136,6 +136,7 @@ MonoBehaviour:
     dividerPos: 0.33
   currentWaveIndex: 0
   currentWave:
+    goldForCompleted: 0
     chessFigures: 04000000030000000300000002000000
   OnStartWave:
     m_PersistentCalls:
@@ -214,6 +215,7 @@ MonoBehaviour:
   betweenWaveUI: {fileID: 5681102666944901383}
   waveUI: {fileID: 2747588433766302981}
   alwaysVisibleUI: {fileID: 2197729813567733390}
+  loseUI: {fileID: 7522401450240299996}
 --- !u!1 &3493484734928131389
 GameObject:
   m_ObjectHideFlags: 0
@@ -522,6 +524,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ae8e2606c32dd4a8b4f99cd387fd8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gameUIManager: {fileID: 7693275000617982066}
 --- !u!1001 &5822339921529349846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -698,6 +701,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 60569a47380a3544087adeed82fb3ff9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &7522401450240299996 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4083052978173506826, guid: ba1c94f1832556e4cb0e9aa083533d89, type: 3}
+  m_PrefabInstance: {fileID: 5822339921529349846}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb25cd67c56f6604fbaf9ca7f845247b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!224 &8217747662837581377 stripped

@@ -8,17 +8,23 @@ public class AlwaysVisibleUI : GameUI
     public TMP_Text goldAmountText;
     public TMP_Text kingLives;
 
-    private void OnEnable()
+    private void Start()
     {
         GoldManager.Instance.OnGoldAdded.AddListener(UpdateGoldText);
         GoldManager.Instance.OnGoldRemoved.AddListener(UpdateGoldText);
         ChessFigureHealthEvents.OnKingHealthChanged += UpdateKingHealthText;
+
+        goldAmountText.text = GoldManager.Instance.currentGold.ToString();
     }
 
     private void OnDisable()
     {
-        GoldManager.Instance.OnGoldAdded.RemoveListener(UpdateGoldText);
-        GoldManager.Instance.OnGoldRemoved.RemoveListener(UpdateGoldText);
+        if (GoldManager.Instance != null)
+        {
+            GoldManager.Instance.OnGoldAdded.RemoveListener(UpdateGoldText);
+            GoldManager.Instance.OnGoldRemoved.RemoveListener(UpdateGoldText);
+        }
+
         ChessFigureHealthEvents.OnKingHealthChanged -= UpdateKingHealthText;
     }
 
