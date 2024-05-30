@@ -62,7 +62,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8398143531803215573, guid: 8ca3f188e54e8ae40b825e15fab95101, type: 3}
       propertyPath: m_Name
-      value: Base Chess Square Variant
+      value: Black Square Variant
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801841913122700690, guid: 8ca3f188e54e8ae40b825e15fab95101, type: 3}
+      propertyPath: m_Color.b
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801841913122700690, guid: 8ca3f188e54e8ae40b825e15fab95101, type: 3}
+      propertyPath: m_Color.g
+      value: 0.26415092
+      objectReference: {fileID: 0}
+    - target: {fileID: 8801841913122700690, guid: 8ca3f188e54e8ae40b825e15fab95101, type: 3}
+      propertyPath: m_Color.r
+      value: 0.26415092
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
