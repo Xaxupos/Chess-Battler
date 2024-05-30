@@ -93,13 +93,16 @@ public class CombatManager : MonoBehaviour
 
             var currentFigure = figuresQueue.Dequeue();
 
-            //Died during his turn
             if (!currentFigure)
             {
                 continue;
             }
 
             currentFigure.PerformTurn();
+
+            //Died during his turn
+            if (!currentFigure)
+                continue;
 
             yield return new WaitUntil(() => currentFigure.figureBrain.EndedPerform);
 

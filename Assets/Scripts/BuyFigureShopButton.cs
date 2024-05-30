@@ -6,7 +6,7 @@ public class BuyFigureShopButton : MonoBehaviour
 {
     [Header("References")]
     public Button button;
-    public TMP_Text buttonText;
+    public TMP_Text goldAmounText;
     public AudioSource buySFX;
     public AudioSource buyInvalidSFX;
 
@@ -19,15 +19,15 @@ public class BuyFigureShopButton : MonoBehaviour
 
     private void OnValidate()
     {
-        if(buttonText != null)
-            buttonText.text = $"{figureToBuy} <br> ({neededGold})";
+        if(goldAmounText != null)
+            goldAmounText.text = $"{neededGold}";
     }
 
     public void InitButton(ShopManager shop)
     {
         shopManager = shop;
         button.interactable = isUnlocked;
-        buttonText.text = $"{figureToBuy} <br> ({neededGold})";
+        goldAmounText.text = $"{neededGold}";
     }
 
     public void TryBuyFigure()

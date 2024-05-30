@@ -12,6 +12,7 @@ public class ChessFigureInvalidTimer : MonoBehaviour
     [ReadOnly] public int invalidCount = 0;
 
     [Header("UI")]
+    public GameObject lockIcon;
     public TMP_Text invalidText;
 
     [Tab("Events")]
@@ -21,7 +22,8 @@ public class ChessFigureInvalidTimer : MonoBehaviour
     public void IncreaseInvalid()
     {
         invalidCount++;
-        invalidText.text = $"{invalidCount}/{maxInvalidCount}";
+        lockIcon.SetActive(true);
+        invalidText.text = $"{invalidCount}";
 
         OnInvalidIncrease?.Invoke();
         if(invalidCount >= maxInvalidCount)
@@ -39,5 +41,8 @@ public class ChessFigureInvalidTimer : MonoBehaviour
     {
         invalidText.text = "";
         invalidCount = 0;
+
+        if(lockIcon)
+            lockIcon.SetActive(false);
     }
 }

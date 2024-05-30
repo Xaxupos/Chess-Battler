@@ -124,14 +124,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: ccade1513cc914a939ebade0369e35bd, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -157,6 +157,10 @@ PrefabInstance:
       propertyPath: figureToBuy
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 5173346537257857225, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 713784810, guid: e284d3245944b734d92a847d494800a0, type: 3}
     - target: {fileID: 6909446319225321521, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_Name
       value: Rook Button
@@ -243,7 +247,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9126405631014981415, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_text
-      value: ROOK <br> (25)
+      value: 25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -263,6 +267,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8638834818921415972}
     m_Modifications:
+    - target: {fileID: 267802238121177782, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: neededGold
       value: 15
@@ -271,6 +279,10 @@ PrefabInstance:
       propertyPath: figureToBuy
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5173346537257857225, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1759873484, guid: e284d3245944b734d92a847d494800a0, type: 3}
     - target: {fileID: 6909446319225321521, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_Name
       value: Knight Button
@@ -357,7 +369,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9126405631014981415, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_text
-      value: KNIGHT <br> (15)
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -479,6 +491,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8638834818921415972}
     m_Modifications:
+    - target: {fileID: 267802238121177782, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: neededGold
       value: 35
@@ -487,6 +503,10 @@ PrefabInstance:
       propertyPath: figureToBuy
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 5173346537257857225, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 422222401, guid: e284d3245944b734d92a847d494800a0, type: 3}
     - target: {fileID: 6909446319225321521, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_Name
       value: Queen Button
@@ -573,7 +593,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9126405631014981415, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_text
-      value: QUEEN <br> (35)
+      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -593,6 +613,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8638834818921415972}
     m_Modifications:
+    - target: {fileID: 267802238121177782, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 4585866157521805500, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: neededGold
       value: 15
@@ -601,6 +625,10 @@ PrefabInstance:
       propertyPath: figureToBuy
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 5173346537257857225, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1524486992, guid: e284d3245944b734d92a847d494800a0, type: 3}
     - target: {fileID: 6909446319225321521, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_Name
       value: Bishop Button
@@ -687,7 +715,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9126405631014981415, guid: fd8e368c81ec3764e90524e4c5c1a972, type: 3}
       propertyPath: m_text
-      value: BISHOP <br> (15)
+      value: 15
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

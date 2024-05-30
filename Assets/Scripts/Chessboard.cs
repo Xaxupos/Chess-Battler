@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using VInspector;
 
 public class Chessboard : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class Chessboard : MonoBehaviour
     [SerializeField] private ChessboardSquare blackSquarePrefab;
 
     [Header("Settings")]
+    [SerializeField] private SerializedDictionary<int, float> gridScaleBySize = new SerializedDictionary<int, float>();
     [SerializeField] private int gridXSize = 8;
     [SerializeField] private int gridYSize = 8;
     [SerializeField] private float cellSize = 1.0f;
@@ -75,6 +77,13 @@ public class Chessboard : MonoBehaviour
     {
         ChessboardGrid = new ChessboardSquare[gridXSize, gridYSize];
 
+        float scale = 1;
+        if (gridScaleBySize.ContainsKey(gridXSize))
+        {
+            scale = gridScaleBySize[gridXSize];
+        }
+        transform.localScale = new Vector2(scale, scale);
+
         for (int x = 0; x < gridXSize; x++)
         {
             for (int y = 0; y < gridYSize; y++)
@@ -86,6 +95,7 @@ public class Chessboard : MonoBehaviour
                 square.Chessboard = this;
                 square.transform.SetParent(transform);
                 square.transform.localPosition = position;
+                square.transform.localScale = Vector2.one;
                 square.SetBoardPosition(new Vector2Int(x, y));
                 ChessboardGrid[x, y] = square;
             }
@@ -94,14 +104,11 @@ public class Chessboard : MonoBehaviour
 
     private void CenterGrid()
     {
-        // Oblicz po³owê rozmiaru planszy w obu wymiarach
-        float halfGridSizeX = ((gridXSize - 1) * cellSize) / 2.0f;
-        float halfGridSizeY = ((gridYSize - 1) * cellSize) / 2.0f;
+        float halfGridSizeX = ((gridXSize - 1) * cellSize * transform.localScale.x) / 2.0f;
+        float halfGridSizeY = ((gridYSize - 1) * cellSize * transform.localScale.y) / 2.0f;
 
-        // Utwórz wektor reprezentuj¹cy œrodek planszy
         Vector3 gridCenter = new Vector3(-halfGridSizeX, -halfGridSizeY, 0);
 
-        // Ustaw pozycjê planszy
         transform.position = gridCenter;
     }
 

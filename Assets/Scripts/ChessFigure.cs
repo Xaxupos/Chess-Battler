@@ -51,7 +51,9 @@ public class ChessFigure : MonoBehaviour
         CurrentSquare.AssignFigure(this);
 
         transform.SetParent(CurrentSquare.transform);
-        if(forceMove)
+        transform.localScale = Vector2.one;
+
+        if (forceMove)
         {
             transform.localPosition = Vector2.zero;
         }
