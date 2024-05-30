@@ -5,6 +5,7 @@ public class GameUIManager : MonoBehaviour
     [Header("References")]
     public GameUI betweenWaveUI;
     public GameUI waveUI;
+    public GameUI alwaysVisibleUI;
 
     public void ShowWaveUI()
     {

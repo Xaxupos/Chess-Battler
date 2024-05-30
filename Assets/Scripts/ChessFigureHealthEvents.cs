@@ -13,6 +13,7 @@ public class ChessFigureHealthEvents : MonoBehaviour
     public UnityEvent OnHeal;
     public UnityEvent OnDie;
     public static Action<ChessFigure> OnAnyFigureDie;
+    public static Action<ChessFigure> OnKingHealthChanged;
 
     public bool IsDead { get; set; }
 
@@ -38,6 +39,10 @@ public class ChessFigureHealthEvents : MonoBehaviour
         if(stat == FigureStatistic.CURRENT_HEALTH)
         {
             OnHeal?.Invoke();
+            if(figure.figureType == ChessFigureType.KING && figure.FigureSide == ChessSide.WHITE)
+            {
+                OnKingHealthChanged?.Invoke(figure);
+            }
         }
     }
 
@@ -46,8 +51,12 @@ public class ChessFigureHealthEvents : MonoBehaviour
         if (stat == FigureStatistic.CURRENT_HEALTH)
         {
             OnTakeDamage?.Invoke();
+            if (figure.figureType == ChessFigureType.KING && figure.FigureSide == ChessSide.WHITE)
+            {
+                OnKingHealthChanged?.Invoke(figure);
+            }
 
-            if(figureStatistics.GetStatisticValue(stat) <=0)
+            if (figureStatistics.GetStatisticValue(stat) <=0)
             {
                 Die();
             }

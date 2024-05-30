@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using VInspector;
 
@@ -7,12 +8,18 @@ public class ChessFigureSpawner : MonoBehaviour
     public CombatManager combatManager;
     public SerializedDictionary<ChessFigureType, ChessFigure> figureMap;
 
+    public bool FigureJustBought { get; set; }
     private ChessFigureType figureToSpawn;
     private ChessSide sideToSpawn;
 
+    private void Start()
+    {
+        SpawnPlayerKing();
+    }
+
     private void Update()
     {
-        if (Input.GetMouseButtonUp(0))
+        if (Input.GetMouseButtonUp(0) && FigureJustBought)
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -20,9 +27,10 @@ public class ChessFigureSpawner : MonoBehaviour
             if (Physics.Raycast(ray, out hit))
             {
                 ChessboardSquare chessSquare = hit.collider.GetComponent<ChessboardSquare>();
-                if (chessSquare != null && chessSquare.IsEmpty())
+                if (chessSquare != null && chessSquare.IsEmpty() && chessSquare.Chessboard.GetLowerHalf().Contains(chessSquare))
                 {
-                    SpawnPawn(chessSquare);
+                    SpawnPlayerPawn(chessSquare);
+                    FigureJustBought = false;
                 }
             }
         }
@@ -38,7 +46,7 @@ public class ChessFigureSpawner : MonoBehaviour
         sideToSpawn = (ChessSide)enumIndex;
     }
 
-    public void SpawnPawn(ChessboardSquare square)
+    public void SpawnPlayerPawn(ChessboardSquare square)
     {
         ChessFigure pawn = Instantiate(figureMap[figureToSpawn], square.transform.position, Quaternion.identity);
         pawn.InitChessFigure(square, sideToSpawn);
@@ -50,5 +58,22 @@ public class ChessFigureSpawner : MonoBehaviour
         ChessFigure pawn = Instantiate(figureMap[figureType], square.transform.position, Quaternion.identity);
         pawn.InitChessFigure(square, forcedSide);
         combatManager.AssignFigure(pawn);
+    }
+
+    private void SpawnPlayerKing()
+    {
+        var lowerHalf = combatManager.chessboard.GetLowerHalf();
+
+        List<ChessboardSquare> firstRowSquares = new List<ChessboardSquare>();
+        foreach (var square in lowerHalf)
+        {
+            if (square.GetBoardPosition().y == 0)
+            {
+                firstRowSquares.Add(square);
+            }
+        }
+
+        ChessboardSquare kingSquare = firstRowSquares.GetRandom();
+        SpawnPawn(kingSquare, ChessFigureType.KING, ChessSide.WHITE);
     }
 }

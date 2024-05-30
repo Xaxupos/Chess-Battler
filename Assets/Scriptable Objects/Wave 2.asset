@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumEnemies: 2
   maximumEnemies: 3
+  goldForCompleted: 12
   minimumFigureDefine:
     serializedKvps: []
     dividerPos: 0.33

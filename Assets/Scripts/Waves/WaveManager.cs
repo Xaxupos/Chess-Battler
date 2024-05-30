@@ -38,6 +38,7 @@ public class WaveManager : MonoBehaviour
     public void EndWave()
     {
         WaveInProgress = false;
+        GoldManager.Instance.AddGold(currentWave.goldForCompleted);
         OnEndWave?.Invoke();
 
         currentWaveIndex++;
@@ -51,6 +52,7 @@ public class WaveManager : MonoBehaviour
     {
         var waveTemplateData = waveDatasForIndex[currentWaveIndex].GetRandom();
         var seededData = waveTemplateData.SeedWaveEnemies();
+        currentWave.goldForCompleted = waveTemplateData.goldForCompleted;
         currentWave.InitWave(seededData);
     }
 

@@ -4,6 +4,7 @@ using VInspector;
 [System.Serializable]
 public class Wave
 {
+    public int goldForCompleted = 0;
     public List<ChessFigureType> chessFigures = new List<ChessFigureType>();   
 
     public void InitWave(SerializedDictionary<ChessFigureType, int> seededData)
