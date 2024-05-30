@@ -64,4 +64,11 @@ public class ChessFigure : MonoBehaviour
     {
         CurrentSquare = null;
     }
+
+    public void SetupBasedOnFigureStruct(FigureSaveData figureStruct)
+    {
+        InitSquarePos = new Vector2Int(figureStruct.boardX, figureStruct.boardY);
+        figureStatistics.SetStatistic(FigureStatistic.CURRENT_HEALTH, figureStruct.health);
+        figureStatistics.SetStatistic(FigureStatistic.BASE_DAMAGE, figureStruct.attack);
+    }
 }

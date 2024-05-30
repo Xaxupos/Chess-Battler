@@ -47,6 +47,10 @@ public class ChessFigureStatistics : MonoBehaviour
         }
     }
 
+    public void SetStatistic(FigureStatistic statistic, float value) 
+    {
+        figureStatistics[statistic] = value;
+    }
 
     public float GetStatisticValue(FigureStatistic statistic)
     {
