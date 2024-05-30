@@ -59,6 +59,16 @@ public class Chessboard : MonoBehaviour
         return lowerHalf;
     }
 
+    public int GetLowerHalfEmptySquaresCount()
+    {
+        int count = 0;
+        foreach(var square in GetLowerHalf())
+        {
+            if (square.IsEmpty()) count++;
+        }
+        return count;
+    }
+
     public ChessboardSquare GetSquareAtPosition(Vector2Int position)
     {
         if (IsWithinBounds(position))
