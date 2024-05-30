@@ -8,6 +8,7 @@ using VInspector;
 public class CombatManager : MonoBehaviour
 {
     [Header("References")]
+    public AudioSource startCombatSound;
     public Chessboard chessboard;
     public WaveManager waveManager;
     public LoseGameManager loseGameManager;
@@ -61,6 +62,7 @@ public class CombatManager : MonoBehaviour
 
         foreach(var whiteFigure in chessFigures[ChessSide.WHITE])
         {
+            whiteFigure.figureInvalidTimer.ResetInvalid();
             whiteFigure.AssignFigureToSquare(whiteFigure.InitSquare, true);
         }
     }
@@ -68,7 +70,10 @@ public class CombatManager : MonoBehaviour
     private IEnumerator HandleTurns()
     {
         WaitForSeconds turnDelayFull = new WaitForSeconds(delayBeetwenMoves);
-        WaitForSeconds turnDelayZero = new WaitForSeconds(0);
+        WaitForSeconds turnDelayZero = new WaitForSeconds(0.5f);
+
+        startCombatSound.Play();
+        yield return new WaitForSeconds(startCombatSound.clip.length);
 
         while (chessFigures[ChessSide.BLACK].Count > 0)
         {
@@ -93,9 +98,15 @@ public class CombatManager : MonoBehaviour
             ResetFigureTurn(currentFigure);
 
             if (currentFigure.figureBrain.DidActionThisTurn)
+            {
+                currentFigure.figureInvalidTimer.ResetInvalid();
                 yield return turnDelayFull;
+            }
             else
+            {
+                currentFigure.figureInvalidTimer.IncreaseInvalid();
                 yield return turnDelayZero;
+            }
         }
     }
 

@@ -8,6 +8,8 @@ public class ChessFigureSFX : MonoBehaviour
     public List<AudioClip> moveClips;
     public List<AudioClip> attackClips;
     public List<AudioClip> takeDamageClips;
+    public List<AudioClip> invalidDieClips;
+    public List<AudioClip> invalidIncreaseClips;
 
     [Header("Settings")]
     public float minPitch = 0.95f;
@@ -32,6 +34,22 @@ public class ChessFigureSFX : MonoBehaviour
         SetPitch();
         audioSource.transform.parent = null;
         audioSource.clip = takeDamageClips.GetRandom();
+        audioSource.Play();
+    }
+
+    public void PlayInvalidDieClip()
+    {
+        SetPitch();
+        audioSource.transform.parent = null;
+        audioSource.clip = invalidDieClips.GetRandom();
+        audioSource.Play();
+    }
+
+    public void PlayInvalidIncreaseClip()
+    {
+        SetPitch();
+        audioSource.transform.parent = null;
+        audioSource.clip = invalidIncreaseClips.GetRandom();
         audioSource.Play();
     }
 

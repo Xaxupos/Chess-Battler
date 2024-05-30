@@ -7,6 +7,8 @@ public class BuyFigureShopButton : MonoBehaviour
     [Header("References")]
     public Button button;
     public TMP_Text buttonText;
+    public AudioSource buySFX;
+    public AudioSource buyInvalidSFX;
 
     [Header("Settings")]
     public ChessFigureType figureToBuy;
@@ -35,7 +37,12 @@ public class BuyFigureShopButton : MonoBehaviour
             shopManager.figureSpawner.SetFigureToSpawn((int)figureToBuy);
             shopManager.figureSpawner.FigureJustBought = true;
 
+            buySFX.Play();
             GoldManager.Instance.RemoveGold(neededGold);
+        }
+        else
+        {
+            buyInvalidSFX.Play();
         }
     }
 }
