@@ -99,7 +99,10 @@ public class ChessFigureBrain : MonoBehaviour
 
         owner.transform.DOLocalMove(Vector2.zero, moveTweenDuration)
             .SetEase(Ease.Linear)
-            .OnStart(() => owner.figureSFX.PlayMoveClip())
+            .OnStart(() =>
+            {
+                owner.figureSFX.PlayMoveClip();
+            })
             .OnComplete(() =>
             {
                 if (wholeLineMovement)
@@ -120,6 +123,7 @@ public class ChessFigureBrain : MonoBehaviour
 
         if (defender.figureHealthSystem.IsDead)
         {
+            defender.figureVFX.PlayDieVFX();
             MoveToSquare(square);
         }
         else
@@ -132,6 +136,7 @@ public class ChessFigureBrain : MonoBehaviour
                 Vector3 attackDirection = (defender.transform.position - attackerInitPosition).normalized;
                 Vector3 knockbackPosition = defender.transform.position + attackDirection * knockbackForce;
                 defender.figureSFX.PlayTakeDamageClip();
+                defender.figureVFX.PlayTakeDamageVFX();
 
                 defender.transform.DOMove(knockbackPosition, moveTweenDuration / 4f).SetEase(Ease.OutQuad)
                 .OnComplete(() =>
