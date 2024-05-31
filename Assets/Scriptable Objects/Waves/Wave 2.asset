@@ -18,7 +18,11 @@ MonoBehaviour:
   chessboardYSize: 4
   goldForCompleted: 20
   minimumFigureDefine:
-    serializedKvps: []
+    serializedKvps:
+    - Key: 0
+      Value: 1
+      index: 0
+      isKeyRepeated: 0
     dividerPos: 0.33
   maximumFigureDefine:
     serializedKvps:
@@ -26,11 +30,27 @@ MonoBehaviour:
       Value: 3
       index: 0
       isKeyRepeated: 0
+    - Key: 1
+      Value: 1
+      index: 1
+      isKeyRepeated: 0
+    - Key: 2
+      Value: 1
+      index: 2
+      isKeyRepeated: 0
     dividerPos: 0.33
   spawnWeightChance:
     serializedKvps:
     - Key: 0
-      Value: 1
+      Value: 10
       index: 0
+      isKeyRepeated: 0
+    - Key: 2
+      Value: 1
+      index: 1
+      isKeyRepeated: 0
+    - Key: 1
+      Value: 1
+      index: 2
       isKeyRepeated: 0
     dividerPos: 0.33

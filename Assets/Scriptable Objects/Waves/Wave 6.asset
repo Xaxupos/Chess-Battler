@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumEnemies: 5
   maximumEnemies: 6
-  chessboardXSize: 5
-  chessboardYSize: 5
-  goldForCompleted: 45
+  chessboardXSize: 6
+  chessboardYSize: 6
+  goldForCompleted: 50
   minimumFigureDefine:
     serializedKvps: []
     dividerPos: 0.33
@@ -26,11 +26,35 @@ MonoBehaviour:
       Value: 3
       index: 0
       isKeyRepeated: 0
+    - Key: 1
+      Value: 3
+      index: 1
+      isKeyRepeated: 0
+    - Key: 2
+      Value: 2
+      index: 2
+      isKeyRepeated: 0
+    - Key: 3
+      Value: 1
+      index: 3
+      isKeyRepeated: 0
     dividerPos: 0.33
   spawnWeightChance:
     serializedKvps:
     - Key: 0
-      Value: 5
+      Value: 6
       index: 0
+      isKeyRepeated: 0
+    - Key: 2
+      Value: 3
+      index: 1
+      isKeyRepeated: 0
+    - Key: 1
+      Value: 3
+      index: 2
+      isKeyRepeated: 0
+    - Key: 3
+      Value: 2
+      index: 3
       isKeyRepeated: 0
     dividerPos: 0.33

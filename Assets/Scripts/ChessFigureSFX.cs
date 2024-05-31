@@ -8,6 +8,7 @@ public class ChessFigureSFX : MonoBehaviour
     public List<AudioClip> moveClips;
     public List<AudioClip> attackClips;
     public List<AudioClip> takeDamageClips;
+    public List<AudioClip> aoeTakeDamageClips;
     public List<AudioClip> invalidDieClips;
     public List<AudioClip> invalidIncreaseClips;
 
@@ -34,6 +35,14 @@ public class ChessFigureSFX : MonoBehaviour
         SetPitch();
         audioSource.transform.parent = null;
         audioSource.clip = takeDamageClips.GetRandom();
+        audioSource.Play();
+    }
+
+    public void PlayAoeTakeDamageClip()
+    {
+        SetPitch();
+        audioSource.transform.parent = null;
+        audioSource.clip = aoeTakeDamageClips.GetRandom();
         audioSource.Play();
     }
 

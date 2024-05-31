@@ -1239,6 +1239,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7388367137308757421}
     m_Modifications:
+    - target: {fileID: 1003322205184447555, guid: 75b0179cf43ffae48be8398b9be6d2d7, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 273
+      objectReference: {fileID: 0}
     - target: {fileID: 5741502179626590356, guid: 75b0179cf43ffae48be8398b9be6d2d7, type: 3}
       propertyPath: navbarElement
       value: 
@@ -1326,6 +1330,10 @@ PrefabInstance:
     - target: {fileID: 8181022793720882074, guid: 75b0179cf43ffae48be8398b9be6d2d7, type: 3}
       propertyPath: m_Name
       value: Knight Content
+      objectReference: {fileID: 0}
+    - target: {fileID: 8181022793720882074, guid: 75b0179cf43ffae48be8398b9be6d2d7, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

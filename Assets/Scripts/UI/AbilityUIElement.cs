@@ -37,6 +37,7 @@ public class AbilityUIElement : MonoBehaviour, IPointerEnterHandler, IPointerExi
 
     private void Awake()
     {
+        if(defaultUnlocked) backgroundConditions.SetActive(false);
         buyButton.interactable = defaultUnlocked;
         tooltip.InitTooltip(this);
     }

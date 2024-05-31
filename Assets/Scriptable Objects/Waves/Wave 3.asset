@@ -13,18 +13,30 @@ MonoBehaviour:
   m_Name: Wave 3
   m_EditorClassIdentifier: 
   minimumEnemies: 3
-  maximumEnemies: 3
-  chessboardXSize: 4
-  chessboardYSize: 4
+  maximumEnemies: 4
+  chessboardXSize: 5
+  chessboardYSize: 5
   goldForCompleted: 25
   minimumFigureDefine:
-    serializedKvps: []
+    serializedKvps:
+    - Key: 0
+      Value: 1
+      index: 0
+      isKeyRepeated: 0
     dividerPos: 0.33
   maximumFigureDefine:
     serializedKvps:
     - Key: 0
-      Value: 3
+      Value: 2
       index: 0
+      isKeyRepeated: 0
+    - Key: 1
+      Value: 2
+      index: 1
+      isKeyRepeated: 0
+    - Key: 2
+      Value: 2
+      index: 2
       isKeyRepeated: 0
     dividerPos: 0.33
   spawnWeightChance:
@@ -32,5 +44,13 @@ MonoBehaviour:
     - Key: 0
       Value: 10
       index: 0
+      isKeyRepeated: 0
+    - Key: 2
+      Value: 2
+      index: 1
+      isKeyRepeated: 0
+    - Key: 1
+      Value: 2
+      index: 2
       isKeyRepeated: 0
     dividerPos: 0.33

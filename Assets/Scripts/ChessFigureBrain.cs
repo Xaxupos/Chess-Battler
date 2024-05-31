@@ -15,9 +15,11 @@ public class ChessFigureBrain : MonoBehaviour
     [HideIf("wholeLineMovement")] public List<Vector2Int> possibleMoves = new List<Vector2Int>(); [EndIf]
     [ShowIf("wholeLineMovement")] public List<Vector2Int> possibleMovesDirections = new List<Vector2Int>(); [EndIf]
     [HideIf("attacksSameAsMoves")] public List<Vector2Int> possibleAttacks = new List<Vector2Int>(); [EndIf]
+    public List<Vector2Int> aoeAttacks = new List<Vector2Int>();
 
     [Tab("Values")]
     public float attackTimes = 1;
+    public float aoeDamageMultiplier = 0.25f;
     public float moveTweenDuration = 0.4f;
     public float knockbackForce = 0.1f;
 
@@ -116,7 +118,7 @@ public class ChessFigureBrain : MonoBehaviour
 
     public void AttackSquare(ChessboardSquare square)
     {
-        if(currentAttackTimes > attackTimes)
+        if (currentAttackTimes > attackTimes)
         {
             EndedPerform = true;
         }
@@ -127,6 +129,8 @@ public class ChessFigureBrain : MonoBehaviour
         var calculatedDamage = attacker.figureStatistics.GetStatisticValue(FigureStatistic.BASE_DAMAGE);
 
         defender.figureStatistics.ChangeStatistic(FigureStatistic.CURRENT_HEALTH, -calculatedDamage);
+
+        HandleAOEDamage(square, calculatedDamage);
 
         if (defender.figureHealthSystem.IsDead)
         {
@@ -168,6 +172,47 @@ public class ChessFigureBrain : MonoBehaviour
         }
     }
 
+    private void HandleAOEDamage(ChessboardSquare square, float calculatedDamage)
+    {
+        bool aoeAllowed = true;
+
+        if(owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.KNIGHT_BOMB_AOE))
+        {
+            float randomValue = Random.value; //0 to 1
+            float abilityTriggerChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.KNIGHT_BOMB_AOE); //0 to 1
+
+            aoeAllowed = randomValue <= abilityTriggerChance;
+        }
+
+        if (!aoeAllowed) return;
+
+        if (aoeAttacks.Count > 0)
+        {
+            foreach (var aoe in aoeAttacks)
+            {
+                var squareToAttack = square.Chessboard.GetSquareAtPosition(square.GetBoardPosition() + aoe);
+                if (!squareToAttack) continue;
+                if (squareToAttack.IsEmpty()) continue;
+                if (squareToAttack.CurrentFigure.FigureSide == owner.FigureSide) continue;
+
+                float aoeDamage = calculatedDamage / 2;
+                squareToAttack.CurrentFigure.figureStatistics.ChangeStatistic(FigureStatistic.CURRENT_HEALTH, -aoeDamage);
+
+                if (!squareToAttack || !squareToAttack.CurrentFigure || !squareToAttack.CurrentFigure.figureHealthSystem) continue;
+
+                if (squareToAttack.CurrentFigure.figureHealthSystem.IsDead)
+                {
+                    squareToAttack.CurrentFigure.figureSFX.PlayAoeTakeDamageClip();
+                    squareToAttack.CurrentFigure.figureVFX.PlayDieVFX();
+                }
+                else
+                {
+                    squareToAttack.CurrentFigure.figureVFX.PlayAoeTakeDamageVFX();
+                }
+            }
+        }
+    }
+
     private void HandleExtraAttacks(ChessboardSquare square)
     {
         float additionalAttackChance = 1.0f;
@@ -181,7 +226,8 @@ public class ChessFigureBrain : MonoBehaviour
         }
 
         currentAttackTimes++;
-        if (additionalAttackChance >= randomValue)
+
+        if (randomValue <= additionalAttackChance)
         {
             AttackSquare(square);
         }

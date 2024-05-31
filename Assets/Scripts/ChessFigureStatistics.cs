@@ -35,6 +35,7 @@ public class ChessFigureStatistics : MonoBehaviour
     public void ChangeStatistic(FigureStatistic statistic, float amount)
     {
         figureStatistics[statistic] += amount;
+        figureStatistics[statistic] = Mathf.RoundToInt(figureStatistics[statistic]);
 
         if(amount > 0)
         {
