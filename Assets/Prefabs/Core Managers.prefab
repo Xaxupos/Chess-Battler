@@ -669,6 +669,71 @@ MonoBehaviour:
   - {fileID: 6777627007244650727}
   - {fileID: 3978458506993438747}
   - {fileID: 9202270615239521836}
+--- !u!1 &4364065182072790168
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4673410584908279729}
+  - component: {fileID: 3827375747125802577}
+  m_Layer: 0
+  m_Name: Figure Abilities Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4673410584908279729
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4364065182072790168}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 514575671426368801}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3827375747125802577
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4364065182072790168}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7559df65cfb15e41bc0a20917034a8b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allAbilities:
+    serializedKvps:
+    - Key: 0
+      Value:
+        serializedKvps:
+        - Key: 0
+          Value:
+            isUnlocked: 0
+            ability: {fileID: 11400000, guid: d93fd86d70598da438d046e81c24832b, type: 2}
+          index: 0
+          isKeyRepeated: 0
+        - Key: 1
+          Value:
+            isUnlocked: 0
+            ability: {fileID: 11400000, guid: d93fd86d70598da438d046e81c24832b, type: 2}
+          index: 1
+          isKeyRepeated: 0
+        dividerPos: 0
+      index: 0
+      isKeyRepeated: 0
+    dividerPos: 0.33
 --- !u!1 &4752588397040621495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1345,6 +1410,7 @@ Transform:
   - {fileID: 5328165452664375273}
   - {fileID: 6390083820693304414}
   - {fileID: 8263284511635259149}
+  - {fileID: 4673410584908279729}
   - {fileID: 1063386248273652638}
   - {fileID: 8217747662837581377}
   m_Father: {fileID: 0}

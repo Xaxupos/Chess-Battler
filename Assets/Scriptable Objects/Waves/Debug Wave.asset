@@ -10,37 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 818196512004c2d4ebdacdbe80bd8da0, type: 3}
-  m_Name: Wave 7
+  m_Name: Debug Wave
   m_EditorClassIdentifier: 
-  minimumEnemies: 5
-  maximumEnemies: 7
-  chessboardXSize: 5
-  chessboardYSize: 5
-  goldForCompleted: 50
+  minimumEnemies: 4
+  maximumEnemies: 6
+  chessboardXSize: 3
+  chessboardYSize: 3
+  goldForCompleted: 10
   minimumFigureDefine:
     serializedKvps: []
     dividerPos: 0.33
   maximumFigureDefine:
     serializedKvps:
     - Key: 0
-      Value: 3
-      index: 0
-      isKeyRepeated: 0
-    - Key: 2
-      Value: 3
-      index: 1
-      isKeyRepeated: 0
-    - Key: 1
-      Value: 3
-      index: 2
-      isKeyRepeated: 0
-    - Key: 3
-      Value: 2
-      index: 3
-      isKeyRepeated: 0
-    - Key: 4
       Value: 1
-      index: 4
+      index: 0
       isKeyRepeated: 0
     dividerPos: 0.33
   spawnWeightChance:
@@ -48,21 +32,5 @@ MonoBehaviour:
     - Key: 0
       Value: 5
       index: 0
-      isKeyRepeated: 0
-    - Key: 1
-      Value: 5
-      index: 1
-      isKeyRepeated: 0
-    - Key: 2
-      Value: 5
-      index: 2
-      isKeyRepeated: 0
-    - Key: 3
-      Value: 4
-      index: 3
-      isKeyRepeated: 0
-    - Key: 4
-      Value: 1
-      index: 4
       isKeyRepeated: 0
     dividerPos: 0.33

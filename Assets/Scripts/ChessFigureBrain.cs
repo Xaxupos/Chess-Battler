@@ -1,7 +1,6 @@
 using DG.Tweening;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Events;
 using VInspector;
 
 public class ChessFigureBrain : MonoBehaviour
@@ -18,11 +17,13 @@ public class ChessFigureBrain : MonoBehaviour
     [HideIf("attacksSameAsMoves")] public List<Vector2Int> possibleAttacks = new List<Vector2Int>(); [EndIf]
 
     [Tab("Values")]
+    public float attackTimes = 1;
     public float moveTweenDuration = 0.4f;
     public float knockbackForce = 0.1f;
 
     public bool DidActionThisTurn { get; private set; }
     public bool EndedPerform { get; private set; }
+    private int currentAttackTimes = 1;
 
     public void PerformBestAction()
     {
@@ -36,6 +37,7 @@ public class ChessFigureBrain : MonoBehaviour
 
         if (squareToAttack)
         {
+            currentAttackTimes = 1;
             AttackSquare(squareToAttack);
             DidActionThisTurn = true;
             return;
@@ -114,6 +116,11 @@ public class ChessFigureBrain : MonoBehaviour
 
     public void AttackSquare(ChessboardSquare square)
     {
+        if(currentAttackTimes > attackTimes)
+        {
+            EndedPerform = true;
+        }
+
         ChessFigure attacker = owner;
         ChessFigure defender = square.CurrentFigure;
 
@@ -131,18 +138,12 @@ public class ChessFigureBrain : MonoBehaviour
             Vector3 attackerInitPosition = attacker.transform.position;
             attacker.figureSFX.PlayAttackClip();
 
-            attacker.transform.DOMove(defender.transform.position, moveTweenDuration/2.0f).SetEase(Ease.Linear).OnComplete(() =>
+            attacker.transform.DOMove(defender.transform.position, moveTweenDuration / 2.0f).SetEase(Ease.Linear).OnComplete(() =>
             {
-                Vector3 attackDirection = (defender.transform.position - attackerInitPosition).normalized;
-                Vector3 knockbackPosition = defender.transform.position + attackDirection * knockbackForce;
                 defender.figureSFX.PlayTakeDamageClip();
                 defender.figureVFX.PlayTakeDamageVFX();
 
-                defender.transform.DOMove(knockbackPosition, moveTweenDuration / 4f).SetEase(Ease.OutQuad)
-                .OnComplete(() =>
-                {
-                    defender.transform.DOLocalMove(Vector2.zero, moveTweenDuration / 4f).SetEase(Ease.InQuad);
-                });
+                HandleKnockback(defender, attackerInitPosition);
 
                 if (defender.figureType == ChessFigureType.KING)
                 {
@@ -153,11 +154,59 @@ public class ChessFigureBrain : MonoBehaviour
                 {
                     attacker.transform.DOLocalMove(Vector2.zero, moveTweenDuration / 2.0f).SetEase(Ease.Linear).OnComplete(() =>
                     {
-                        EndedPerform = true;
+                        if (currentAttackTimes < attackTimes)
+                        {
+                            HandleExtraAttacks(square);
+                        }
+                        else
+                        {
+                            EndedPerform = true;
+                        }
                     });
                 }
             });
         }
+    }
+
+    private void HandleExtraAttacks(ChessboardSquare square)
+    {
+        float additionalAttackChance = 1.0f;
+        float randomValue = Random.value;
+
+        if (owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.PAWN_DOUBLE_ATTACK))
+        {
+            additionalAttackChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.PAWN_DOUBLE_ATTACK);
+            if (owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.PAWN_DOUBLE_ATTACK_100_CHANCE))
+                additionalAttackChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.PAWN_DOUBLE_ATTACK_100_CHANCE);
+        }
+
+        currentAttackTimes++;
+        if (additionalAttackChance >= randomValue)
+        {
+            AttackSquare(square);
+        }
+        else
+        {
+            if (currentAttackTimes > attackTimes)
+                EndedPerform = true;
+
+            while(currentAttackTimes <= attackTimes)
+            {
+                HandleExtraAttacks(square);
+            }
+        }
+    }
+
+    private void HandleKnockback(ChessFigure defender, Vector3 attackerInitPosition)
+    {
+        Vector3 attackDirection = (defender.transform.position - attackerInitPosition).normalized;
+        Vector3 knockbackPosition = defender.transform.position + attackDirection * knockbackForce;
+
+        defender.transform.DOMove(knockbackPosition, moveTweenDuration / 4f).SetEase(Ease.OutQuad)
+        .OnComplete(() =>
+        {
+            defender.transform.DOLocalMove(Vector2.zero, moveTweenDuration / 4f).SetEase(Ease.InQuad);
+        });
     }
 
     public ChessboardSquare GetRandomSquareToMove()
@@ -219,7 +268,7 @@ public class ChessFigureBrain : MonoBehaviour
             var targetPosition = owner.CurrentSquare.GetBoardPosition() + squarePos;
             ChessboardSquare square = owner.ChessboardReference.GetSquareAtPosition(targetPosition);
             if (!square) continue;
-            if (square.IsEmpty() || square.CurrentFigure.FigureSide == owner.FigureSide) continue;
+            if (square.IsEmpty() || square.CurrentFigure.FigureSide == owner.FigureSide || square.CurrentFigure.figureHealthSystem.IsDead) continue;
 
             if(square.CurrentFigure.figureType == ChessFigureType.KING)
             {

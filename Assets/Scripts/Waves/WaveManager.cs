@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.Events;
 using VInspector;
@@ -30,10 +31,26 @@ public class WaveManager : MonoBehaviour
 
         WaveInProgress = true;
 
+        InitAbilities();
+
         OnStartWave?.Invoke();
         SeedCurrentWave();
         DistributeWave();
         combatManager.StartCombat();
+    }
+
+    private void InitAbilities()
+    {
+        foreach (var figure in combatManager.chessFigures[ChessSide.WHITE])
+        {
+            FiguresAbilitiesManager.Instance.AssignAbilityValueToFigure(figure);
+            foreach (var abilityKVP in figure.figureAbilities.figureAbilities)
+            {
+                if (!abilityKVP.Value.ability.onInitAbility) continue;
+
+                figure.figureAbilities.TryPerformAbility(abilityKVP.Key);
+            }
+        }
     }
 
     public void EndWave()

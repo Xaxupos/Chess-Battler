@@ -26,35 +26,11 @@ MonoBehaviour:
       Value: 3
       index: 0
       isKeyRepeated: 0
-    - Key: 2
-      Value: 3
-      index: 1
-      isKeyRepeated: 0
-    - Key: 1
-      Value: 3
-      index: 2
-      isKeyRepeated: 0
-    - Key: 3
-      Value: 2
-      index: 3
-      isKeyRepeated: 0
     dividerPos: 0.33
   spawnWeightChance:
     serializedKvps:
     - Key: 0
       Value: 5
       index: 0
-      isKeyRepeated: 0
-    - Key: 1
-      Value: 5
-      index: 1
-      isKeyRepeated: 0
-    - Key: 2
-      Value: 5
-      index: 2
-      isKeyRepeated: 0
-    - Key: 3
-      Value: 3
-      index: 3
       isKeyRepeated: 0
     dividerPos: 0.33

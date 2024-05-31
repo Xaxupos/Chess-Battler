@@ -10,6 +10,7 @@ public class ChessFigure : MonoBehaviour
     public ChessFigureSFX figureSFX;
     public ChessFigureVFX figureVFX;
     public ChessFigureInvalidTimer figureInvalidTimer;
+    public ChessFigureAbilities figureAbilities;
     public SpriteRenderer spriteRenderer;
     public Sprite whiteSprite;
     public Sprite blackSprite;

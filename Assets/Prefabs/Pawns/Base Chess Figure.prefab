@@ -638,6 +638,54 @@ MonoBehaviour:
   OnDie:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &3754465613597039551
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4483766029449614926}
+  - component: {fileID: 4710957420031415904}
+  m_Layer: 0
+  m_Name: Figure Abilities
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4483766029449614926
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3754465613597039551}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1440749533482955169}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4710957420031415904
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3754465613597039551}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 146e2759abe4060459c568fdb0c57e34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 6464350465057112535}
+  figureAbilities:
+    serializedKvps: []
+    dividerPos: 0.33
 --- !u!1 &4213138407274631646
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +736,7 @@ MonoBehaviour:
   possibleMoves: []
   possibleMovesDirections: []
   possibleAttacks: []
+  attackTimes: 1
   moveTweenDuration: 0.3
   knockbackForce: 0.5
 --- !u!1 &4393405533547434470
@@ -722,6 +771,7 @@ Transform:
   - {fileID: 3987015018218657018}
   - {fileID: 6395857810117400303}
   - {fileID: 9095420444582698943}
+  - {fileID: 4483766029449614926}
   - {fileID: 4391217753866042379}
   - {fileID: 2179023908783624523}
   - {fileID: 7926761688841931558}
@@ -1165,6 +1215,7 @@ MonoBehaviour:
   figureSFX: {fileID: 6659527036108311081}
   figureVFX: {fileID: 3841327843670899280}
   figureInvalidTimer: {fileID: 7340307452239024837}
+  figureAbilities: {fileID: 4710957420031415904}
   spriteRenderer: {fileID: 4257764288905960847}
   whiteSprite: {fileID: 0}
   blackSprite: {fileID: 0}
