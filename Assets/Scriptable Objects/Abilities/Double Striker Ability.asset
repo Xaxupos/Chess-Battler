@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21cde5205f8c2cc4f95b2e846df78318, type: 3}
-  m_Name: Set 2 Attack Times Ability 35%
+  m_Name: Double Striker Ability
   m_EditorClassIdentifier: 
+  abilityEnum: 0
   onInitAbility: 1
   triggerChance: 0.35
   abilityName: Double Striker
+  abilityDesc: Figure has 35% chance for double attack.
+  abilityIcon: {fileID: 21300000, guid: e724bdf52a75043c0a66a6ede3a90dd7, type: 3}
   abilityUnlockCost: 15
   attackTimesToSet: 2

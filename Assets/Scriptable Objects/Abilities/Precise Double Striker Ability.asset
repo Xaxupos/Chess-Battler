@@ -10,10 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 21cde5205f8c2cc4f95b2e846df78318, type: 3}
-  m_Name: Set 2 Attack Times Ability 100%
+  m_Name: Precise Double Striker Ability
   m_EditorClassIdentifier: 
+  abilityEnum: 1
   onInitAbility: 1
   triggerChance: 1
   abilityName: Precise Double Striker
-  abilityUnlockCost: 20
+  abilityDesc: Increases the double strike chance to 100%.
+  abilityIcon: {fileID: 21300000, guid: 08e0577b5a0924205984392d9a6a282b, type: 3}
+  abilityUnlockCost: 30
   attackTimesToSet: 2
