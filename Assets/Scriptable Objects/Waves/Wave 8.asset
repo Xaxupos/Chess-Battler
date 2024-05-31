@@ -16,7 +16,7 @@ MonoBehaviour:
   maximumEnemies: 8
   chessboardXSize: 7
   chessboardYSize: 7
-  goldForCompleted: 60
+  goldForCompleted: 70
   minimumFigureDefine:
     serializedKvps: []
     dividerPos: 0.33

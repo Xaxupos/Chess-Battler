@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -69,6 +70,14 @@ public class ChessFigureHealthEvents : MonoBehaviour
         OnDie?.Invoke();
         IsDead = true;
         figure.CurrentSquare.ClearSquare();
+        StartCoroutine(DelayedDestroy());
+    }
+
+    private IEnumerator DelayedDestroy()
+    {
+        yield return new WaitForEndOfFrame();
+        yield return new WaitForEndOfFrame();
+
         Destroy(figure.gameObject);
     }
 }

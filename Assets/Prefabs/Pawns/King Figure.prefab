@@ -18,7 +18,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: figureStatistics.serializedKvps.Array.data[2].Value
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: figureStatistics.serializedKvps.Array.data[3].Value
@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: figureStatistics.serializedKvps.Array.data[4].Value
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 4257764288905960847, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: m_Size.x

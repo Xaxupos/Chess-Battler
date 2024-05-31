@@ -200,9 +200,9 @@ public class ChessFigureBrain : MonoBehaviour
 
                 if (!squareToAttack || !squareToAttack.CurrentFigure || !squareToAttack.CurrentFigure.figureHealthSystem) continue;
 
+                squareToAttack.CurrentFigure.figureSFX.PlayAoeTakeDamageClip();
                 if (squareToAttack.CurrentFigure.figureHealthSystem.IsDead)
                 {
-                    squareToAttack.CurrentFigure.figureSFX.PlayAoeTakeDamageClip();
                     squareToAttack.CurrentFigure.figureVFX.PlayDieVFX();
                 }
                 else

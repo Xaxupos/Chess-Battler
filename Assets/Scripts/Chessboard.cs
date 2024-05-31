@@ -35,7 +35,7 @@ public class Chessboard : MonoBehaviour
 
         for (int x = 0; x < gridXSize; x++)
         {
-            for (int y = gridYSize / 2; y < gridYSize; y++)
+            for (int y = gridYSize / 2 +1; y < gridYSize; y++)
             {
                 upperHalf.Add(ChessboardGrid[x, y]);
             }

@@ -16,6 +16,12 @@ public class ChessFigureSFX : MonoBehaviour
     public float minPitch = 0.95f;
     public float maxPitch = 1.05f;
 
+    public void StopSFX()
+    {
+        audioSource.Stop();
+        audioSource.clip = null;
+    }
+
     public void PlayMoveClip()
     {
         SetPitch();
@@ -43,6 +49,7 @@ public class ChessFigureSFX : MonoBehaviour
         SetPitch();
         audioSource.transform.parent = null;
         audioSource.clip = aoeTakeDamageClips.GetRandom();
+        Debug.Log("playing clip: "+audioSource.clip.name);
         audioSource.Play();
     }
 
