@@ -176,8 +176,8 @@ public class ChessFigureBrain : MonoBehaviour
         if (owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.PAWN_DOUBLE_ATTACK))
         {
             additionalAttackChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.PAWN_DOUBLE_ATTACK);
-            if (owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.PAWN_DOUBLE_ATTACK_100_CHANCE))
-                additionalAttackChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.PAWN_DOUBLE_ATTACK_100_CHANCE);
+            if (owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.PAWN_PRECISE_DOUBLE_ATTACK))
+                additionalAttackChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.PAWN_PRECISE_DOUBLE_ATTACK);
         }
 
         currentAttackTimes++;
