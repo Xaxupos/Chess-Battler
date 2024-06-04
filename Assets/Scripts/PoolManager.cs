@@ -123,5 +123,9 @@ public class Pool
 
 public enum ObjectType
 {
-    AUDIO_SOURCE
+    AUDIO_SOURCE,
+    UNIVERSAL_MOVE_VFX,
+    UNIVERSAL_TAKE_DAMAGE_VFX,
+    UNIVERSAL_DIE_VFX,
+    KNIGHT_BOMB_VFX
 }

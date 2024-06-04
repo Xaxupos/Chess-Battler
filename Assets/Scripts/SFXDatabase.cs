@@ -11,6 +11,9 @@ public class SFXDatabase : ScriptableObject
         var dbEntry = gameSFX[actionType];
 
         var audioSourceGO = PoolManager.Instance.GetFromPool(ObjectType.AUDIO_SOURCE);
+
+        if (audioSourceGO == null) return;
+
         if(audioSourceGO.TryGetComponent(out AudioSource audioSource))
         {
             audioSource.pitch = Random.Range(dbEntry.minPitch, dbEntry.maxPitch);

@@ -135,7 +135,7 @@ public class ChessFigureBrain : MonoBehaviour
         if (defender.figureHealthSystem.IsDead)
         {
             GameEffectsDatabase.Instance.PlaySFX(defender.figureSFX.dieType);
-            defender.figureVFX.PlayDieVFX();
+            GameEffectsDatabase.Instance.PlayVFX(defender.figureVFX.dieType, defender.transform.position);
             MoveToSquare(square);
         }
         else
@@ -146,7 +146,7 @@ public class ChessFigureBrain : MonoBehaviour
             attacker.transform.DOMove(defender.transform.position, moveTweenDuration / 2.0f).SetEase(Ease.Linear).OnComplete(() =>
             {
                 GameEffectsDatabase.Instance.PlaySFX(defender.figureSFX.takeDamageType);
-                defender.figureVFX.PlayTakeDamageVFX();
+                GameEffectsDatabase.Instance.PlayVFX(defender.figureVFX.takeDamageType, defender.transform.position);
 
                 HandleKnockback(defender, attackerInitPosition);
 
@@ -177,6 +177,7 @@ public class ChessFigureBrain : MonoBehaviour
     {
         bool aoeAllowed = true;
         ActionType sfxType = ActionType.UNIVERSAL_TAKE_DAMAGE;
+        ActionType vfxType = ActionType.UNIVERSAL_TAKE_DAMAGE;
         
 
         if(owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.KNIGHT_BOMB_AOE))
@@ -185,6 +186,7 @@ public class ChessFigureBrain : MonoBehaviour
             float abilityTriggerChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.KNIGHT_BOMB_AOE); //0 to 1
 
             sfxType = ActionType.KNIGHT_BOMB_ABILITY;
+            vfxType = ActionType.KNIGHT_BOMB_ABILITY;
             aoeAllowed = randomValue <= abilityTriggerChance;
         }
 
@@ -207,11 +209,11 @@ public class ChessFigureBrain : MonoBehaviour
                 GameEffectsDatabase.Instance.PlaySFX(sfxType);
                 if (squareToAttack.CurrentFigure.figureHealthSystem.IsDead)
                 {
-                    squareToAttack.CurrentFigure.figureVFX.PlayDieVFX();
+                    GameEffectsDatabase.Instance.PlayVFX(squareToAttack.CurrentFigure.figureVFX.dieType, squareToAttack.CurrentFigure.transform.position);
                 }
                 else
                 {
-                    squareToAttack.CurrentFigure.figureVFX.PlayAoeTakeDamageVFX();
+                    GameEffectsDatabase.Instance.PlayVFX(vfxType, squareToAttack.CurrentFigure.transform.position);
                 }
             }
         }
