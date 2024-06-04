@@ -80,9 +80,6 @@ namespace VInspector
 
                         if (selName != tab.selectedSubtab.name)
                         {
-                            VInspectorState.instance.RecordUndo();
-                            rootProperty.serializedObject.targetObject.Dirty();
-
                             tab.selectedSubtabIndex = tab.subtabs.IndexOfFirst(r => r.name == selName);
 
                             selectedTabPath = rootTab.GetSelectedTabPath();
@@ -261,16 +258,7 @@ namespace VInspector
 
                         var foldout = rootFoldout.GetSubfoldout(drawingFoldoutPath);
 
-                        var newExpanded = drawFoldout(foldout.name, foldout.isExpanded, foldout);
-
-
-
-                        if (newExpanded == foldout.isExpanded) return;
-
-                        VInspectorState.instance.RecordUndo();
-                        rootProperty.serializedObject.targetObject.Dirty();
-
-                        foldout.isExpanded = newExpanded;
+                        foldout.isExpanded = drawFoldout(foldout.name, foldout.isExpanded, foldout);
 
                     }
                     void endFoldout()
@@ -1123,12 +1111,24 @@ namespace VInspector
                 if (!rootTab.subtabs.Any() && !rootFoldout.subfoldouts.Any() && !this.buttons.Any(r => r.parameterInfos.Any())) return;
 
 
-                var attributesState = VInspector.GetAttributesState(rootProperty.serializedObject.targetObject);
+                AttributesState attributesState;
 
+                void set_attributesState()
+                {
+                    var scriptName = rootProperty.serializedObject.targetObject.GetType().Name;
+
+                    if (!VInspectorState.instance.attributeStates_byScriptName.ContainsKey(scriptName))
+                        VInspectorState.instance.attributeStates_byScriptName[scriptName] = new();
+
+                    attributesState = VInspectorState.instance.attributeStates_byScriptName[scriptName];
+
+                }
                 void linkTab(Tab tab, string parentPath)
                 {
                     tab.attributesState = attributesState;
                     tab.path = parentPath + "/" + tab.name;
+
+                    attributesState.selectedSubtabIndexes_byTabPath.TryGetValue(tab.path, out tab._selectedSubtabIndex);
 
                     foreach (var subtab in tab.subtabs)
                         linkTab(subtab, tab.path);
@@ -1139,6 +1139,8 @@ namespace VInspector
                     foldout.attributesState = attributesState;
                     foldout.path = parentPath + "/" + foldout.name;
 
+                    attributesState.isExpandeds_byFoldoutPath.TryGetValue(foldout.path, out foldout._isExpanded);
+
                     foreach (var subfoldout in foldout.subfoldouts)
                         linkFoldout(subfoldout, foldout.path);
 
@@ -1148,11 +1150,13 @@ namespace VInspector
                     button.attributesState = attributesState;
                     button.path = parentPath + "/" + button.name;
 
+                    attributesState.isExpandeds_byButtonPath.TryGetValue(button.path, out button._isExpanded);
+
                 }
 
 
+                set_attributesState();
                 linkTab(rootTab, rootProperty.propertyPath);
-
                 linkFoldout(rootFoldout, rootProperty.propertyPath);
 
                 foreach (var r in this.buttons.Where(r => r.parameterInfos.Any()))
@@ -1336,18 +1340,13 @@ namespace VInspector
 
         public int selectedSubtabIndex
         {
-            get
-            {
-                if (attributesState == null) return _selectedSubtabIndex;
-
-                return attributesState.selectedSubtabIndexes_byTabPath.TryGetValue(path, out int savedIndex) ? savedIndex : 0;
-
-            }
+            get => _selectedSubtabIndex;
             set
             {
-                if (attributesState == null) { _selectedSubtabIndex = value; return; }
+                _selectedSubtabIndex = value;
 
-                attributesState.selectedSubtabIndexes_byTabPath[path] = value;
+                if (attributesState != null)
+                    attributesState.selectedSubtabIndexes_byTabPath[path] = value;
 
             }
         }
@@ -1399,19 +1398,13 @@ namespace VInspector
 
         public bool isExpanded
         {
-            get
-            {
-                if (isRootFoldout) return true;
-                if (attributesState == null) return _isExpanded;
-
-                return attributesState.isExpandeds_byFoldoutPath.TryGetValue(path, out bool savedState) ? savedState : false;
-
-            }
+            get => _isExpanded || isRootFoldout;
             set
             {
-                if (attributesState == null) { _isExpanded = value; return; }
+                _isExpanded = value;
 
-                attributesState.isExpandeds_byFoldoutPath[path] = value;
+                if (attributesState != null)
+                    attributesState.isExpandeds_byFoldoutPath[path] = value;
 
             }
         }
@@ -1465,18 +1458,13 @@ namespace VInspector
 
         public bool isExpanded
         {
-            get
-            {
-                if (attributesState == null) return _isExpanded;
-
-                return attributesState.isExpandeds_byButtonPath.TryGetValue(path, out bool savedState) ? savedState : false;
-
-            }
+            get => _isExpanded;
             set
             {
-                if (attributesState == null) { _isExpanded = value; return; }
+                _isExpanded = value;
 
-                attributesState.isExpandeds_byButtonPath[path] = value;
+                if (attributesState != null)
+                    attributesState.isExpandeds_byButtonPath[path] = value;
 
             }
         }

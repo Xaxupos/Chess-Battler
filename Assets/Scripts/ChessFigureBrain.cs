@@ -105,7 +105,7 @@ public class ChessFigureBrain : MonoBehaviour
             .SetEase(Ease.Linear)
             .OnStart(() =>
             {
-                owner.figureSFX.PlayMoveClip();
+                GameEffectsDatabase.Instance.PlaySFX(owner.figureSFX.moveType);
             })
             .OnComplete(() =>
             {
@@ -134,17 +134,18 @@ public class ChessFigureBrain : MonoBehaviour
 
         if (defender.figureHealthSystem.IsDead)
         {
+            GameEffectsDatabase.Instance.PlaySFX(defender.figureSFX.dieType);
             defender.figureVFX.PlayDieVFX();
             MoveToSquare(square);
         }
         else
         {
             Vector3 attackerInitPosition = attacker.transform.position;
-            attacker.figureSFX.PlayAttackClip();
+            GameEffectsDatabase.Instance.PlaySFX(attacker.figureSFX.attackType);
 
             attacker.transform.DOMove(defender.transform.position, moveTweenDuration / 2.0f).SetEase(Ease.Linear).OnComplete(() =>
             {
-                defender.figureSFX.PlayTakeDamageClip();
+                GameEffectsDatabase.Instance.PlaySFX(defender.figureSFX.takeDamageType);
                 defender.figureVFX.PlayTakeDamageVFX();
 
                 HandleKnockback(defender, attackerInitPosition);
@@ -175,12 +176,15 @@ public class ChessFigureBrain : MonoBehaviour
     private void HandleAOEDamage(ChessboardSquare square, float calculatedDamage)
     {
         bool aoeAllowed = true;
+        ActionType sfxType = ActionType.UNIVERSAL_TAKE_DAMAGE;
+        
 
         if(owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.KNIGHT_BOMB_AOE))
         {
             float randomValue = Random.value; //0 to 1
             float abilityTriggerChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.KNIGHT_BOMB_AOE); //0 to 1
 
+            sfxType = ActionType.KNIGHT_BOMB_ABILITY;
             aoeAllowed = randomValue <= abilityTriggerChance;
         }
 
@@ -200,7 +204,7 @@ public class ChessFigureBrain : MonoBehaviour
 
                 if (!squareToAttack || !squareToAttack.CurrentFigure || !squareToAttack.CurrentFigure.figureHealthSystem) continue;
 
-                squareToAttack.CurrentFigure.figureSFX.PlayAoeTakeDamageClip();
+                GameEffectsDatabase.Instance.PlaySFX(sfxType);
                 if (squareToAttack.CurrentFigure.figureHealthSystem.IsDead)
                 {
                     squareToAttack.CurrentFigure.figureVFX.PlayDieVFX();

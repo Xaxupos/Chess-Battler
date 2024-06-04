@@ -34,7 +34,6 @@ public class ChessFigureSpawner : MonoBehaviour
                     SpawnPlayerPawn(chessSquare);
                     GhostFigureManager.Instance.DropGhostFigure();
                     FigureJustBought = false;
-                    FormationsManager.Instance.ScanForFormations(combatManager.chessboard);
                 }
             }
         }

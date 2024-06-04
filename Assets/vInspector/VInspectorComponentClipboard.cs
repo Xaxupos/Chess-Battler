@@ -27,8 +27,8 @@ namespace VInspector
                 instance.discardedComponentDatas.Add(alreadyCopiedData);
                 instance.copiedComponetDatas.Remove(alreadyCopiedData);
             }
-
-            instance.copiedComponetDatas.Add(GetComponentData(component));
+            else
+                instance.copiedComponetDatas.Add(GetComponentData(component));
 
             instance.Dirty();
 
@@ -134,8 +134,8 @@ namespace VInspector
                 instance.discardedComponentDatas.Add(alreadySavedData);
                 instance.savedComponentDatas.Remove(alreadySavedData);
             }
-
-            instance.savedComponentDatas.Add(GetComponentData(component));
+            else
+                instance.savedComponentDatas.Add(GetComponentData(component));
 
             instance.Dirty();
 

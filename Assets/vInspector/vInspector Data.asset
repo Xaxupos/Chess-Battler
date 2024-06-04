@@ -14,10 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   items:
   - globalId:
-      globalObjectIdString: GlobalObjectId_V1-1-475857edd21d0a14cbdb78b93e83ced4-6773363556711937628-0
-    _typeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
-      Culture=neutral, PublicKeyToken=null
-    _obj: {fileID: 6773363556711937628, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+      globalObjectIdString: GlobalObjectId_V1-3-6f63498b1734b4b4ea0d2d11433c8530-11400000-0
+    _typeString: SFXDatabase, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+      PublicKeyToken=null
+    _obj: {fileID: 11400000, guid: 6f63498b1734b4b4ea0d2d11433c8530, type: 2}
     isSceneGameObject: 0
     isAsset: 1
-    id: 1061630968
+    id: 1063848944
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-1-d503024af7153364f935a81a69d4d53e-11500000-0
+    _typeString: UnityEditor.MonoScript, UnityEditor.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 11500000, guid: d503024af7153364f935a81a69d4d53e, type: 3}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1052296641

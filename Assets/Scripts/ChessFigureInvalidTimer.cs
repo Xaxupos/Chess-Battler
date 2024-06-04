@@ -28,13 +28,13 @@ public class ChessFigureInvalidTimer : MonoBehaviour
         OnInvalidIncrease?.Invoke();
         if(invalidCount >= maxInvalidCount)
         {
-            owner.figureSFX.PlayInvalidDieClip();
+            GameEffectsDatabase.Instance.PlaySFX(owner.figureSFX.invalidDieType);
             owner.figureVFX.PlayDieVFX();
             owner.figureHealthSystem.ForceDie();
         }
         else
         {
-            owner.figureSFX.PlayInvalidIncreaseClip();
+            GameEffectsDatabase.Instance.PlaySFX(owner.figureSFX.invalidIncreaseType);
         }
     }
 

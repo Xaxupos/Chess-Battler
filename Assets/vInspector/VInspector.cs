@@ -466,6 +466,8 @@ namespace VInspector
 
 
 
+
+
         static void ComponentShortcuts() // globalEventHandler
         {
             if (EditorWindow.mouseOverWindow is not EditorWindow hoveredWindow) return;
@@ -1133,7 +1135,6 @@ namespace VInspector
 
 
 
-
         static void UpdateComponentHeaders(Editor editor) // finishedDefaultHeaderGUI
         {
             if (!curEvent.isLayout) return;
@@ -1196,149 +1197,7 @@ namespace VInspector
 
 
 
-
-        public static AttributesState GetAttributesState(Object target)
-        {
-            if (firstAttrStateCacheLayer.TryGetValue(target, out var cachedResult)) return cachedResult;
-
-            AttributesState attributesState = null;
-
-            void sceneScript()
-            {
-                if (AssetDatabase.Contains(target)) return;
-                if (target is not Component component) return;
-                if (StageUtility.GetCurrentStage() is PrefabStage) return;
-
-
-                var sceneGuid = component.gameObject.scene.path.ToGuid();
-                var instanceId = component.GetInstanceID();
-
-                AttributesStateContainer container = null;
-
-
-                void getContainer()
-                {
-                    state.attributesStateContainers_bySceneGuid.TryGetValue(sceneGuid, out container);
-                }
-                void createContainer()
-                {
-                    if (container != null) return;
-                    if (Application.isPlaying) return;
-
-                    container = new();
-
-                    state.attributesStateContainers_bySceneGuid[sceneGuid] = container;
-
-                }
-
-                void getSaved()
-                {
-                    if (container == null) return;
-
-                    container.savedAttributesStates_byInstanceId.TryGetValue(instanceId, out attributesState);
-
-                }
-                void getUnsaved()
-                {
-                    if (attributesState != null) return;
-                    if (container == null) return;
-
-                    container.unsavedAttributesStates_byInstanceId.TryGetValue(instanceId, out attributesState);
-
-                }
-                void createNewUnsaved()
-                {
-                    if (attributesState != null) return;
-                    if (container == null) return;
-                    if (Application.isPlaying) return;
-
-
-                    attributesState = new();
-
-                    container.unsavedAttributesStates_byInstanceId[instanceId] = attributesState;
-
-                }
-
-
-                getContainer();
-                createContainer();
-
-                getSaved();
-                getUnsaved();
-                createNewUnsaved();
-
-            }
-            void prefabScript() { }
-            void asset()
-            {
-                if (!AssetDatabase.Contains(target)) return;
-
-
-                var globalId = target.GetGlobalID();
-
-                if (!state.attributesStates_byAssetGlobalId.ContainsKey(globalId))
-                    state.attributesStates_byAssetGlobalId[globalId] = new();
-
-                attributesState = state.attributesStates_byAssetGlobalId[globalId];
-
-            }
-
-            sceneScript();
-            prefabScript();
-            asset();
-
-
-            firstAttrStateCacheLayer[target] = attributesState;
-
-            return attributesState;
-
-        }
-
-        public static Dictionary<Object, AttributesState> firstAttrStateCacheLayer = new();
-
-        public static void LoadAttributeStatesForScene(Scene scene) // on scene loaded
-        {
-            if (Application.isPlaying) return;
-            if (!state.attributesStateContainers_bySceneGuid.TryGetValue(scene.path.ToGuid(), out var container)) return;
-
-
-            var globalIds = container.savedAttributesStates_byGlobalId.Keys.ToList();
-            var attrStates = container.savedAttributesStates_byGlobalId.Values.ToList();
-            var instanceIds = globalIds.GetObjectInstanceIds();
-
-
-            container.savedAttributesStates_byInstanceId.Clear();
-
-            for (int i = 0; i < attrStates.Count; i++)
-                if (instanceIds[i] != 0)
-                    container.savedAttributesStates_byInstanceId[instanceIds[i]] = attrStates[i];
-                else
-                    container.savedAttributesStates_byGlobalId.Remove(globalIds[i]);
-
-        }
-        public static void SaveAttributeStatesForScene(Scene scene) // on scene saved
-        {
-            if (Application.isPlaying) return;
-            if (!state.attributesStateContainers_bySceneGuid.TryGetValue(scene.path.ToGuid(), out var container)) return;
-
-
-            var instanceIds = container.unsavedAttributesStates_byInstanceId.Keys;
-            var attrStates = container.unsavedAttributesStates_byInstanceId.Values.ToList();
-            var globalIds = instanceIds.GetGlobalIDs();
-
-
-            for (int i = 0; i < attrStates.Count; i++)
-                if (!globalIds[i].isNull)
-                    container.savedAttributesStates_byGlobalId[globalIds[i]] = attrStates[i];
-
-            container.unsavedAttributesStates_byInstanceId.Clear();
-
-        }
-
-
-
-
-        static void LoadBookmarksForScene(Scene scene) // on scene loaded
+        static void LoadBookmarkObjectsForScene(Scene scene) // on scene loaded
         {
             if (!data) return;
 
@@ -1356,26 +1215,24 @@ namespace VInspector
 
         }
 
-        static void StashBookmarks() // on playmode enter
+        static void StashBookmarkObjects() // on playmode enter
         {
-            stashedBookmarkedObjects_byItems.Clear();
+            stashedBookmarkObjects_byItem.Clear();
 
             foreach (var item in data.items)
-                stashedBookmarkedObjects_byItems[item] = item._obj;
+                stashedBookmarkObjects_byItem[item] = item._obj;
 
         }
-        static void UnstashBookmarks() // on playmode exit
+        static void UnstashBookmarkObjects() // on playmode exit
         {
             foreach (var item in data.items)
-                if (stashedBookmarkedObjects_byItems.TryGetValue(item, out var stashedObject))
+                if (stashedBookmarkObjects_byItem.TryGetValue(item, out var stashedObject))
                     if (stashedObject != null)
                         item._obj = stashedObject;
 
         }
 
-        static Dictionary<Item, Object> stashedBookmarkedObjects_byItems = new();
-
-
+        static Dictionary<Item, Object> stashedBookmarkObjects_byItem = new();
 
 
 
@@ -1383,55 +1240,46 @@ namespace VInspector
 
         static void OnSceneOpened_inEditMode(Scene scene, OpenSceneMode _)
         {
-            LoadAttributeStatesForScene(scene);
-
-            LoadBookmarksForScene(scene);
+            LoadBookmarkObjectsForScene(scene);
 
         }
         static void OnSceneLoaded_inPlaymode(Scene scene, LoadSceneMode loadMode)
         {
             if ((int)loadMode == 4) return; // playmode enter
 
-            LoadBookmarksForScene(scene);
+            LoadBookmarkObjectsForScene(scene);
 
         }
         static void OnProjectLoaded()
         {
             for (int i = 0; i < EditorSceneManager.sceneCount; i++)
-                LoadAttributeStatesForScene(EditorSceneManager.GetSceneAt(i));
-
-            for (int i = 0; i < EditorSceneManager.sceneCount; i++)
-                LoadBookmarksForScene(EditorSceneManager.GetSceneAt(i));
+                LoadBookmarkObjectsForScene(EditorSceneManager.GetSceneAt(i));
 
         }
         static void OnPluginReenabled()
         {
             for (int i = 0; i < EditorSceneManager.sceneCount; i++)
-                LoadAttributeStatesForScene(EditorSceneManager.GetSceneAt(i));
+                LoadBookmarkObjectsForScene(EditorSceneManager.GetSceneAt(i));
 
-            for (int i = 0; i < EditorSceneManager.sceneCount; i++)
-                LoadBookmarksForScene(EditorSceneManager.GetSceneAt(i));
-
-        }
-        static void OnSceneSaved(Scene scene, string _)
-        {
-            SaveAttributeStatesForScene(scene);
         }
         static void OnPlaymodeStateChanged(PlayModeStateChange state) //
         {
             if (!data) return;
 
             if (state == PlayModeStateChange.EnteredPlayMode)
-                StashBookmarks();
+                StashBookmarkObjects();
 
             if (state == PlayModeStateChange.EnteredEditMode)
-                UnstashBookmarks();
+                UnstashBookmarkObjects();
 
             // scene objects can get recreated in playmode if the scene was reloaded
             // in this case their respective items will be updated in OnSceneLoaded_inPlaymode to reference the recreated versions
             // so we ensure that after playmode items reference the same objects as they did before playmode
 
         }
+
+
+
 
 
 
@@ -1485,9 +1333,6 @@ namespace VInspector
 
 
 
-
-                UnityEditor.SceneManagement.EditorSceneManager.sceneSaving -= OnSceneSaved;
-                UnityEditor.SceneManagement.EditorSceneManager.sceneSaving += OnSceneSaved;
 
 
 
@@ -1560,8 +1405,6 @@ namespace VInspector
 
 
 
-        static VInspectorState state => VInspectorState.instance;
-
         static IEnumerable<EditorWindow> allInspectors => _allInspectors ??= t_InspectorWindow.GetFieldValue<IList>("m_AllInspectors").Cast<EditorWindow>();
         static IEnumerable<EditorWindow> _allInspectors;
 
@@ -1574,7 +1417,7 @@ namespace VInspector
 
         static Type t_VHierarchy = Type.GetType("VHierarchy.VHierarchy") ?? Type.GetType("VHierarchy.VHierarchy, VHierarchy, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null");
 
-        public static MethodInfo mi_VHierarchy_GetIconName = t_VHierarchy?.GetMethod("GetIconName_forVFavorites", maxBindingFlags);
+        public static MethodInfo mi_VHierarchy_GetIconName = t_VHierarchy?.GetMethod("GetIconName_forVInspector", maxBindingFlags);
 
 
 
@@ -1582,7 +1425,7 @@ namespace VInspector
 
 
 
-        const string version = "2.0.0 a4";
+        const string version = "2.0.0 a5";
 
 
     }

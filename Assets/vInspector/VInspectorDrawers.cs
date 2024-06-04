@@ -37,25 +37,36 @@ namespace VInspector
                         fullHeaderRect.Draw(Greyscale(1, .07f));
 
                     SetGUIColor(Color.clear);
+                    SetGUIEnabled(true);
 
                     if (GUI.Button(fullHeaderRect.AddWidth(-50), ""))
                         prop.isExpanded = !prop.isExpanded;
 
                     ResetGUIColor();
+                    ResetGUIEnabled();
+
 
 
                     var triangleRect = rect.SetHeight(EditorGUIUtility.singleLineHeight);
 
+                    SetGUIEnabled(true);
+
                     EditorGUI.Foldout(triangleRect, prop.isExpanded, "");
+
+                    ResetGUIEnabled();
+
 
                 }
                 void label()
                 {
                     SetLabelBold();
+                    SetLabelFontSize(12);
                     SetGUIColor(Greyscale(.9f));
+                    SetGUIEnabled(true);
 
                     GUI.Label(headerRect, prop.displayName);
 
+                    ResetGUIEnabled();
                     ResetGUIColor();
                     ResetLabelStyle();
 

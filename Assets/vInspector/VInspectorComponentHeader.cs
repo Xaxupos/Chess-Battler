@@ -280,6 +280,7 @@ namespace VInspector
             {
                 if (!mousePressedOnBackground) return;
                 if (!curEvent.isMouseUp) return;
+                if (curEvent.mouseButton != 0) return;
                 if (headerRect.SetWidth(16).MoveX(40).IsHovered()) return; // enabled toggle
                 if (headerRect.SetWidthFromRight(64).IsHovered()) return; // right buttons
 

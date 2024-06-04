@@ -22,20 +22,7 @@ namespace VInspector
     public class VInspectorState : ScriptableSingleton<VInspectorState>
     {
 
-        public SerializableDictionary<string, AttributesStateContainer> attributesStateContainers_bySceneGuid = new();
-
-        public SerializableDictionary<GlobalID, AttributesState> attributesStates_byAssetGlobalId = new();
-
-
-        [System.Serializable]
-        public class AttributesStateContainer
-        {
-            public SerializableDictionary<int, AttributesState> unsavedAttributesStates_byInstanceId = new();
-            public SerializableDictionary<int, AttributesState> savedAttributesStates_byInstanceId = new();
-
-            public SerializableDictionary<GlobalID, AttributesState> savedAttributesStates_byGlobalId = new();
-
-        }
+        public SerializableDictionary<string, AttributesState> attributeStates_byScriptName = new();
 
         [System.Serializable]
         public class AttributesState
@@ -67,9 +54,7 @@ namespace VInspector
 
         public static void Clear()
         {
-            instance.attributesStates_byAssetGlobalId.Clear();
-            instance.attributesStateContainers_bySceneGuid.Clear();
-            instance.attributesStates_byAssetGlobalId.Clear();
+            instance.attributeStates_byScriptName.Clear();
             instance.itemStates_byItemId.Clear();
 
         }

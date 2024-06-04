@@ -454,28 +454,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6dc2a92fefd52ab4cae61a39245b1590, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 7283962391544568055}
-  moveClips:
-  - {fileID: 8300000, guid: a3b1acc1a17262145967130e18b19838, type: 3}
-  - {fileID: 8300000, guid: 43d2fc7f3748e1d4a97e8be03cc655f9, type: 3}
-  attackClips:
-  - {fileID: 8300000, guid: f88a73ed630934747a7d65eacea235ac, type: 3}
-  - {fileID: 8300000, guid: b494a3904ec9bb24689a8735816cd7fb, type: 3}
-  - {fileID: 8300000, guid: abc24dbc8751e3243aba6c180ea50ae0, type: 3}
-  takeDamageClips:
-  - {fileID: 8300000, guid: 0374d420b75f6a549ac1c8511dcec073, type: 3}
-  - {fileID: 8300000, guid: 3bfc04e9e68aee640b0dc211d04c531e, type: 3}
-  - {fileID: 8300000, guid: 20a91d01a8f9c1a4383be0f36eba846d, type: 3}
-  aoeTakeDamageClips:
-  - {fileID: 8300000, guid: 240a9c62d5a0c884390b72b9df150e50, type: 3}
-  invalidDieClips:
-  - {fileID: 8300000, guid: 0374d420b75f6a549ac1c8511dcec073, type: 3}
-  - {fileID: 8300000, guid: 3bfc04e9e68aee640b0dc211d04c531e, type: 3}
-  - {fileID: 8300000, guid: 20a91d01a8f9c1a4383be0f36eba846d, type: 3}
-  invalidIncreaseClips:
-  - {fileID: 8300000, guid: dd2f27922b61b394ebbd3c3e3605a50e, type: 3}
-  minPitch: 0.95
-  maxPitch: 1.05
+  moveType: 1
+  attackType: 0
+  takeDamageType: 2
+  dieType: 3
+  invalidIncreaseType: 5
+  invalidDieType: 6
 --- !u!1 &2304826058075230669
 GameObject:
   m_ObjectHideFlags: 0
