@@ -135,7 +135,7 @@ public class ChessFigureBrain : MonoBehaviour
         if (defender.figureHealthSystem.IsDead)
         {
             GameEffectsDatabase.Instance.PlaySFX(defender.figureSFX.dieType);
-            GameEffectsDatabase.Instance.PlayVFX(defender.figureVFX.dieType, defender.transform.position);
+            GameEffectsDatabase.Instance.PlayVFX(defender.figureVFX.dieType, defender.transform.position, defender.CurrentSquare.transform);
             MoveToSquare(square);
         }
         else
@@ -146,7 +146,7 @@ public class ChessFigureBrain : MonoBehaviour
             attacker.transform.DOMove(defender.transform.position, moveTweenDuration / 2.0f).SetEase(Ease.Linear).OnComplete(() =>
             {
                 GameEffectsDatabase.Instance.PlaySFX(defender.figureSFX.takeDamageType);
-                GameEffectsDatabase.Instance.PlayVFX(defender.figureVFX.takeDamageType, defender.transform.position);
+                GameEffectsDatabase.Instance.PlayVFX(defender.figureVFX.takeDamageType, defender.transform.position, defender.CurrentSquare.transform);
 
                 HandleKnockback(defender, attackerInitPosition);
 
@@ -209,11 +209,7 @@ public class ChessFigureBrain : MonoBehaviour
                 GameEffectsDatabase.Instance.PlaySFX(sfxType);
                 if (squareToAttack.CurrentFigure.figureHealthSystem.IsDead)
                 {
-                    GameEffectsDatabase.Instance.PlayVFX(squareToAttack.CurrentFigure.figureVFX.dieType, squareToAttack.CurrentFigure.transform.position);
-                }
-                else
-                {
-                    GameEffectsDatabase.Instance.PlayVFX(vfxType, squareToAttack.CurrentFigure.transform.position);
+                    GameEffectsDatabase.Instance.PlayVFX(squareToAttack.CurrentFigure.figureVFX.dieType, squareToAttack.CurrentFigure.transform.position, squareToAttack.transform);
                 }
             }
         }

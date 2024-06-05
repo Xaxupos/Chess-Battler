@@ -29,7 +29,7 @@ public class ChessFigureInvalidTimer : MonoBehaviour
         if(invalidCount >= maxInvalidCount)
         {
             GameEffectsDatabase.Instance.PlaySFX(owner.figureSFX.invalidDieType);
-            GameEffectsDatabase.Instance.PlayVFX(owner.figureVFX.dieType, owner.transform.position);
+            GameEffectsDatabase.Instance.PlayVFX(owner.figureVFX.dieType, owner.transform.position, owner.CurrentSquare.transform);
             owner.figureHealthSystem.ForceDie();
         }
         else

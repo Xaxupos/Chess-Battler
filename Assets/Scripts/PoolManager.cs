@@ -68,7 +68,10 @@ public class PoolManager : MonoBehaviour
             if (delay <= 0)
                 returnedPool.objectPool.Release(objectToRelease);
             else
-                StartCoroutine(DelayRelease(delay, returnedPool, objectToRelease));
+            {
+                var parent = objectPools[objectType].objectsHolderParent;
+                StartCoroutine(DelayRelease(delay, returnedPool, objectToRelease, parent));
+            }
 
             return;
         }
@@ -76,12 +79,16 @@ public class PoolManager : MonoBehaviour
         Debug.LogError($"Cannot release an {objectToRelease.name} of type {objectType} back to the Pool!");
     }
 
-    private IEnumerator DelayRelease(float delay, Pool poolToReturn, GameObject objToRelease)
+    private IEnumerator DelayRelease(float delay, Pool poolToReturn, GameObject objToRelease, Transform parent)
     {
         yield return new WaitForSeconds(delay);
 
         if (poolToReturn == null || objToRelease == null) yield break;
 
+        if(parent)
+        {
+            objToRelease.transform.SetParent(parent, false);
+        }
         poolToReturn.objectPool.Release(objToRelease);
     }
 

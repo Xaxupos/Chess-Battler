@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4905b5db59b90674492b624795ac895d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chessboard: {fileID: 8177977914355924870}
   sfxDatabase: {fileID: 11400000, guid: 6f63498b1734b4b4ea0d2d11433c8530, type: 2}
   vfxDatabase: {fileID: 11400000, guid: cf1b92f065f532b4299a0007c7765325, type: 2}
 --- !u!1 &2981100373312533862

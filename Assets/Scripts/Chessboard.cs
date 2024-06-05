@@ -92,7 +92,7 @@ public class Chessboard : MonoBehaviour
         {
             scale = gridScaleBySize[gridXSize];
         }
-        transform.localScale = new Vector2(scale, scale);
+        transform.localScale = new Vector3(scale, scale, scale);
 
         for (int x = 0; x < gridXSize; x++)
         {
@@ -105,7 +105,7 @@ public class Chessboard : MonoBehaviour
                 square.Chessboard = this;
                 square.transform.SetParent(transform);
                 square.transform.localPosition = position;
-                square.transform.localScale = Vector2.one;
+                square.transform.localScale = Vector3.one;
                 square.SetBoardPosition(new Vector2Int(x, y));
                 ChessboardGrid[x, y] = square;
             }

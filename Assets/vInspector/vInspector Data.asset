@@ -29,3 +29,11 @@ MonoBehaviour:
     isSceneGameObject: 0
     isAsset: 1
     id: 1052296641
+  - globalId:
+      globalObjectIdString: GlobalObjectId_V1-1-475857edd21d0a14cbdb78b93e83ced4-6773363556711937628-0
+    _typeString: UnityEngine.GameObject, UnityEngine.CoreModule, Version=0.0.0.0,
+      Culture=neutral, PublicKeyToken=null
+    _obj: {fileID: 6773363556711937628, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
+    isSceneGameObject: 0
+    isAsset: 1
+    id: 1010233729

@@ -6,7 +6,7 @@ public class VFXDatabase : ScriptableObject
 {
     public SerializedDictionary<ActionType, VFXDatabaseEntry> gameVFX;
 
-    public void PlayGameVFX(ActionType actionType, Vector3 position)
+    public void PlayGameVFX(ActionType actionType, Vector3 position, Transform parent = null)
     {
         if (!gameVFX.ContainsKey(actionType)) return;
 
@@ -20,11 +20,19 @@ public class VFXDatabase : ScriptableObject
 
         if (vfx)
         {
+            if (parent != null)
+            {
+                vfxGO.transform.SetParent(parent, false);
+            }
+
             vfxGO.transform.position = position;
             vfx.Play();
             PoolManager.Instance.ReleaseToPool(dbEntry.objectType, vfxGO, 2.5f);
         }
     }
+
+
+
 }
 
 [System.Serializable]
