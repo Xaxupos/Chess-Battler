@@ -86,4 +86,13 @@ MonoBehaviour:
         maxPitch: 1
       index: 6
       isKeyRepeated: 0
+    - Key: 7
+      Value:
+        clips:
+        - {fileID: 8300000, guid: 2fd4c8a409d70c646b567f46666a373d, type: 3}
+        volume: 1
+        minPitch: 0.95
+        maxPitch: 1
+      index: 7
+      isKeyRepeated: 0
     dividerPos: 0.33

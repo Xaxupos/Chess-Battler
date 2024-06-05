@@ -24,6 +24,11 @@ public class Chessboard : MonoBehaviour
         CenterGrid();
     }
 
+    public float GetCellSize()
+    {
+        return cellSize;
+    }
+
     public bool IsWithinBounds(Vector2Int position)
     {
         return position.x >= 0 && position.x < gridXSize && position.y >= 0 && position.y < gridYSize;

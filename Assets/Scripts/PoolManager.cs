@@ -115,9 +115,9 @@ public class PoolManager : MonoBehaviour
 [System.Serializable]
 public class Pool
 {
-    public List<GameObject> objectPrefabs;
     public Transform objectsHolderParent;
     public int startAmount = 10;
+    public List<GameObject> objectPrefabs;
 
     public ObjectPool<GameObject> objectPool { get; set; }
 
@@ -134,5 +134,7 @@ public enum ObjectType
     UNIVERSAL_MOVE_VFX,
     UNIVERSAL_TAKE_DAMAGE_VFX,
     UNIVERSAL_DIE_VFX,
-    KNIGHT_BOMB_VFX
+    KNIGHT_BOMB_VFX,
+    TURTLE_FORMATION_HIGHLIGHT_VFX,
+    SPRITE_ELEMENT
 }

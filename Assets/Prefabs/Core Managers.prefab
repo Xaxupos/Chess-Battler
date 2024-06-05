@@ -1018,6 +1018,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 90805666425905469}
+  - {fileID: 7772158450903923763}
   - {fileID: 5437763294136395599}
   m_Father: {fileID: 514575671426368801}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1037,37 +1038,84 @@ MonoBehaviour:
     serializedKvps:
     - Key: 0
       Value:
-        objectPrefabs:
-        - {fileID: 5439075219522760925, guid: fc2171cb19a710e4aba262d256d9a8f4, type: 3}
         objectsHolderParent: {fileID: 90805666425905469}
         startAmount: 2
+        objectPrefabs:
+        - {fileID: 5439075219522760925, guid: fc2171cb19a710e4aba262d256d9a8f4, type: 3}
       index: 0
       isKeyRepeated: 0
     - Key: 2
       Value:
-        objectPrefabs:
-        - {fileID: 1633157958578198340, guid: a54028588a06c3c4e8d6714fb72bbd48, type: 3}
         objectsHolderParent: {fileID: 5437763294136395599}
         startAmount: 2
+        objectPrefabs:
+        - {fileID: 1633157958578198340, guid: a54028588a06c3c4e8d6714fb72bbd48, type: 3}
       index: 1
       isKeyRepeated: 0
     - Key: 3
       Value:
-        objectPrefabs:
-        - {fileID: 6727488525124797387, guid: d4dcda21a18e7004c9cbca85da53caea, type: 3}
         objectsHolderParent: {fileID: 5437763294136395599}
         startAmount: 2
+        objectPrefabs:
+        - {fileID: 6727488525124797387, guid: d4dcda21a18e7004c9cbca85da53caea, type: 3}
       index: 2
       isKeyRepeated: 0
     - Key: 4
       Value:
-        objectPrefabs:
-        - {fileID: 660413313926159992, guid: 451cc772146d05345a776512f75c9033, type: 3}
         objectsHolderParent: {fileID: 5437763294136395599}
         startAmount: 2
+        objectPrefabs:
+        - {fileID: 660413313926159992, guid: 451cc772146d05345a776512f75c9033, type: 3}
       index: 3
       isKeyRepeated: 0
+    - Key: 5
+      Value:
+        objectsHolderParent: {fileID: 5437763294136395599}
+        startAmount: 0
+        objectPrefabs:
+        - {fileID: 1467819943480863608, guid: eb096218c35ade54e88ddae70be92ee4, type: 3}
+      index: 4
+      isKeyRepeated: 0
+    - Key: 6
+      Value:
+        objectsHolderParent: {fileID: 7772158450903923763}
+        startAmount: 1
+        objectPrefabs:
+        - {fileID: 4415914961444366088, guid: d406aa8fdb7413942934580457a24ab8, type: 3}
+      index: 5
+      isKeyRepeated: 0
     dividerPos: 0.33
+--- !u!1 &5882756920259247688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7772158450903923763}
+  m_Layer: 0
+  m_Name: Text Elements
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7772158450903923763
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5882756920259247688}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8340686087750803813}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6043406839639651761
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,6 +1712,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41708db9dd643a54895219a326a7f79a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chessboard: {fileID: 8177977914355924870}
   formations:
   - {fileID: 11400000, guid: 0b5e21ed750681744992571219064a80, type: 2}
 --- !u!1 &9172069568798042263

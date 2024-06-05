@@ -12,5 +12,7 @@ public class FormationData : ScriptableObject
     }
 
     public string formationName;
+    public Sprite formationIcon;
+    public ObjectType formationVFXType;
     public PositionPiecePair[] positionPiecePairs;
 }
