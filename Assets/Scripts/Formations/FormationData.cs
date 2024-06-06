@@ -11,8 +11,21 @@ public class FormationData : ScriptableObject
         public ChessFigureType pieceType;
     }
 
+    public int GetPieceTypeAtPosition(Vector2Int position)
+    {
+        foreach (var pair in positionPiecePairs)
+        {
+            if (pair.position == position)
+            {
+                return (int)pair.pieceType;
+            }
+        }
+        return -1;
+    }
+
     public string formationName;
     public Sprite formationIcon;
-    public ObjectType formationVFXType;
+    public ActionType formationActionType;
+    public FormationBonus formationBonus;
     public PositionPiecePair[] positionPiecePairs;
 }

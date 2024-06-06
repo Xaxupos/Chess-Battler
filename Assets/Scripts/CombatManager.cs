@@ -73,6 +73,11 @@ public class CombatManager : MonoBehaviour
             whiteFigure.figureInvalidTimer.ResetInvalid();
             whiteFigure.AssignFigureToSquare(chessboard.GetSquareAtPosition(whiteFigure.InitSquarePos), true);
         }
+
+        yield return new WaitForEndOfFrame();
+
+        FormationsManager.Instance.ScanForFormations();
+        FormationsManager.Instance.ScanActiveFormations();
     }
 
     private IEnumerator HandleTurns()

@@ -135,7 +135,7 @@ public class Chessboard : MonoBehaviour
             {
                 if (ChessboardGrid[x, y] != null)
                 {
-                    if (ChessboardGrid[x,y].CurrentFigure != null && ChessboardGrid[x,y].CurrentFigure.figureType == ChessFigureType.KING)
+                    if (ChessboardGrid[x,y].CurrentFigure != null)
                     {
                         ChessboardGrid[x, y].CurrentFigure.transform.parent = null;
                     }

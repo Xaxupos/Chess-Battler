@@ -32,10 +32,14 @@ public class ChessFigureStatistics : MonoBehaviour
         figureStatistics[FigureStatistic.CURRENT_HEALTH] = figureStatistics[FigureStatistic.MAX_HEALTH];
     }
 
-    public void ChangeStatistic(FigureStatistic statistic, float amount)
+    public void ChangeStatistic(FigureStatistic statistic, float amount, bool nonZeroCheck = false)
     {
         figureStatistics[statistic] += amount;
         figureStatistics[statistic] = Mathf.RoundToInt(figureStatistics[statistic]);
+
+        if(nonZeroCheck)
+            if (figureStatistics[statistic] <= 0)
+                figureStatistics[statistic] = 1;
 
         if(amount > 0)
         {

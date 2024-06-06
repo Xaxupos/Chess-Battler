@@ -14,7 +14,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: figureStatistics.serializedKvps.Array.data[1].Value
-      value: 20
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 1140249874437605469, guid: 475857edd21d0a14cbdb78b93e83ced4, type: 3}
       propertyPath: figureStatistics.serializedKvps.Array.data[2].Value

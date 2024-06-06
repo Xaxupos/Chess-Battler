@@ -1081,7 +1081,7 @@ MonoBehaviour:
         objectsHolderParent: {fileID: 7772158450903923763}
         startAmount: 1
         objectPrefabs:
-        - {fileID: 4415914961444366088, guid: d406aa8fdb7413942934580457a24ab8, type: 3}
+        - {fileID: 7653445967725903452, guid: 1ef2566366f0dc2468bc47ac764c548c, type: 3}
       index: 5
       isKeyRepeated: 0
     dividerPos: 0.33
@@ -1095,7 +1095,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7772158450903923763}
   m_Layer: 0
-  m_Name: Text Elements
+  m_Name: Sprite Elements
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1713,8 +1713,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chessboard: {fileID: 8177977914355924870}
-  formations:
+  allGameFormations:
   - {fileID: 11400000, guid: 0b5e21ed750681744992571219064a80, type: 2}
+  figureActiveFormations: []
 --- !u!1 &9172069568798042263
 GameObject:
   m_ObjectHideFlags: 0

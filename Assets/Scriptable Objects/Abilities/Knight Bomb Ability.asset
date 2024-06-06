@@ -14,13 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilityEnum: 2
   onInitAbility: 1
-  triggerChance: 0.4
+  triggerChance: 0.5
   abilityName: Explosive Attack
-  abilityDesc: Attacks have 40% chance to deal side-based AOE damage, dealing 50%
+  abilityDesc: Attacks have 50% chance to deal side-based AOE damage, dealing 65%
     of base damage.
   abilityIcon: {fileID: 21300000, guid: 110a613c97ae3473ba6a34f0d531ca80, type: 3}
   abilityUnlockCost: 25
-  aoeDamageMultiplier: 0.5
+  aoeDamageMultiplier: 0.65
   aoeFromAttackedSquare:
   - {x: 1, y: 0}
   - {x: -1, y: 0}

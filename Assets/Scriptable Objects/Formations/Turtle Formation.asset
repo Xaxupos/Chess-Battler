@@ -14,7 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   formationName: Turtle Formation
   formationIcon: {fileID: 21300000, guid: 863d316d976504fc5a3734b33e10c55e, type: 3}
-  formationVFXType: 5
+  formationActionType: 7
+  formationBonus: {fileID: 11400000, guid: c9ba6953407b5364f9897c59fe531a53, type: 2}
   positionPiecePairs:
   - position: {x: 0, y: 0}
     pieceType: 0
