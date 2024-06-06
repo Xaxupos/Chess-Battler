@@ -29,8 +29,8 @@ public class SFXDatabase : ScriptableObject
 [System.Serializable]
 public class SFXDatabaseEntry
 {
-    public AudioClip[] clips;
     [Range(0, 1)] public float volume;
     public float minPitch = 0.95f;
     public float maxPitch = 1.05f;
+    public AudioClip[] clips;
 }

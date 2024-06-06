@@ -16,83 +16,101 @@ MonoBehaviour:
     serializedKvps:
     - Key: 0
       Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
         clips:
         - {fileID: 8300000, guid: f88a73ed630934747a7d65eacea235ac, type: 3}
         - {fileID: 8300000, guid: b494a3904ec9bb24689a8735816cd7fb, type: 3}
         - {fileID: 8300000, guid: abc24dbc8751e3243aba6c180ea50ae0, type: 3}
-        volume: 1
-        minPitch: 0.95
-        maxPitch: 1
       index: 0
       isKeyRepeated: 0
     - Key: 1
       Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
         clips:
         - {fileID: 8300000, guid: a3b1acc1a17262145967130e18b19838, type: 3}
         - {fileID: 8300000, guid: 43d2fc7f3748e1d4a97e8be03cc655f9, type: 3}
-        volume: 1
-        minPitch: 0.95
-        maxPitch: 1
       index: 1
       isKeyRepeated: 0
     - Key: 2
       Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
         clips:
         - {fileID: 8300000, guid: 0374d420b75f6a549ac1c8511dcec073, type: 3}
         - {fileID: 8300000, guid: 3bfc04e9e68aee640b0dc211d04c531e, type: 3}
         - {fileID: 8300000, guid: 20a91d01a8f9c1a4383be0f36eba846d, type: 3}
-        volume: 1
-        minPitch: 0.95
-        maxPitch: 1
       index: 2
       isKeyRepeated: 0
     - Key: 3
       Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
         clips:
         - {fileID: 8300000, guid: 0374d420b75f6a549ac1c8511dcec073, type: 3}
         - {fileID: 8300000, guid: 3bfc04e9e68aee640b0dc211d04c531e, type: 3}
         - {fileID: 8300000, guid: 20a91d01a8f9c1a4383be0f36eba846d, type: 3}
-        volume: 1
-        minPitch: 0.95
-        maxPitch: 1
       index: 3
       isKeyRepeated: 0
     - Key: 4
       Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
         clips:
         - {fileID: 8300000, guid: 240a9c62d5a0c884390b72b9df150e50, type: 3}
-        volume: 1
-        minPitch: 0.95
-        maxPitch: 1
       index: 4
       isKeyRepeated: 0
     - Key: 5
       Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
         clips:
         - {fileID: 8300000, guid: dd2f27922b61b394ebbd3c3e3605a50e, type: 3}
-        volume: 1
-        minPitch: 0.95
-        maxPitch: 1
       index: 5
       isKeyRepeated: 0
     - Key: 6
       Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
         clips:
         - {fileID: 8300000, guid: 0374d420b75f6a549ac1c8511dcec073, type: 3}
         - {fileID: 8300000, guid: 3bfc04e9e68aee640b0dc211d04c531e, type: 3}
         - {fileID: 8300000, guid: 20a91d01a8f9c1a4383be0f36eba846d, type: 3}
-        volume: 1
-        minPitch: 0.95
-        maxPitch: 1
       index: 6
       isKeyRepeated: 0
     - Key: 7
       Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
         clips:
         - {fileID: 8300000, guid: 2fd4c8a409d70c646b567f46666a373d, type: 3}
-        volume: 1
-        minPitch: 0.95
-        maxPitch: 1
       index: 7
+      isKeyRepeated: 0
+    - Key: 8
+      Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
+        clips:
+        - {fileID: 8300000, guid: a35e1d9f7d5b2544397ef25b56914a1a, type: 3}
+      index: 8
+      isKeyRepeated: 0
+    - Key: 9
+      Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
+        clips:
+        - {fileID: 8300000, guid: ffbb700539227ae4093fb9ee2285e003, type: 3}
+      index: 9
       isKeyRepeated: 0
     dividerPos: 0.33

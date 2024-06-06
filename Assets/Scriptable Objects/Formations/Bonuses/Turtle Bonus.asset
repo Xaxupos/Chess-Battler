@@ -23,7 +23,7 @@ MonoBehaviour:
       index: 1
       isKeyRepeated: 0
     - Key: 3
-      Value: -5
+      Value: -2
       index: 2
       isKeyRepeated: 0
     dividerPos: 0.33

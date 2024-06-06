@@ -1376,6 +1376,7 @@ MonoBehaviour:
   chessboard: {fileID: 8177977914355924870}
   figureSpawner: {fileID: 6774849078372463191}
   currentlyDraggedFigure: {fileID: 0}
+  clickDelay: 0.1
 --- !u!1 &6727253149894011095
 GameObject:
   m_ObjectHideFlags: 0

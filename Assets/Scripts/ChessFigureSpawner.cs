@@ -29,7 +29,8 @@ public class ChessFigureSpawner : MonoBehaviour
                 ChessboardSquare chessSquare = hit.collider.GetComponent<ChessboardSquare>();
                 if (chessSquare != null && chessSquare.IsEmpty() && chessSquare.Chessboard.GetLowerHalf().Contains(chessSquare))
                 {
-                    SpawnPlayerPawn(chessSquare);
+                    var pawn = SpawnPlayerPawn(chessSquare);
+                    GameEffectsDatabase.Instance.PlaySFX(pawn.figureSFX.spawnType);
                     GhostFigureManager.Instance.DropGhostFigure();
                     FigureJustBought = false;
                     FormationsManager.Instance.FullScan();
@@ -48,11 +49,13 @@ public class ChessFigureSpawner : MonoBehaviour
         sideToSpawn = (ChessSide)enumIndex;
     }
 
-    public void SpawnPlayerPawn(ChessboardSquare square)
+    public ChessFigure SpawnPlayerPawn(ChessboardSquare square)
     {
         ChessFigure pawn = Instantiate(figureMap[figureToSpawn], square.transform.position, Quaternion.identity);
         pawn.InitChessFigure(square, sideToSpawn);
         combatManager.AssignFigure(pawn);
+
+        return pawn;
     }
 
     public ChessFigure SpawnPawn(ChessboardSquare square, ChessFigureType figureType, ChessSide forcedSide)

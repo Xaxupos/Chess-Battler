@@ -9,4 +9,5 @@ public class ChessFigureSFX : MonoBehaviour
     public ActionType dieType;
     public ActionType invalidIncreaseType;
     public ActionType invalidDieType;
+    public ActionType spawnType = ActionType.UNIVERSAL_FIGURE_SPAWN;
 }

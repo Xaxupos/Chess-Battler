@@ -94,6 +94,7 @@ public class FigureMoverManager : MonoBehaviour
     public void MoveFigure(ChessFigure figure, ChessboardSquare newSquare)
     {
         figure.AssignFigureToSquare(newSquare, true);
+        GameEffectsDatabase.Instance.PlaySFX(figure.figureSFX.spawnType);
     }
 
     public void SwapWithFigure(ChessFigure figureToSwapWith)
@@ -108,5 +109,7 @@ public class FigureMoverManager : MonoBehaviour
 
         currentlyDraggedFigure.AssignFigureToSquare(chessboard.GetSquareAtPosition(secondFigurePos), true, false);
         figureToSwapWith.AssignFigureToSquare(chessboard.GetSquareAtPosition(currentDraggedPos), true, false);
+
+        GameEffectsDatabase.Instance.PlaySFX(currentlyDraggedFigure.figureSFX.spawnType);
     }
 }

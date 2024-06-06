@@ -83,6 +83,7 @@ public class CombatManager : MonoBehaviour
         WaitForSeconds turnDelayFull = new WaitForSeconds(delayBeetwenMoves);
         WaitForSeconds turnDelayZero = new WaitForSeconds(0.5f);
 
+        GameEffectsDatabase.Instance.PlaySFX(ActionType.COMBAT_START);
         yield return new WaitForSeconds(2);
 
         while (chessFigures[ChessSide.BLACK].Count > 0)
