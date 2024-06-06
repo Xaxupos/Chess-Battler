@@ -291,7 +291,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55c13af019acb33408000566a86d35e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startCombatSound: {fileID: 8780651524849332968}
   chessboard: {fileID: 8177977914355924870}
   waveManager: {fileID: 7864095675556596139}
   loseGameManager: {fileID: 5801556465306401353}
@@ -698,7 +697,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103121646a768df48af7c14f31a3676f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpawnSfx: {fileID: 1935472640033169223}
   combatManager: {fileID: 8081897573414294665}
   figureMap:
     serializedKvps:
@@ -1331,6 +1329,53 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!1 &6633094590399332600
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1721300123159289564}
+  - component: {fileID: 3415786553188650065}
+  m_Layer: 0
+  m_Name: Figure Mover Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1721300123159289564
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633094590399332600}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 514575671426368801}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3415786553188650065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6633094590399332600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49decb99240bd5645a8e7952a0c78860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chessboard: {fileID: 8177977914355924870}
+  figureSpawner: {fileID: 6774849078372463191}
+  currentlyDraggedFigure: {fileID: 0}
 --- !u!1 &6727253149894011095
 GameObject:
   m_ObjectHideFlags: 0
@@ -1662,6 +1707,7 @@ Transform:
   - {fileID: 8263284511635259149}
   - {fileID: 8340686087750803813}
   - {fileID: 1809261287555202157}
+  - {fileID: 1721300123159289564}
   - {fileID: 3541601466161181754}
   - {fileID: 4673410584908279729}
   - {fileID: 1063386248273652638}

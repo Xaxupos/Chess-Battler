@@ -63,6 +63,12 @@ public class FormationsManager : MonoBehaviour
 
     }
 
+    public void FullScan()
+    {
+        ScanActiveFormations();
+        ScanForFormations();
+    }
+
     public void ScanActiveFormations()
     {
         for (int i = figureActiveFormations.Count - 1; i >= 0; i--)

@@ -9,7 +9,6 @@ using VInspector;
 public class CombatManager : MonoBehaviour
 {
     [Header("References")]
-    public AudioSource startCombatSound;
     public Chessboard chessboard;
     public WaveManager waveManager;
     public LoseGameManager loseGameManager;
@@ -76,8 +75,7 @@ public class CombatManager : MonoBehaviour
 
         yield return new WaitForEndOfFrame();
 
-        FormationsManager.Instance.ScanForFormations();
-        FormationsManager.Instance.ScanActiveFormations();
+        FormationsManager.Instance.FullScan();
     }
 
     private IEnumerator HandleTurns()
@@ -85,8 +83,7 @@ public class CombatManager : MonoBehaviour
         WaitForSeconds turnDelayFull = new WaitForSeconds(delayBeetwenMoves);
         WaitForSeconds turnDelayZero = new WaitForSeconds(0.5f);
 
-        startCombatSound.Play();
-        yield return new WaitForSeconds(startCombatSound.clip.length);
+        yield return new WaitForSeconds(2);
 
         while (chessFigures[ChessSide.BLACK].Count > 0)
         {

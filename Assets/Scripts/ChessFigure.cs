@@ -45,9 +45,9 @@ public class ChessFigure : MonoBehaviour
             figureBrain.InitValidLineMovesAndAttacks();
     }
 
-    public void AssignFigureToSquare(ChessboardSquare square, bool forceMove = false)
+    public void AssignFigureToSquare(ChessboardSquare square, bool forceMove = false, bool clearCurrentSquare = true)
     {
-        if(CurrentSquare)
+        if (clearCurrentSquare && CurrentSquare)
             CurrentSquare.ClearSquare();
 
         CurrentSquare = square;

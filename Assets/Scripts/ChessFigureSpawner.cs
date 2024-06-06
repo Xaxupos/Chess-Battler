@@ -5,7 +5,6 @@ using VInspector;
 public class ChessFigureSpawner : MonoBehaviour
 {
     [Header("References")]
-    public AudioSource playerSpawnSfx;
     public CombatManager combatManager;
     public SerializedDictionary<ChessFigureType, ChessFigure> figureMap;
 
@@ -30,12 +29,10 @@ public class ChessFigureSpawner : MonoBehaviour
                 ChessboardSquare chessSquare = hit.collider.GetComponent<ChessboardSquare>();
                 if (chessSquare != null && chessSquare.IsEmpty() && chessSquare.Chessboard.GetLowerHalf().Contains(chessSquare))
                 {
-                    playerSpawnSfx.Play();
                     SpawnPlayerPawn(chessSquare);
                     GhostFigureManager.Instance.DropGhostFigure();
                     FigureJustBought = false;
-                    FormationsManager.Instance.ScanForFormations();
-                    FormationsManager.Instance.ScanActiveFormations();
+                    FormationsManager.Instance.FullScan();
                 }
             }
         }

@@ -14,7 +14,7 @@ public class ChessFigureFormationController : MonoBehaviour
 
     public void ClearCurrentFormationAndRevertBonus()
     {
-        if (currentFormation == null && currentFormation.formationData == null) return;
+        if (currentFormation == null || currentFormation.formationData == null) return;
 
         currentFormation.formationData.formationBonus.RevertBonus(owner);
         currentFormation = null;
