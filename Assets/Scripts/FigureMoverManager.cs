@@ -7,10 +7,12 @@ public class FigureMoverManager : MonoBehaviour
     public ChessFigureSpawner figureSpawner;
 
     [ReadOnly] public ChessFigure currentlyDraggedFigure;
+    public float clickDelay = 0.1f;
 
     public static FigureMoverManager Instance;
 
     private Vector2Int cachedCurrentDraggedPos;
+    private float lastClickTime;
 
     private void Awake()
     {
@@ -26,8 +28,9 @@ public class FigureMoverManager : MonoBehaviour
     private void Update()
     {
         if (figureSpawner.combatManager.waveManager.WaveInProgress) return;
+        if (Time.time - lastClickTime < clickDelay) return;
 
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) || (Input.GetMouseButtonUp(0) && currentlyDraggedFigure))
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
@@ -38,6 +41,7 @@ public class FigureMoverManager : MonoBehaviour
 
                 if (square)
                 {
+                    lastClickTime = Time.time;
                     if (currentlyDraggedFigure)
                     {
                         if (square.IsEmpty())
