@@ -34,6 +34,11 @@ public class WaveManager : MonoBehaviour
 
         InitAbilities();
 
+        foreach(var figure in combatManager.chessFigures[ChessSide.WHITE])
+        {
+            figure.InitSquarePos = figure.CurrentSquare.GetBoardPosition();
+        }
+
         OnStartWave?.Invoke();
         SeedCurrentWave();
         DistributeWave();
