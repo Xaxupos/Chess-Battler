@@ -12,8 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbd3ba54964cd542954e7f56c7511e3, type: 3}
   m_Name: Turtle Formation
   m_EditorClassIdentifier: 
-  formationName: Turtle Formation
-  formationIcon: {fileID: 21300000, guid: 863d316d976504fc5a3734b33e10c55e, type: 3}
   formationActionType: 7
   formationBonus: {fileID: 11400000, guid: c9ba6953407b5364f9897c59fe531a53, type: 2}
   positionPiecePairs:
@@ -25,3 +23,8 @@ MonoBehaviour:
     pieceType: 0
   - position: {x: 1, y: -1}
     pieceType: 0
+  formationName: Turtle Formation
+  formationDescription: Defensive formation that grants <color="green">+15 HP </color>
+    and  <color="red">-2 DMG</color> to each pawn.
+  formationBoardVisual: {fileID: -268036528955892286, guid: ad9d8dea5b0f13448b96a8d65f242939, type: 3}
+  formationIcon: {fileID: 21300000, guid: 863d316d976504fc5a3734b33e10c55e, type: 3}

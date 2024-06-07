@@ -1,15 +1,21 @@
 using UnityEngine;
 using System;
+using VInspector;
 
 [CreateAssetMenu(fileName = "New Formation", menuName = "Formations/New Formation Data")]
 public class FormationData : ScriptableObject
 {
-    [Serializable]
-    public class PositionPiecePair
-    {
-        public Vector2Int position;
-        public ChessFigureType pieceType;
-    }
+    [Tab("Core")]
+    public ActionType formationActionType;
+    public FormationBonus formationBonus;
+    public PositionPiecePair[] positionPiecePairs;
+
+    [Tab("Visuals")]
+    public string formationName;
+    [TextArea()]
+    public string formationDescription;
+    public Sprite formationBoardVisual;
+    public Sprite formationIcon;
 
     public int GetPieceTypeAtPosition(Vector2Int position)
     {
@@ -22,10 +28,11 @@ public class FormationData : ScriptableObject
         }
         return -1;
     }
+}
 
-    public string formationName;
-    public Sprite formationIcon;
-    public ActionType formationActionType;
-    public FormationBonus formationBonus;
-    public PositionPiecePair[] positionPiecePairs;
+[Serializable]
+public class PositionPiecePair
+{
+    public Vector2Int position;
+    public ChessFigureType pieceType;
 }

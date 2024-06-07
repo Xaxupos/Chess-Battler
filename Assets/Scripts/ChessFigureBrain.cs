@@ -176,6 +176,7 @@ public class ChessFigureBrain : MonoBehaviour
     private void HandleAOEDamage(ChessboardSquare square, float calculatedDamage)
     {
         bool aoeAllowed = true;
+        var aoeDamageMultiplier = 0.5f;
         ActionType sfxType = ActionType.UNIVERSAL_TAKE_DAMAGE;
         ActionType vfxType = ActionType.UNIVERSAL_TAKE_DAMAGE;
         
@@ -188,6 +189,9 @@ public class ChessFigureBrain : MonoBehaviour
             sfxType = ActionType.KNIGHT_BOMB_ABILITY;
             vfxType = ActionType.KNIGHT_BOMB_ABILITY;
             aoeAllowed = randomValue <= abilityTriggerChance;
+
+            var aoeAbility = owner.figureAbilities.figureAbilities[AbilitiesEnum.KNIGHT_BOMB_AOE].ability as SetAoeAbility;
+            aoeDamageMultiplier = aoeAbility.aoeDamageMultiplier;
         }
 
         if (!aoeAllowed) return;
@@ -201,7 +205,7 @@ public class ChessFigureBrain : MonoBehaviour
                 if (squareToAttack.IsEmpty()) continue;
                 if (squareToAttack.CurrentFigure.FigureSide == owner.FigureSide) continue;
 
-                float aoeDamage = calculatedDamage / 2;
+                float aoeDamage = calculatedDamage * aoeDamageMultiplier;
                 squareToAttack.CurrentFigure.figureStatistics.ChangeStatistic(FigureStatistic.CURRENT_HEALTH, -aoeDamage);
 
                 if (!squareToAttack || !squareToAttack.CurrentFigure || !squareToAttack.CurrentFigure.figureHealthSystem) continue;
@@ -210,6 +214,10 @@ public class ChessFigureBrain : MonoBehaviour
                 if (squareToAttack.CurrentFigure.figureHealthSystem.IsDead)
                 {
                     GameEffectsDatabase.Instance.PlayVFX(squareToAttack.CurrentFigure.figureVFX.dieType, squareToAttack.CurrentFigure.transform.position, squareToAttack.transform);
+                }
+                else
+                {
+                    GameEffectsDatabase.Instance.PlayVFX(vfxType, squareToAttack.CurrentFigure.transform.position, squareToAttack.transform);
                 }
             }
         }
