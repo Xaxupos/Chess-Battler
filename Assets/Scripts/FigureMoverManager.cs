@@ -42,6 +42,8 @@ public class FigureMoverManager : MonoBehaviour
 
                 if (square)
                 {
+                    FormationOverlayTooltip.Instance.HideTooltip();
+
                     lastClickTime = Time.time;
                     if (currentlyDraggedFigure)
                     {

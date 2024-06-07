@@ -12,6 +12,19 @@ public class ChessFigureSpawner : MonoBehaviour
     private ChessFigureType figureToSpawn;
     private ChessSide sideToSpawn;
 
+
+    public static ChessFigureSpawner Instance;
+
+    private void Awake()
+    {
+        if (Instance == null) Instance = this;
+    }
+
+    private void OnDestroy()
+    {
+        Instance = null;
+    }
+
     private void Start()
     {
         SpawnPlayerKing();
@@ -21,6 +34,7 @@ public class ChessFigureSpawner : MonoBehaviour
     {
         if (Input.GetMouseButtonUp(0) && FigureJustBought)
         {
+            FormationOverlayTooltip.Instance.HideTooltip();
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 

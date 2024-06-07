@@ -5,6 +5,7 @@ using VInspector;
 public class Chessboard : MonoBehaviour
 {
     [Header("References")]
+    public GameObject overlaysParent;
     [SerializeField] private ChessboardSquare whiteSquarePrefab;
     [SerializeField] private ChessboardSquare blackSquarePrefab;
 
@@ -27,6 +28,19 @@ public class Chessboard : MonoBehaviour
     public float GetCellSize()
     {
         return cellSize;
+    }
+
+    public void EnableOverlaysParent(bool value)
+    {
+        if (!value)
+        {
+            foreach(var cg in overlaysParent.GetComponentsInChildren<CanvasGroup>())
+            {
+                cg.alpha = 0;
+            }
+        }
+
+        overlaysParent.SetActive(value);
     }
 
     public bool IsWithinBounds(Vector2Int position)

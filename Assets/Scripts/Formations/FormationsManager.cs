@@ -144,7 +144,7 @@ public class FormationsManager : MonoBehaviour
         var overlayType = formation.formationData.overlayType;
         var overlayGO = PoolManager.Instance.GetFromPool(overlayType);
         formation.overlay = overlayGO;
-        overlayGO.GetComponent<FormationOverlay>().InitAndSetPosition(centerPosition);
+        overlayGO.GetComponent<FormationOverlay>().InitAndSetPosition(centerPosition, formation.formationData);
     }
 
     private Vector3 GetCenterPosition(List<Vector2Int> positions)

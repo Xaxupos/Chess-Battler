@@ -34,6 +34,7 @@ public class CombatManager : MonoBehaviour
     {
         InitQueue();
         StartCoroutine(HandleTurns());
+        chessboard.EnableOverlaysParent(false);
     }
 
     public void AssignFigure(ChessFigure chessFigure)
@@ -76,6 +77,9 @@ public class CombatManager : MonoBehaviour
         yield return new WaitForEndOfFrame();
 
         FormationsManager.Instance.FullScan();
+
+        yield return new WaitForEndOfFrame();
+        chessboard.EnableOverlaysParent(true);
     }
 
     private IEnumerator HandleTurns()
