@@ -6,6 +6,7 @@ using VInspector;
 public class FormationData : ScriptableObject
 {
     [Tab("Core")]
+    public ObjectType overlayType;
     public ActionType formationActionType;
     public FormationBonus formationBonus;
     public PositionPiecePair[] positionPiecePairs;

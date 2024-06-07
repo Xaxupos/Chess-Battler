@@ -85,6 +85,7 @@ public class FormationsManager : MonoBehaviour
                     chessboard.GetSquareAtPosition(squarePos).CurrentFigure.formationController.ClearCurrentFormationAndRevertBonus();
                 }
 
+                PoolManager.Instance.ReleaseToPool(activeFormation.formationData.overlayType, activeFormation.overlay, 0.1f);
                 figureActiveFormations.RemoveAt(i);
             }
         }
@@ -139,6 +140,11 @@ public class FormationsManager : MonoBehaviour
 
         Vector3 centerPosition = GetCenterPosition(formationPositions);
         DisplayFormationName(formation.formationData, centerPosition);
+
+        var overlayType = formation.formationData.overlayType;
+        var overlayGO = PoolManager.Instance.GetFromPool(overlayType);
+        formation.overlay = overlayGO;
+        overlayGO.GetComponent<FormationOverlay>().InitAndSetPosition(centerPosition);
     }
 
     private Vector3 GetCenterPosition(List<Vector2Int> positions)

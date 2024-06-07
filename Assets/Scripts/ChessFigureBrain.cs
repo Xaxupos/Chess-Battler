@@ -179,20 +179,8 @@ public class ChessFigureBrain : MonoBehaviour
         var aoeDamageMultiplier = 0.5f;
         ActionType sfxType = ActionType.UNIVERSAL_TAKE_DAMAGE;
         ActionType vfxType = ActionType.UNIVERSAL_TAKE_DAMAGE;
-        
 
-        if(owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.KNIGHT_BOMB_AOE))
-        {
-            float randomValue = Random.value; //0 to 1
-            float abilityTriggerChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.KNIGHT_BOMB_AOE); //0 to 1
-
-            sfxType = ActionType.KNIGHT_BOMB_ABILITY;
-            vfxType = ActionType.KNIGHT_BOMB_ABILITY;
-            aoeAllowed = randomValue <= abilityTriggerChance;
-
-            var aoeAbility = owner.figureAbilities.figureAbilities[AbilitiesEnum.KNIGHT_BOMB_AOE].ability as SetAoeAbility;
-            aoeDamageMultiplier = aoeAbility.aoeDamageMultiplier;
-        }
+        HandleUnlockedAOEAbilities(ref aoeAllowed, ref aoeDamageMultiplier, ref sfxType, ref vfxType);
 
         if (!aoeAllowed) return;
 
@@ -220,6 +208,22 @@ public class ChessFigureBrain : MonoBehaviour
                     GameEffectsDatabase.Instance.PlayVFX(vfxType, squareToAttack.CurrentFigure.transform.position, squareToAttack.transform);
                 }
             }
+        }
+    }
+
+    private void HandleUnlockedAOEAbilities(ref bool aoeAllowed, ref float aoeDamageMultiplier, ref ActionType sfxType, ref ActionType vfxType)
+    {
+        if (owner.figureAbilities.IsAbilityUnlocked(AbilitiesEnum.KNIGHT_BOMB_AOE))
+        {
+            float randomValue = Random.value; //0 to 1
+            float abilityTriggerChance = owner.figureAbilities.GetTriggerChance(AbilitiesEnum.KNIGHT_BOMB_AOE); //0 to 1
+
+            sfxType = ActionType.KNIGHT_BOMB_ABILITY;
+            vfxType = ActionType.KNIGHT_BOMB_ABILITY;
+            aoeAllowed = randomValue <= abilityTriggerChance;
+
+            var aoeAbility = owner.figureAbilities.figureAbilities[AbilitiesEnum.KNIGHT_BOMB_AOE].ability as SetAoeAbility;
+            aoeDamageMultiplier = aoeAbility.aoeDamageMultiplier;
         }
     }
 

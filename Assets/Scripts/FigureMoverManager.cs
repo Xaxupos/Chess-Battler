@@ -27,6 +27,7 @@ public class FigureMoverManager : MonoBehaviour
 
     private void Update()
     {
+        if (figureSpawner.FigureJustBought) return;
         if (figureSpawner.combatManager.waveManager.WaveInProgress) return;
         if (Time.time - lastClickTime < clickDelay) return;
 

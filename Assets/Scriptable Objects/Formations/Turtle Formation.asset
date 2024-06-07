@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6cbd3ba54964cd542954e7f56c7511e3, type: 3}
   m_Name: Turtle Formation
   m_EditorClassIdentifier: 
+  overlayType: 7
   formationActionType: 7
   formationBonus: {fileID: 11400000, guid: c9ba6953407b5364f9897c59fe531a53, type: 2}
   positionPiecePairs:

@@ -1017,6 +1017,7 @@ Transform:
   m_Children:
   - {fileID: 90805666425905469}
   - {fileID: 7772158450903923763}
+  - {fileID: 634831576373641317}
   - {fileID: 5437763294136395599}
   m_Father: {fileID: 514575671426368801}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1082,7 +1083,46 @@ MonoBehaviour:
         - {fileID: 7653445967725903452, guid: 1ef2566366f0dc2468bc47ac764c548c, type: 3}
       index: 5
       isKeyRepeated: 0
+    - Key: 7
+      Value:
+        objectsHolderParent: {fileID: 634831576373641317}
+        startAmount: 1
+        objectPrefabs:
+        - {fileID: 2281187796105565696, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
+      index: 6
+      isKeyRepeated: 0
     dividerPos: 0.33
+--- !u!1 &5283324533435917736
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 634831576373641317}
+  m_Layer: 0
+  m_Name: Overlays
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &634831576373641317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5283324533435917736}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8340686087750803813}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5882756920259247688
 GameObject:
   m_ObjectHideFlags: 0
