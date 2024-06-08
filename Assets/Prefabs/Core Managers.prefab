@@ -1124,6 +1124,22 @@ MonoBehaviour:
         - {fileID: 1439946978118705977, guid: ed59a905543842c4ab0b1c29ed8a73ed, type: 3}
       index: 6
       isKeyRepeated: 0
+    - Key: 9
+      Value:
+        objectsHolderParent: {fileID: 634831576373641317}
+        startAmount: 1
+        objectPrefabs:
+        - {fileID: 1439946978118705977, guid: a1f6baf813f12f043a62e1fb78432c6b, type: 3}
+      index: 7
+      isKeyRepeated: 0
+    - Key: 8
+      Value:
+        objectsHolderParent: {fileID: 5437763294136395599}
+        startAmount: 1
+        objectPrefabs:
+        - {fileID: 284078766500783215, guid: 2e83c09bb7e5a3b46bc8bae76bea53df, type: 3}
+      index: 8
+      isKeyRepeated: 0
     dividerPos: 0.33
 --- !u!1 &5283324533435917736
 GameObject:
@@ -1835,6 +1851,7 @@ MonoBehaviour:
   chessboard: {fileID: 8177977914355924870}
   allGameFormations:
   - {fileID: 11400000, guid: 0b5e21ed750681744992571219064a80, type: 2}
+  - {fileID: 11400000, guid: 87b8d7cf7ebc32d4b866cb2d53a59a2a, type: 2}
   figureActiveFormations: []
 --- !u!1 &9172069568798042263
 GameObject:

@@ -113,4 +113,13 @@ MonoBehaviour:
         - {fileID: 8300000, guid: ffbb700539227ae4093fb9ee2285e003, type: 3}
       index: 9
       isKeyRepeated: 0
+    - Key: 10
+      Value:
+        volume: 1
+        minPitch: 0.97
+        maxPitch: 1.03
+        clips:
+        - {fileID: 8300000, guid: 85bf7e9f5ad3f114cb27c3c04ea10844, type: 3}
+      index: 10
+      isKeyRepeated: 0
     dividerPos: 0.33

@@ -34,7 +34,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1769563592870394698, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 3.5
+      value: 5.2734
       objectReference: {fileID: 0}
     - target: {fileID: 1769563592870394698, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_SizeDelta.y
@@ -70,11 +70,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1769563592870394698, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 4.9975
       objectReference: {fileID: 0}
     - target: {fileID: 1769563592870394698, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 1769563592870394698, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -90,7 +90,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2281187796105565696, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_Name
-      value: Turtle Formation Overlay
+      value: Needle Formation Overlay
       objectReference: {fileID: 0}
     - target: {fileID: 5298161949300614106, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_Type
@@ -99,18 +99,18 @@ PrefabInstance:
     - target: {fileID: 5298161949300614106, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -4871323301788247909, guid: 2c83518c298a8bb4d85d56f1e53936cc, type: 3}
+      objectReference: {fileID: 2627227634031631471, guid: 2064d89b31acaac428f63f41aa4ad027, type: 3}
     - target: {fileID: 5298161949300614106, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_Color.b
-      value: 0.5566038
+      value: 0.6634079
       objectReference: {fileID: 0}
     - target: {fileID: 5298161949300614106, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_Color.g
-      value: 0.5566038
+      value: 0.6698113
       objectReference: {fileID: 0}
     - target: {fileID: 5298161949300614106, guid: e1b6b327419c8184fa7528ca147703b0, type: 3}
       propertyPath: m_Color.r
-      value: 0.5566038
+      value: 0.4518067
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

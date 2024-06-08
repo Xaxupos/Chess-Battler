@@ -39,4 +39,9 @@ MonoBehaviour:
         objectType: 5
       index: 4
       isKeyRepeated: 0
+    - Key: 10
+      Value:
+        objectType: 8
+      index: 5
+      isKeyRepeated: 0
     dividerPos: 0.33
