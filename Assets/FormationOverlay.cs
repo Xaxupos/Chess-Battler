@@ -1,7 +1,6 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 
-public class FormationOverlay : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class FormationOverlay : MonoBehaviour
 {
     public FormationData fData { get; set; }
 
@@ -12,7 +11,7 @@ public class FormationOverlay : MonoBehaviour, IPointerEnterHandler, IPointerExi
         transform.SetParent(FormationsManager.Instance.chessboard.overlaysParent.transform, false);
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public void OnPointerEnter()
     {
         if (GhostFigureManager.Instance.GhostFigureActive) return;
         if (FormationOverlayTooltip.Instance.TooltipOpened()) return;
@@ -20,7 +19,7 @@ public class FormationOverlay : MonoBehaviour, IPointerEnterHandler, IPointerExi
         FormationOverlayTooltip.Instance.DisplayTooltip(fData);
     }
 
-    public void OnPointerExit(PointerEventData eventData)
+    public void OnPointerExit()
     {
         FormationOverlayTooltip.Instance.HideTooltip();
     }

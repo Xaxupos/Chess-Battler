@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 5714869057724410635}
   - component: {fileID: 2454225307410968994}
   - component: {fileID: 5298161949300614106}
+  - component: {fileID: 2362398217846139144}
   m_Layer: 5
   m_Name: Overlay Panel
   m_TagString: Untagged
@@ -190,3 +191,15 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &2362398217846139144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7609500570891194809}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bcab74e8bab0b7a47bca20b77249b079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
