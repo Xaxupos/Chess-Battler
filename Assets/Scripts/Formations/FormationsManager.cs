@@ -78,17 +78,35 @@ public class FormationsManager : MonoBehaviour
             {
                 Debug.Log($"Formation {activeFormation.formationData.formationName} is no longer valid.");
 
-                foreach (var squarePos in activeFormation.chessboardSquares)
-                {
-                    if (chessboard.GetSquareAtPosition(squarePos).CurrentFigure == null) continue;
-
-                    chessboard.GetSquareAtPosition(squarePos).CurrentFigure.formationController.ClearCurrentFormationAndRevertBonus();
-                }
-
-                PoolManager.Instance.ReleaseToPool(activeFormation.formationData.overlayType, activeFormation.overlay, 0.1f);
+                RemoveFormation(activeFormation);
                 figureActiveFormations.RemoveAt(i);
             }
         }
+    }
+
+    public void RemoveAllFormations()
+    {
+        for (int i = figureActiveFormations.Count - 1; i >= 0; i--)
+        {
+            var activeFormation = figureActiveFormations[i];
+            Debug.Log($"Formation {activeFormation.formationData.formationName} removed.");
+
+            RemoveFormation(activeFormation);
+            figureActiveFormations.RemoveAt(i);
+        }
+    }
+
+
+    public void RemoveFormation(FigureActiveFormation activeFormation)
+    {
+        foreach (var squarePos in activeFormation.chessboardSquares)
+        {
+            if (chessboard.GetSquareAtPosition(squarePos).CurrentFigure == null) continue;
+
+            chessboard.GetSquareAtPosition(squarePos).CurrentFigure.formationController.ClearCurrentFormationAndRevertBonus();
+        }
+
+        PoolManager.Instance.ReleaseToPool(activeFormation.formationData.overlayType, activeFormation.overlay, 0.1f);
     }
 
     private bool IsFormationStillValid(FigureActiveFormation formation)

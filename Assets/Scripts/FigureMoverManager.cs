@@ -47,6 +47,8 @@ public class FigureMoverManager : MonoBehaviour
                     lastClickTime = Time.time;
                     if (currentlyDraggedFigure)
                     {
+                        if (!chessboard.GetLowerHalf().Contains(square)) return;
+
                         if (square.IsEmpty())
                         {
                             MoveFigure(currentlyDraggedFigure, square);
@@ -105,9 +107,15 @@ public class FigureMoverManager : MonoBehaviour
         var currentDraggedPos = cachedCurrentDraggedPos;
         var secondFigurePos = figureToSwapWith.CurrentSquare.GetBoardPosition();
 
+        FormationsManager.Instance.RemoveAllFormations();
+
         if(figureToSwapWith.formationController.IsPartOfFormation())
         {
             figureToSwapWith.formationController.ClearCurrentFormationAndRevertBonus();
+        }
+        if(currentlyDraggedFigure.formationController.IsPartOfFormation())
+        {
+            currentlyDraggedFigure.formationController.ClearCurrentFormationAndRevertBonus();
         }
 
         currentlyDraggedFigure.AssignFigureToSquare(chessboard.GetSquareAtPosition(secondFigurePos), true, false);

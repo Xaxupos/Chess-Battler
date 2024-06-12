@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minimumEnemies: 2
   maximumEnemies: 3
-  chessboardXSize: 4
-  chessboardYSize: 4
+  chessboardXSize: 5
+  chessboardYSize: 5
   goldForCompleted: 25
   minimumFigureDefine:
     serializedKvps:
