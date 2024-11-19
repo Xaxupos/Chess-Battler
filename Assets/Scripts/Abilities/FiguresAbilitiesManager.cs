@@ -52,7 +52,6 @@ public class FiguresAbilitiesManager : MonoBehaviour
         var figureType = figure.figureType;
         var abilitiesForThatFigureType = allAbilities[figureType];
 
-
         foreach(var abilityKVP in abilitiesForThatFigureType)
         {
             fAbilities.Add(abilityKVP.Key, abilityKVP.Value);
